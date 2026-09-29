@@ -882,7 +882,7 @@ class _CreateCharacterScreenState extends State<CreateCharacterScreen> {
                     textCapitalization: TextCapitalization.words,
                     decoration: const InputDecoration(
                       labelText: "Occupation / Role",
-                      hintText: "e.g. Cyberpunk Hacker",
+                      hintText: "e.g. Cyberpunk Netrunner",
                       prefixIcon: Icon(Icons.work_outline_rounded, color: AppColors.textSecondary),
                     ),
                   ),

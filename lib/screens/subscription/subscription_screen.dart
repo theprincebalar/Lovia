@@ -395,7 +395,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> with SingleTick
                           border: Border.all(color: const Color(0xFFFF2D78).withOpacity(0.35)),
                         ),
                         child: const Text(
-                          "Cancel Anytime",
+                          "Auto-Renewable",
                           style: TextStyle(
                             fontSize: 10,
                             fontWeight: FontWeight.w700,
