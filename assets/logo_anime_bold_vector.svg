@@ -1,0 +1,132 @@
+<svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="500" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f0c1b"/>
+      <stop offset="50%" stop-color="#18132b"/>
+      <stop offset="100%" stop-color="#090710"/>
+    </linearGradient>
+
+    <!-- Boy Neon Blue/Cyan Gradient -->
+    <linearGradient id="boyAura" x1="50" y1="50" x2="250" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00F0FF"/>
+      <stop offset="50%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+
+    <!-- Girl Neon Pink/Magenta Gradient -->
+    <linearGradient id="girlAura" x1="250" y1="50" x2="450" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF2A85"/>
+      <stop offset="50%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#9333EA"/>
+    </linearGradient>
+
+    <!-- Gold Accent -->
+    <linearGradient id="goldAccent" x1="200" y1="200" x2="300" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FDE047"/>
+      <stop offset="100%" stop-color="#EAB308"/>
+    </linearGradient>
+
+    <!-- Drop Shadows / Glows -->
+    <filter id="neonGlowBoy" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="neonGlowGirl" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Outer Badge / Shield -->
+  <rect x="20" y="20" width="460" height="460" rx="100" fill="url(#bgGrad)" stroke="url(#girlAura)" stroke-width="4"/>
+  <circle cx="250" cy="250" r="215" stroke="url(#boyAura)" stroke-width="2" stroke-dasharray="8 6" opacity="0.6"/>
+
+  <!-- Dramatic Anime Background Burst Lines -->
+  <g opacity="0.18">
+    <line x1="250" y1="250" x2="50" y2="50" stroke="#00F0FF" stroke-width="2"/>
+    <line x1="250" y1="250" x2="450" y2="50" stroke="#FF2A85" stroke-width="2"/>
+    <line x1="250" y1="250" x2="30" y2="250" stroke="#00F0FF" stroke-width="2"/>
+    <line x1="250" y1="250" x2="470" y2="250" stroke="#FF2A85" stroke-width="2"/>
+    <line x1="250" y1="250" x2="70" y2="430" stroke="#00F0FF" stroke-width="2"/>
+    <line x1="250" y1="250" x2="430" y2="430" stroke="#FF2A85" stroke-width="2"/>
+  </g>
+
+  <!-- ==================== ANIME MALE (LEFT - BOLD PROFILE) ==================== -->
+  <g filter="url(#neonGlowBoy)">
+    <!-- Spiky Anime Hair Silhouettes -->
+    <path d="M90 280 C 70 230, 80 160, 130 110 C 150 90, 180 75, 220 70 C 210 90, 205 110, 215 125 C 225 110, 235 95, 248 85 C 240 110, 235 130, 245 150 C 230 150, 210 145, 195 160 C 190 145, 175 140, 165 150 C 150 165, 155 190, 140 210 C 130 200, 115 205, 110 220 C 100 240, 110 265, 90 280 Z" fill="url(#boyAura)"/>
+    
+    <!-- Male Face & Sharp Jawline -->
+    <path d="M140 205 L 195 205 C 205 205, 215 215, 220 230 L 225 255 L 210 285 L 180 320 L 165 315 L 155 270 L 140 260 Z" fill="#F8FAFC"/>
+    
+    <!-- Bold Anime Eye (Boy) -->
+    <!-- Sharp eyebrow -->
+    <polygon points="170,215 208,218 202,223 172,220" fill="#00F0FF"/>
+    <!-- Eye outline & pupil -->
+    <path d="M175 228 Q 192 225 205 233 Q 190 242 175 228 Z" fill="#0F172A" stroke="#00F0FF" stroke-width="2"/>
+    <circle cx="192" cy="232" r="3.5" fill="#00F0FF"/>
+    <circle cx="190" cy="230" r="1.5" fill="#FFFFFF"/>
+
+    <!-- Sharp Anime Neck & Collar -->
+    <path d="M165 315 L 175 390 L 110 420 L 90 350 L 140 310 Z" fill="url(#boyAura)"/>
+    <!-- Collar Accent -->
+    <polygon points="175,325 220,360 190,380 165,335" fill="#091E42"/>
+  </g>
+
+  <!-- ==================== ANIME FEMALE (RIGHT - BOLD PROFILE) ==================== -->
+  <g filter="url(#neonGlowGirl)">
+    <!-- Long Flowing Anime Hair & Bangs -->
+    <path d="M410 280 C 430 230, 420 160, 370 110 C 350 90, 320 75, 280 70 C 290 90, 295 110, 285 125 C 275 110, 265 95, 252 85 C 260 110, 265 130, 255 150 C 270 150, 290 145, 305 160 C 310 145, 325 140, 335 150 C 350 165, 345 190, 360 210 C 370 200, 385 205, 390 220 C 400 240, 390 265, 410 280 Z" fill="url(#girlAura)"/>
+    
+    <!-- Flowing Hair Strands (Back) -->
+    <path d="M390 250 C 435 300, 440 370, 395 425 C 375 390, 385 340, 370 300 Z" fill="url(#girlAura)" opacity="0.85"/>
+
+    <!-- Female Face & Elegant Soft-Sharp Jawline -->
+    <path d="M360 205 L 305 205 C 295 205, 285 215, 280 230 L 275 255 L 290 285 L 320 320 L 335 315 L 345 270 L 360 260 Z" fill="#FFF1F2"/>
+
+    <!-- Bold Anime Eye (Girl) -->
+    <!-- Curved elegant eyebrow -->
+    <path d="M292 216 Q 312 213 328 221" stroke="#FF2A85" stroke-width="3.5" stroke-linecap="round"/>
+    <!-- Big expressive anime eye with eyelashes -->
+    <path d="M295 233 Q 308 224 325 228" stroke="#FF2A85" stroke-width="4" stroke-linecap="round"/>
+    <!-- Eyelash flick -->
+    <path d="M323 227 L 332 222" stroke="#FF2A85" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="308" cy="236" rx="9" ry="11" fill="#FF2A85"/>
+    <ellipse cx="308" cy="236" rx="6" ry="8" fill="#581C87"/>
+    <!-- Highlights in eyes -->
+    <circle cx="305" cy="231" r="3.5" fill="#FFFFFF"/>
+    <circle cx="311" cy="241" r="2" fill="#FFFFFF"/>
+
+    <!-- Female Neck & Collar -->
+    <path d="M335 315 L 325 390 L 390 420 L 410 350 L 360 310 Z" fill="url(#girlAura)"/>
+    <polygon points="325,325 280,360 310,380 335,335" fill="#3B0764"/>
+  </g>
+
+  <!-- ==================== CENTER CLASH / CONNECTION ENERGY ==================== -->
+  <!-- Glowing Heart Crystal in Center -->
+  <g>
+    <!-- Heart Glow -->
+    <circle cx="250" cy="250" r="45" fill="#FF2A85" filter="url(#neonGlowGirl)" opacity="0.6"/>
+    
+    <!-- Stylized Anime Heart Gem -->
+    <path d="M250 278 L 224 248 C 210 232, 214 212, 230 210 C 242 208, 248 218, 250 224 C 252 218, 258 208, 270 210 C 286 212, 290 232, 276 248 Z" 
+          fill="url(#goldAccent)" stroke="#FFFFFF" stroke-width="2.5"/>
+
+    <!-- Manga Energy Slash Cross -->
+    <line x1="190" y1="310" x2="310" y2="190" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+    <circle cx="250" cy="250" r="5" fill="#FFFFFF"/>
+  </g>
+
+  <!-- ==================== APP BRANDING TITLE ==================== -->
+  <!-- Bottom Ribbon Container -->
+  <rect x="90" y="405" width="320" height="60" rx="30" fill="#0C0A17" stroke="url(#goldAccent)" stroke-width="3"/>
+  <text x="250" y="445" font-family="'Impact', 'Arial Black', sans-serif" font-size="34" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="8">LOVIA</text>
+</svg>

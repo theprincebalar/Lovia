@@ -1,0 +1,26 @@
+<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="iconBg" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF416C"/>
+      <stop offset="100%" stop-color="#8A2387"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect x="15" y="15" width="170" height="170" rx="42" fill="url(#iconBg)" filter="url(#shadow)"/>
+  
+  <!-- Boy Avatar (Left) -->
+  <circle cx="76" cy="72" r="20" fill="#FFFFFF"/>
+  <path d="M48 136 C 48 110, 62 98, 76 98 C 90 98, 100 108, 100 136 Z" fill="#FFFFFF" fill-opacity="0.95"/>
+  <path d="M56 70 C 56 54, 76 50, 92 60 C 88 54, 70 52, 60 62 Z" fill="#8A2387"/>
+
+  <!-- Girl Avatar (Right) -->
+  <circle cx="124" cy="76" r="19" fill="#FFFFFF"/>
+  <path d="M100 136 C 100 108, 110 98, 124 98 C 138 98, 152 110, 152 136 Z" fill="#FFFFFF" fill-opacity="0.95"/>
+  <path d="M106 72 C 106 56, 134 52, 142 74 C 146 86, 144 106, 136 116 C 140 102, 138 78, 128 70 Z" fill="#8A2387"/>
+
+  <!-- Overlapping Heart Symbol -->
+  <path d="M100 102 C 94 92, 82 94, 82 104 C 82 116, 100 128, 100 128 C 100 128, 118 116, 118 104 C 118 94, 106 92, 100 102 Z" fill="#FFD166"/>
+</svg>

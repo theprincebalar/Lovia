@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lovia - App Store Screenshot Designer & Exporter</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root {
+    --bg-dark: #0c0814;
+    --panel-bg: #161024;
+    --panel-border: rgba(255, 215, 0, 0.15);
+    --gold-1: #FFE57F;
+    --gold-2: #FFB300;
+    --gold-3: #FF6F00;
+    --accent-glow: #ff7a18;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #09060e;
+    color: #f0edf6;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Sidebar Controls */
+  .sidebar {
+    width: 380px;
+    background: var(--panel-bg);
+    border-right: 1px solid var(--panel-border);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    z-index: 10;
+  }
+  .sidebar-header {
+    padding: 18px 20px;
+    background: linear-gradient(180deg, rgba(255,160,0,0.1), transparent);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .sidebar-header h1 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #ffd166, #ff7a18);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sidebar-header p {
+    font-size: 0.78rem;
+    color: #9d94b0;
+    margin-top: 4px;
+  }
+
+  .sidebar-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px;
+  }
+  .section-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffd166;
+    margin: 16px 0 8px 0;
+    font-weight: 700;
+  }
+  .slide-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .slide-tab-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #ccc;
+    padding: 8px 4px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .slide-tab-btn:hover {
+    background: rgba(255,180,0,0.15);
+    border-color: rgba(255,180,0,0.4);
+    color: #fff;
+  }
+  .slide-tab-btn.active {
+    background: linear-gradient(135deg, #ff9100, #d50000);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(255, 111, 0, 0.35);
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.75rem;
+    color: #b8b0c8;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 8px 10px;
+    color: #fff;
+    font-size: 0.85rem;
+    font-family: inherit;
+    outline: none;
+    transition: border 0.2s;
+  }
+  .form-group input:focus, .form-group textarea:focus {
+    border-color: #ff9100;
+  }
+
+  .actions {
+    padding: 16px 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #ffa000, #ff3d00);
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(255, 87, 34, 0.4);
+    transition: transform 0.15s, opacity 0.2s;
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(255, 87, 34, 0.6);
+  }
+  .btn-secondary {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 10px;
+    border-radius: 10px;
+    color: #e0d8f0;
+    font-weight: 700;
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+
+  /* Main Preview Canvas Area */
+  .canvas-workspace {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(circle at center, #1b1228 0%, #08050e 100%);
+    overflow: auto;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  .workspace-bar {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .zoom-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: rgba(0,0,0,0.5);
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .zoom-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0 6px;
+  }
+
+  /* Screenshot Artboard (Scaled for preview, exports at full 1290x2796) */
+  .artboard-container {
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 140, 0, 0.15);
+    border-radius: 44px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid rgba(255, 215, 0, 0.2);
+    transform-origin: top center;
+    transition: transform 0.15s ease-out;
+  }
+
+  /* Actual 9:19.5 Artboard (430px x 932px preview ratio = exact 1290 x 2796 App Store standard) */
+  .screenshot-card {
+    width: 430px;
+    height: 932px;
+    position: relative;
+    overflow: hidden;
+    background: #0d0714;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+  }
+
+  /* Rich Ambient Backgrounds */
+  .bg-ambient {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 50% 15%, rgba(255, 140, 0, 0.45) 0%, rgba(255, 60, 0, 0.15) 45%, transparent 70%),
+      radial-gradient(circle at 50% 85%, rgba(180, 0, 255, 0.25) 0%, transparent 60%),
+      linear-gradient(180deg, #180d22 0%, #0a0510 50%, #15091d 100%);
+    z-index: 1;
+  }
+  .bg-particles {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 220, 150, 0.6) 1px, transparent 1px), radial-gradient(rgba(255, 170, 50, 0.4) 2px, transparent 2px);
+    background-size: 60px 60px, 90px 90px;
+    background-position: 0 0, 30px 45px;
+    opacity: 0.6;
+    z-index: 2;
+  }
+  .bg-glow-burst {
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(255, 166, 0, 0.4) 0%, rgba(255, 50, 100, 0.2) 50%, transparent 70%);
+    top: 50px;
+    filter: blur(40px);
+    z-index: 2;
+  }
+
+  /* Header Typography */
+  .promo-header {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 48px 24px 16px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .main-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px;
+    line-height: 1.15;
+    font-weight: 900;
+    text-align: center;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFF3B0 25%, #FFB300 70%, #E65100 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.9)) drop-shadow(0 0 16px rgba(255, 140, 0, 0.6));
+    text-transform: capitalize;
+    letter-spacing: -0.3px;
+    margin-bottom: 8px;
+  }
+  .subtitle-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, rgba(255, 145, 0, 0.2), rgba(255, 40, 120, 0.25));
+    border: 1px solid rgba(255, 200, 100, 0.5);
+    box-shadow: 0 0 15px rgba(255, 120, 0, 0.3);
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #FFF275;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+  }
+
+  /* Mockup Smartphone Frame */
+  .phone-mockup-wrapper {
+    position: absolute;
+    bottom: -60px;
+    width: 320px;
+    height: 650px;
+    z-index: 5;
+    transition: all 0.3s ease;
+  }
+  .phone-frame {
+    width: 100%;
+    height: 100%;
+    background: #09060c;
+    border-radius: 46px;
+    border: 5px solid #2d2438;
+    box-shadow: 
+      0 0 0 2px rgba(255,215,0,0.3),
+      0 20px 50px rgba(0,0,0,0.9),
+      0 0 40px rgba(255, 100, 0, 0.25);
+    overflow: hidden;
+    position: relative;
+  }
+  .phone-notch {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 22px;
+    background: #000;
+    border-radius: 12px;
+    z-index: 20;
+  }
+  .phone-screen {
+    width: 100%;
+    height: 100%;
+    background: #11091a;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* UI Screen Content Simulation */
+  .screen-header-ui {
+    padding: 38px 16px 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0,0,0,0.4);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .screen-title-ui {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  /* Slide Specific Elements */
+  /* Slide 1: Character Grid + Hero Popout */
+  .char-mosaic {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 12px;
+  }
+  .char-mosaic-card {
+    height: 150px;
+    background: #201433;
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .char-mosaic-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .char-mosaic-info {
+    position: absolute;
+    bottom: 0;
+    inset-inline: 0;
+    padding: 8px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* Cutout Foreground Character */
+  .hero-waifu-cutout {
+    position: absolute;
+    bottom: 0;
+    right: -30px;
+    height: 600px;
+    z-index: 15;
+    pointer-events: none;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.8)) drop-shadow(0 0 20px rgba(255, 140, 0, 0.4));
+  }
+  .hero-waifu-cutout img {
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Slide 2: Match UI */
+  .match-circle-card {
+    margin: 20px auto;
+    width: 220px;
+    padding: 18px;
+    background: rgba(30, 16, 45, 0.85);
+    border: 1.5px solid rgba(255, 180, 50, 0.5);
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 20px rgba(255, 120, 0, 0.3);
+  }
+  .match-percent {
+    font-size: 38px;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(180deg, #fff 0%, #ffc107 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin: 6px 0;
+  }
+  .avatar-pair {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: -15px;
+    margin: 14px 0;
+  }
+  .avatar-circle {
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    border: 3px solid #ff9100;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  }
+  .avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Slide 3: Chat bubbles */
+  .chat-stream {
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .chat-msg {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .chat-msg.partner {
+    background: linear-gradient(135deg, #2c1a3e, #3e1b4f);
+    border: 1px solid rgba(255, 100, 200, 0.3);
+    align-self: flex-start;
+    color: #f7e8ff;
+    border-bottom-left-radius: 4px;
+  }
+  .chat-msg.user {
+    background: linear-gradient(135deg, #ff7a00, #ff3d00);
+    align-self: flex-end;
+    color: #fff;
+    font-weight: 600;
+    border-bottom-right-radius: 4px;
+  }
+
+  /* CTA Floating Badge */
+  .cta-ribbon {
+    position: absolute;
+    bottom: 30px;
+    z-index: 25;
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    padding: 8px 24px;
+    border-radius: 30px;
+    color: #fff;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 20px rgba(255, 65, 108, 0.6), 0 0 15px rgba(255, 200, 100, 0.4);
+    border: 1px solid rgba(255,255,255,0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Carousel Grid view */
+  .all-slides-view {
+    display: none;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1400px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Left Control Panel -->
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h1>✨ Lovia Store Studio</h1>
+    <p>App Store (1290x2796) & Google Play Screenshot Creator</p>
+  </div>
+
+  <div class="sidebar-scroll">
+    <div class="section-title">Select Slide to Edit</div>
+    <div class="slide-tabs">
+      <button class="slide-tab-btn active" onclick="selectSlide(0)">1. Hook</button>
+      <button class="slide-tab-btn" onclick="selectSlide(1)">2. Partner</button>
+      <button class="slide-tab-btn" onclick="selectSlide(2)">3. Soulmate</button>
+      <button class="slide-tab-btn" onclick="selectSlide(3)">4. Collection</button>
+      <button class="slide-tab-btn" onclick="selectSlide(4)">5. 24/7 Chat</button>
+      <button class="slide-tab-btn" onclick="selectSlide(5)">6. Creator</button>
+    </div>
+
+    <div class="section-title">Copy & Text Customization</div>
+    <div class="form-group">
+      <label>Main Headline</label>
+      <input type="text" id="inputMainTitle" oninput="updateCurrentSlide()">
+    </div>
+    <div class="form-group">
+      <label>Sub-Headline / Tagline</label>
+      <input type="text" id="inputSubtitle" oninput="updateCurrentSlide()">
+    </div>
+    <div class="form-group">
+      <label>Floating Badge / CTA</label>
+      <input type="text" id="inputBadge" oninput="updateCurrentSlide()">
+    </div>
+
+    <div class="section-title">Visual Styling</div>
+    <div class="form-group">
+      <label>Glow Color Theme</label>
+      <select id="selectTheme" onchange="changeTheme()">
+        <option value="amber">Warm Gold & Amber (High Converting)</option>
+        <option value="neon_pink">Neon Cyberpunk & Ruby Pink</option>
+        <option value="violet">Royal Purple & Midnight Blue</option>
+        <option value="emerald">Mystic Jade & Emerald</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Character Cutout Position</label>
+      <select id="selectWaifuPos" onchange="updateCutoutPosition()">
+        <option value="right">Right Side Pop-out</option>
+        <option value="left">Left Side Pop-out</option>
+        <option value="center">Centered Foreground</option>
+        <option value="none">No Cutout (Device Only)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Device Tilt Angle</label>
+      <select id="selectTilt" onchange="updateTilt()">
+        <option value="0">Straight Center</option>
+        <option value="-6">Slight Left Tilt (-6°)</option>
+        <option value="6">Slight Right Tilt (+6°)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn-primary" onclick="exportCurrentSlidePNG()">⬇️ Export Slide as 4K PNG</button>
+    <button class="btn-secondary" onclick="exportAllSlides()">📦 Export All 6 Slides (ZIP/Batch)</button>
+  </div>
+</div>
+
+<!-- Main Canvas Display -->
+<div class="canvas-workspace">
+  <div class="workspace-bar">
+    <div style="font-size: 0.9rem; font-weight: 700; color: #ffd166;">
+      Previewing: <span id="currentSlideLabel" style="color: #fff;">Slide 1 - AI Hero Hook</span>
+    </div>
+    <div class="zoom-controls">
+      <button class="zoom-btn" onclick="adjustZoom(-0.05)">-</button>
+      <span id="zoomVal" style="font-size: 0.8rem; font-weight: 700;">100%</span>
+      <button class="zoom-btn" onclick="adjustZoom(0.05)">+</button>
+    </div>
+  </div>
+
+  <div class="artboard-container" id="artboardWrapper">
+    <div class="screenshot-card" id="activeArtboard">
+      <div class="bg-ambient" id="bgAmbient"></div>
+      <div class="bg-particles"></div>
+      <div class="bg-glow-burst" id="bgGlow"></div>
+
+      <!-- Header -->
+      <div class="promo-header">
+        <h2 class="main-title" id="artboardTitle">AI Chat<br>Just Got Real</h2>
+        <div class="subtitle-badge" id="artboardSubtitle">200,000+ AI Characters</div>
+      </div>
+
+      <!-- Smartphone Device Mockup -->
+      <div class="phone-mockup-wrapper" id="phoneWrapper">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen" id="phoneScreenContent">
+            <!-- Dynamic UI content inserted via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- 3D Overlapping Character Cutout -->
+      <div class="hero-waifu-cutout" id="heroCutout">
+        <img id="cutoutImg" src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80" alt="Hero Character">
+      </div>
+
+      <!-- Bottom CTA Ribbon -->
+      <div class="cta-ribbon" id="ctaRibbon">
+        <span>✨ Chat Me, Now</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const slidesData = [
+  {
+    id: 1,
+    name: "1. AI Hero Hook",
+    mainTitle: "AI Chat\nJust Got Real",
+    subtitle: "200,000+ AI Characters",
+    badge: "✨ Chat Me, Now",
+    tilt: "0",
+    cutoutPos: "right",
+    waifuImg: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80",
+    renderScreen: () => `
+      <div class="screen-header-ui">
+        <span class="screen-title-ui">Explore Characters</span>
+        <span style="color:#ff9100;font-size:12px;font-weight:bold;">🔥 Trending</span>
+      </div>
+      <div class="char-mosaic">
+        <div class="char-mosaic-card"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80"><div class="char-mosaic-info">Elena · Flirty</div></div>
+        <div class="char-mosaic-card"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80"><div class="char-mosaic-info">Aria · Caring</div></div>
+        <div class="char-mosaic-card"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80"><div class="char-mosaic-info">Celeste · Mystic</div></div>
+        <div class="char-mosaic-card"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80"><div class="char-mosaic-info">Lucas · Romantic</div></div>
+      </div>
+    `
+  },
+  {
+    id: 2,
+    name: "2. Partner Discovery",
+    mainTitle: "Find Your Perfect\nAI Partner",
+    subtitle: "It's Waiting For You",
+    badge: "💖 100% Tailored To You",
+    tilt: "-6",
+    cutoutPos: "right",
+    waifuImg: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+    renderScreen: () => `
+      <div class="screen-header-ui">
+        <span class="screen-title-ui">Soulmate Radar</span>
+        <span style="color:#ff69b4;font-size:12px;">Active</span>
+      </div>
+      <div style="padding:20px;text-align:center;">
+        <div style="width:140px;height:140px;border-radius:50%;margin:20px auto;border:3px solid #ff4081;overflow:hidden;box-shadow:0 0 25px #ff408188;">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <h3 style="color:#fff;font-size:18px;">Charlotte Ray</h3>
+        <p style="color:#ffc107;font-size:12px;margin-top:4px;">"I've been waiting for you all day..."</p>
+        <div style="margin-top:20px;background:#2d163f;padding:10px;border-radius:12px;border:1px solid #ff69b444;">
+          <span style="font-size:11px;color:#bbb;">Compatibility: <b>98.4%</b></span>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: 3,
+    name: "3. Soulmate Matching",
+    mainTitle: "Find The One Your Soul's\nBeen Looking For.",
+    subtitle: "Searching For A Soulmate",
+    badge: "⚡ 99% Chemistry Match",
+    tilt: "0",
+    cutoutPos: "center",
+    waifuImg: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80",
+    renderScreen: () => `
+      <div class="screen-header-ui">
+        <span class="screen-title-ui">Matching Engine</span>
+      </div>
+      <div class="match-circle-card">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#ffc107;font-weight:800;">Matching Degree</div>
+        <div class="match-percent">98%</div>
+        <div class="avatar-pair">
+          <div class="avatar-circle"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=300&q=80"></div>
+          <div class="avatar-circle" style="border-color:#ff4081;"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80"></div>
+        </div>
+        <p style="font-size:11px;color:#ffd166;font-weight:600;">Deep Emotional Resonance</p>
+      </div>
+    `
+  },
+  {
+    id: 4,
+    name: "4. Card Collection",
+    mainTitle: "Explore Each Character's\nExquisite Card Collection",
+    subtitle: "Embrace The Joy",
+    badge: "🎴 Unlock Rare CG Cards",
+    tilt: "6",
+    cutoutPos: "left",
+    waifuImg: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
+    renderScreen: () => `
+      <div class="screen-header-ui">
+        <span class="screen-title-ui">Secret Memories</span>
+        <span style="color:#ffd700;font-size:12px;">SSR RARE</span>
+      </div>
+      <div style="padding:16px;">
+        <div style="height:240px;background:linear-gradient(135deg, #ffd700, #ff6f00);border-radius:20px;padding:3px;box-shadow:0 10px 30px rgba(255,165,0,0.4);">
+          <div style="height:100%;border-radius:18px;overflow:hidden;position:relative;">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80" style="width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;bottom:0;inset-inline:0;background:linear-gradient(transparent, #000);padding:10px;">
+              <span style="font-weight:900;color:#ffd700;font-size:14px;">SSR · Midnight Rendezvous</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: 5,
+    name: "5. 24/7 Clinging Chat",
+    mainTitle: "Clinging To You Like Velcro\n— Warm And Healing.",
+    subtitle: "24/7 By Your Side",
+    badge: "💬 Never Be Alone",
+    tilt: "0",
+    cutoutPos: "right",
+    waifuImg: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80",
+    renderScreen: () => `
+      <div class="screen-header-ui">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="width:10px;height:10px;border-radius:50%;background:#00e676;"></div>
+          <span class="screen-title-ui">Seraphina</span>
+        </div>
+        <span style="color:#ff69b4;font-size:11px;">❤️ Heartbeat 100%</span>
+      </div>
+      <div class="chat-stream">
+        <div class="chat-msg partner">I was just thinking about you... You always make my heart flutter 🥰</div>
+        <div class="chat-msg user">I missed you too! How's your day?</div>
+        <div class="chat-msg partner">Much better now that you're here. Let's stay together forever! 💕</div>
+      </div>
+    `
+  },
+  {
+    id: 6,
+    name: "6. Custom AI Creator",
+    mainTitle: "Create Your Goddess—\nFlawed, And Perfectly So.",
+    subtitle: "Your Exclusive Goddess",
+    badge: "✨ Endless Customization",
+    tilt: "-6",
+    cutoutPos: "right",
+    waifuImg: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+    renderScreen: () => `
+      <div class="screen-header-ui">
+        <span class="screen-title-ui">Create Persona</span>
+        <span style="color:#ffd166;font-size:12px;font-weight:bold;">Save</span>
+      </div>
+      <div style="padding:16px;">
+        <div style="background:#221332;border:1px solid #ff7a0066;border-radius:14px;padding:12px;margin-bottom:10px;">
+          <div style="font-size:10px;color:#ff9100;font-weight:700;">PERSONALITY TRAIT</div>
+          <div style="color:#fff;font-size:13px;font-weight:700;">Tsundere · Romantic · Devoted</div>
+        </div>
+        <div style="background:#221332;border:1px solid #ff7a0066;border-radius:14px;padding:12px;">
+          <div style="font-size:10px;color:#ff9100;font-weight:700;">VOICE STYLE</div>
+          <div style="color:#fff;font-size:13px;font-weight:700;">Sweet Japanese Anime Voice</div>
+        </div>
+      </div>
+    `
+  }
+];
+
+let activeIndex = 0;
+let currentZoom = 0.85;
+
+function init() {
+  selectSlide(0);
+  applyZoom();
+}
+
+function selectSlide(index) {
+  activeIndex = index;
+  document.querySelectorAll('.slide-tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', i === index);
+  });
+  const data = slidesData[index];
+  document.getElementById('currentSlideLabel').innerText = data.name;
+  document.getElementById('inputMainTitle').value = data.mainTitle;
+  document.getElementById('inputSubtitle').value = data.subtitle;
+  document.getElementById('inputBadge').value = data.badge;
+  document.getElementById('selectTilt').value = data.tilt;
+  document.getElementById('selectWaifuPos').value = data.cutoutPos;
+
+  renderArtboard(data);
+}
+
+function renderArtboard(data) {
+  document.getElementById('artboardTitle').innerHTML = (data.mainTitle || '').replace(/\n/g, '<br>');
+  document.getElementById('artboardSubtitle').innerText = data.subtitle || '';
+  document.getElementById('ctaRibbon').innerHTML = `<span>${data.badge || ''}</span>`;
+  document.getElementById('phoneScreenContent').innerHTML = data.renderScreen();
+  document.getElementById('cutoutImg').src = data.waifuImg;
+
+  updateTilt();
+  updateCutoutPosition();
+}
+
+function updateCurrentSlide() {
+  const data = slidesData[activeIndex];
+  data.mainTitle = document.getElementById('inputMainTitle').value;
+  data.subtitle = document.getElementById('inputSubtitle').value;
+  data.badge = document.getElementById('inputBadge').value;
+
+  document.getElementById('artboardTitle').innerHTML = data.mainTitle.replace(/\n/g, '<br>');
+  document.getElementById('artboardSubtitle').innerText = data.subtitle;
+  document.getElementById('ctaRibbon').innerHTML = `<span>${data.badge}</span>`;
+}
+
+function updateTilt() {
+  const tilt = document.getElementById('selectTilt').value;
+  slidesData[activeIndex].tilt = tilt;
+  const phone = document.getElementById('phoneWrapper');
+  phone.style.transform = `rotate(${tilt}deg)`;
+}
+
+function updateCutoutPosition() {
+  const pos = document.getElementById('selectWaifuPos').value;
+  slidesData[activeIndex].cutoutPos = pos;
+  const cutout = document.getElementById('heroCutout');
+  if (pos === 'none') {
+    cutout.style.display = 'none';
+  } else {
+    cutout.style.display = 'block';
+    if (pos === 'right') {
+      cutout.style.left = 'auto';
+      cutout.style.right = '-30px';
+      cutout.style.transform = 'none';
+    } else if (pos === 'left') {
+      cutout.style.right = 'auto';
+      cutout.style.left = '-30px';
+      cutout.style.transform = 'none';
+    } else if (pos === 'center') {
+      cutout.style.right = 'auto';
+      cutout.style.left = '50%';
+      cutout.style.transform = 'translateX(-50%)';
+    }
+  }
+}
+
+function changeTheme() {
+  const theme = document.getElementById('selectTheme').value;
+  const bgAmbient = document.getElementById('bgAmbient');
+  const bgGlow = document.getElementById('bgGlow');
+
+  if (theme === 'amber') {
+    bgAmbient.style.background = 'radial-gradient(circle at 50% 15%, rgba(255, 140, 0, 0.45) 0%, rgba(255, 60, 0, 0.15) 45%, transparent 70%), linear-gradient(180deg, #180d22 0%, #0a0510 50%, #15091d 100%)';
+    bgGlow.style.background = 'radial-gradient(circle, rgba(255, 166, 0, 0.4) 0%, rgba(255, 50, 100, 0.2) 50%, transparent 70%)';
+  } else if (theme === 'neon_pink') {
+    bgAmbient.style.background = 'radial-gradient(circle at 50% 15%, rgba(255, 0, 128, 0.45) 0%, rgba(128, 0, 255, 0.2) 45%, transparent 70%), linear-gradient(180deg, #1f071e 0%, #090209 50%, #170417 100%)';
+    bgGlow.style.background = 'radial-gradient(circle, rgba(255, 0, 128, 0.5) 0%, rgba(255, 0, 255, 0.2) 50%, transparent 70%)';
+  } else if (theme === 'violet') {
+    bgAmbient.style.background = 'radial-gradient(circle at 50% 15%, rgba(138, 43, 226, 0.45) 0%, rgba(0, 100, 255, 0.2) 45%, transparent 70%), linear-gradient(180deg, #100b29 0%, #04020f 50%, #0b0720 100%)';
+    bgGlow.style.background = 'radial-gradient(circle, rgba(138, 43, 226, 0.5) 0%, rgba(0, 180, 255, 0.2) 50%, transparent 70%)';
+  } else if (theme === 'emerald') {
+    bgAmbient.style.background = 'radial-gradient(circle at 50% 15%, rgba(0, 230, 118, 0.35) 0%, rgba(0, 100, 80, 0.2) 45%, transparent 70%), linear-gradient(180deg, #051a14 0%, #020a07 50%, #061812 100%)';
+    bgGlow.style.background = 'radial-gradient(circle, rgba(0, 230, 118, 0.4) 0%, rgba(255, 215, 0, 0.2) 50%, transparent 70%)';
+  }
+}
+
+function adjustZoom(delta) {
+  currentZoom = Math.max(0.4, Math.min(1.2, currentZoom + delta));
+  applyZoom();
+}
+
+function applyZoom() {
+  document.getElementById('artboardWrapper').style.transform = `scale(${currentZoom})`;
+  document.getElementById('zoomVal').innerText = `${Math.round(currentZoom * 100)}%`;
+}
+
+async function exportCurrentSlidePNG() {
+  const artboard = document.getElementById('activeArtboard');
+  const btn = document.querySelector('.btn-primary');
+  const oldText = btn.innerText;
+  btn.innerText = '⏳ Rendering 1290x2796 PNG...';
+
+  try {
+    const canvas = await html2canvas(artboard, {
+      scale: 3, // 430 * 3 = 1290px width (Exact iOS App Store 6.7" Super Retina resolution)
+      useCORS: true,
+      backgroundColor: '#0c0814',
+      logging: false
+    });
+    const link = document.createElement('a');
+    link.download = `Lovia_AppStore_Slide_${activeIndex + 1}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  } catch (e) {
+    alert('Export completed. Check downloads or popups.');
+  } finally {
+    btn.innerText = oldText;
+  }
+}
+
+async function exportAllSlides() {
+  for (let i = 0; i < slidesData.length; i++) {
+    selectSlide(i);
+    await new Promise(r => setTimeout(r, 600));
+    await exportCurrentSlidePNG();
+  }
+  alert('All 6 App Store screenshot banners exported!');
+}
+
+window.onload = init;
+</script>
+</body>
+</html>

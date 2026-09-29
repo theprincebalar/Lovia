@@ -1,0 +1,19 @@
+<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lineGrad" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF6584"/>
+      <stop offset="50%" stop-color="#FF758C"/>
+      <stop offset="100%" stop-color="#7928CA"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="100" cy="100" r="85" fill="#FF6584" fill-opacity="0.08" stroke="url(#lineGrad)" stroke-width="2" stroke-dasharray="6 6"/>
+
+  <path d="M62 145 C 62 120, 72 108, 80 102 C 76 96, 75 88, 77 78 C 72 74, 68 64, 76 50 C 88 44, 96 52, 94 62 C 96 66, 94 72, 90 75 C 93 82, 88 90, 84 94 C 92 98, 96 112, 96 145" 
+        stroke="url(#lineGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <path d="M138 145 C 138 120, 128 108, 120 102 C 124 96, 125 88, 123 78 C 128 74, 132 64, 124 50 C 112 44, 104 52, 106 62 C 104 66, 106 72, 110 75 C 107 82, 112 90, 116 94 C 108 98, 104 112, 104 145" 
+        stroke="url(#lineGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <path d="M100 48 C 96 42, 88 43, 88 48 C 88 54, 100 62, 100 62 C 100 62, 112 54, 112 48 C 112 43, 104 42, 100 48 Z" fill="#FF3366"/>
+</svg>

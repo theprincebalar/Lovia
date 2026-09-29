@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lovia - Full-Bleed Bold Anime App Icons</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070913;
+      --card-bg: rgba(18, 22, 39, 0.75);
+      --card-border: rgba(255, 42, 133, 0.25);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-pink: #ff2a85;
+      --accent-cyan: #00f0ff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at 50% 0%, #22123d 0%, var(--bg) 75%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 40px 20px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      text-align: center;
+      max-width: 860px;
+      margin-bottom: 40px;
+    }
+
+    .pill-tag {
+      display: inline-block;
+      background: rgba(0, 240, 255, 0.15);
+      border: 1px solid rgba(0, 240, 255, 0.4);
+      color: #38bdf8;
+      padding: 6px 18px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #00f0ff 0%, #ff2a85 50%, #ffd700 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 1.12rem;
+      line-height: 1.6;
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 36px 0 22px;
+      text-align: center;
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .section-title::before, .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 42, 133, 0.4), transparent);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 40px;
+    }
+
+    .icon-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 28px;
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      backdrop-filter: blur(16px);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .icon-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0, 240, 255, 0.6);
+      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.65), 0 0 35px rgba(0, 240, 255, 0.25);
+    }
+
+    .badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.3), rgba(255, 42, 133, 0.3));
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .icon-preview-wrap {
+      width: 240px;
+      height: 240px;
+      margin-bottom: 24px;
+      position: relative;
+      filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.65));
+    }
+
+    .icon-preview-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 52px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .icon-card:hover .icon-preview-wrap img {
+      transform: scale(1.04);
+    }
+
+    .icon-info {
+      text-align: center;
+      width: 100%;
+      margin-bottom: 22px;
+    }
+
+    .icon-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: #ffffff;
+    }
+
+    .char-tags {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .char-pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .male { color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .female { color: #f43f5e; border: 1px solid rgba(244, 63, 94, 0.3); }
+
+    .icon-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 13px 20px;
+      border-radius: 14px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      background: linear-gradient(135deg, #00f0ff 0%, #ff2a85 100%);
+      color: white;
+      border: none;
+      box-shadow: 0 4px 18px rgba(0, 240, 255, 0.35);
+    }
+
+    .btn:hover {
+      box-shadow: 0 8px 25px rgba(255, 42, 133, 0.5);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="pill-tag">✨ Zero Top Gap • Full-Bleed Fix</div>
+    <h1>Full-Bleed Anime Duo App Icons</h1>
+    <p class="subtitle">Updated with 100% full-bleed framing from top to bottom (no empty black space at the top). Characters are zoomed in close-up with seamless romantic lighting and curved gradient Lovia banner.</p>
+  </header>
+
+  <div class="section-title">🔍 Ultra Close-Up Focus (Like Zoya & Character Me)</div>
+  <div class="grid">
+
+    <!-- Card 1: Close-up Damon & Aria -->
+    <div class="icon-card">
+      <span class="badge">Recommended</span>
+      <div class="icon-preview-wrap">
+        <img src="assets/app_icon_closeup_damon_aria.png" alt="Ultra Close-up Damon & Aria">
+      </div>
+      <div class="icon-info">
+        <h3 class="icon-title">Damon & Aria (Ultra Close-Up)</h3>
+        <div class="char-tags">
+          <span class="char-pill male">♂ Damon</span>
+          <span class="char-pill female">♀ Aria</span>
+        </div>
+        <p class="icon-desc">Full top bleed with intense focus on sparkling anime eyes, blush, and hair filling the upper frame completely.</p>
+      </div>
+      <a class="btn" href="assets/app_icon_closeup_damon_aria.png" download="lovia_closeup_damon_aria.png">Download 1024x1024 PNG</a>
+    </div>
+
+    <!-- Card 2: Close-up Jax & Delilah -->
+    <div class="icon-card">
+      <span class="badge">High Contrast</span>
+      <div class="icon-preview-wrap">
+        <img src="assets/app_icon_closeup_jax_delilah.png" alt="Ultra Close-up Jax & Delilah">
+      </div>
+      <div class="icon-info">
+        <h3 class="icon-title">Jax & Delilah (Ultra Close-Up)</h3>
+        <div class="char-tags">
+          <span class="char-pill male">♂ Jax</span>
+          <span class="char-pill female">♀ Delilah</span>
+        </div>
+        <p class="icon-desc">Full-bleed close-up with bold smirk, alluring heroine gaze, floating sparkles, and signature banner.</p>
+      </div>
+      <a class="btn" href="assets/app_icon_closeup_jax_delilah.png" download="lovia_closeup_jax_delilah.png">Download 1024x1024 PNG</a>
+    </div>
+
+    <!-- Card 3: Close-up Alec & Chloe -->
+    <div class="icon-card">
+      <span class="badge">Romantic Chemistry</span>
+      <div class="icon-preview-wrap">
+        <img src="assets/app_icon_closeup_alec_chloe.png" alt="Ultra Close-up Alec & Chloe">
+      </div>
+      <div class="icon-info">
+        <h3 class="icon-title">Alec & Chloe (Ultra Close-Up)</h3>
+        <div class="char-tags">
+          <span class="char-pill male">♂ Alec</span>
+          <span class="char-pill female">♀ Chloe</span>
+        </div>
+        <p class="icon-desc">Vibrant anime eye and facial framing with no black top margin, soft romantic aura, and Lovia banner.</p>
+      </div>
+      <a class="btn" href="assets/app_icon_closeup_alec_chloe.png" download="lovia_closeup_alec_chloe.png">Download 1024x1024 PNG</a>
+    </div>
+
+  </div>
+
+  <div class="section-title">🖼️ Standard Close-Up Framing</div>
+  <div class="grid">
+
+    <!-- Card 4: Full Bleed Damon & Aria -->
+    <div class="icon-card">
+      <span class="badge">Full Bleed</span>
+      <div class="icon-preview-wrap">
+        <img src="assets/app_icon_fullbleed_damon_aria.png" alt="Full Bleed Damon & Aria">
+      </div>
+      <div class="icon-info">
+        <h3 class="icon-title">Damon & Aria (Portrait Crop)</h3>
+        <div class="char-tags">
+          <span class="char-pill male">♂ Damon</span>
+          <span class="char-pill female">♀ Aria</span>
+        </div>
+        <p class="icon-desc">Portrait view filled right to the top boundary with seamless romantic middle blend.</p>
+      </div>
+      <a class="btn" href="assets/app_icon_fullbleed_damon_aria.png" download="lovia_fullbleed_damon_aria.png">Download 1024x1024 PNG</a>
+    </div>
+
+    <!-- Card 5: Full Bleed Jax & Delilah -->
+    <div class="icon-card">
+      <span class="badge">Full Bleed</span>
+      <div class="icon-preview-wrap">
+        <img src="assets/app_icon_fullbleed_jax_delilah.png" alt="Full Bleed Jax & Delilah">
+      </div>
+      <div class="icon-info">
+        <h3 class="icon-title">Jax & Delilah (Portrait Crop)</h3>
+        <div class="char-tags">
+          <span class="char-pill male">♂ Jax</span>
+          <span class="char-pill female">♀ Delilah</span>
+        </div>
+        <p class="icon-desc">Full-bleed portrait crop with chandelier and street backdrop filled to y=0.</p>
+      </div>
+      <a class="btn" href="assets/app_icon_fullbleed_jax_delilah.png" download="lovia_fullbleed_jax_delilah.png">Download 1024x1024 PNG</a>
+    </div>
+
+    <!-- Card 6: Full Bleed Kai & Elena -->
+    <div class="icon-card">
+      <span class="badge">Full Bleed</span>
+      <div class="icon-preview-wrap">
+        <img src="assets/app_icon_fullbleed_kai_elena.png" alt="Full Bleed Kai & Elena">
+      </div>
+      <div class="icon-info">
+        <h3 class="icon-title">Kai & Elena (Portrait Crop)</h3>
+        <div class="char-tags">
+          <span class="char-pill male">♂ Kai</span>
+          <span class="char-pill female">♀ Elena</span>
+        </div>
+        <p class="icon-desc">Full top bleed featuring Kai and Elena with glowing neon ambience.</p>
+      </div>
+      <a class="btn" href="assets/app_icon_fullbleed_kai_elena.png" download="lovia_fullbleed_kai_elena.png">Download 1024x1024 PNG</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Lovia App Icons • Full-Bleed Store Ready 1024x1024 PNGs</p>
+  </footer>
+
+</body>
+</html>

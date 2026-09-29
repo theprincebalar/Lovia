@@ -1,0 +1,126 @@
+{
+  "diamondPackages": [
+    {
+      "id": "pkg_20",
+      "title": "Handful of Diamonds",
+      "coins": 20,
+      "bonusCoins": 0,
+      "priceUsd": 1.0,
+      "badge": "STARTER",
+      "isPopular": false,
+      "isBestValue": false,
+      "productId": "lovia_diamonds_20",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "pkg_50",
+      "title": "Pouch of Diamonds",
+      "coins": 50,
+      "bonusCoins": 0,
+      "priceUsd": 2.0,
+      "badge": "POPULAR",
+      "isPopular": false,
+      "isBestValue": false,
+      "productId": "lovia_diamonds_50",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "pkg_130",
+      "title": "Chest of Diamonds",
+      "coins": 130,
+      "bonusCoins": 0,
+      "priceUsd": 5.0,
+      "badge": "MOST POPULAR",
+      "isPopular": true,
+      "isBestValue": false,
+      "productId": "lovia_diamonds_130",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "pkg_300",
+      "title": "Vault of Diamonds",
+      "coins": 300,
+      "bonusCoins": 0,
+      "priceUsd": 10.0,
+      "badge": "+50% BONUS",
+      "isPopular": false,
+      "isBestValue": false,
+      "productId": "lovia_diamonds_300",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "pkg_650",
+      "title": "Treasury of Diamonds",
+      "coins": 650,
+      "bonusCoins": 0,
+      "priceUsd": 20.0,
+      "badge": "+62% BONUS",
+      "isPopular": false,
+      "isBestValue": false,
+      "productId": "lovia_diamonds_650",
+      "isActive": true,
+      "sortOrder": 5
+    },
+    {
+      "id": "pkg_1700",
+      "title": "Royal Emperor Treasury",
+      "coins": 1700,
+      "bonusCoins": 0,
+      "priceUsd": 50.0,
+      "badge": "BEST VALUE",
+      "isPopular": false,
+      "isBestValue": true,
+      "productId": "lovia_diamonds_1700",
+      "isActive": true,
+      "sortOrder": 6
+    }
+  ],
+  "subscriptionPlans": [
+    {
+      "id": "sub_weekly",
+      "title": "Weekly VIP",
+      "period": "weekly",
+      "priceUsd": 4.99,
+      "voiceMinutes": 10,
+      "description": "10 minutes voice talk included",
+      "badge": "Weekly",
+      "isPopular": false,
+      "isBestValue": false,
+      "productId": "lovia_vip_weekly",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "sub_monthly",
+      "title": "Monthly VIP",
+      "period": "monthly",
+      "priceUsd": 12.99,
+      "voiceMinutes": 50,
+      "description": "50 minutes voice talk included",
+      "badge": "MOST POPULAR",
+      "isPopular": true,
+      "isBestValue": false,
+      "productId": "lovia_vip_monthly",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "sub_yearly",
+      "title": "Yearly VIP",
+      "period": "yearly",
+      "priceUsd": 79.99,
+      "voiceMinutes": 720,
+      "description": "12 hours (720 min) voice talk included",
+      "badge": "BEST VALUE",
+      "isPopular": false,
+      "isBestValue": true,
+      "productId": "lovia_vip_yearly",
+      "isActive": true,
+      "sortOrder": 3
+    }
+  ]
+}
