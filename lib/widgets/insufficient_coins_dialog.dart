@@ -122,26 +122,26 @@ class InsufficientCoinsSheet extends StatelessWidget {
                     onCoinsAcquired?.call();
                   }
                 },
-                child: const Row(
+                child: Row(
                   children: [
-                    Icon(Icons.monetization_on_rounded, color: AppColors.gold, size: 28),
-                    SizedBox(width: 14),
+                    const Icon(Icons.monetization_on_rounded, color: AppColors.gold, size: 28),
+                    const SizedBox(width: 14),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Get 20 Coins • \$1.00",
-                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                            "Get 20 Diamonds • ${RevenueCatService().getLocalizedDiamondPrice(CoinPackage.standardPackages.first)}",
+                            style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                           ),
-                          Text(
+                          const Text(
                             "Instant refill for messages & calls",
                             style: TextStyle(fontSize: 12, color: AppColors.textSecondary),
                           ),
                         ],
                       ),
                     ),
-                    Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Colors.white70),
+                    const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Colors.white70),
                   ],
                 ),
               ),
@@ -222,7 +222,7 @@ class InsufficientCoinsSheet extends StatelessWidget {
                       Icon(Icons.diamond_rounded, color: Colors.black, size: 20),
                       SizedBox(width: 8),
                       Text(
-                        "Get Diamonds (From \$0.99)",
+                        "Open Diamond Store",
                         style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w900,

@@ -172,9 +172,9 @@ class ChatsTab extends StatelessWidget {
                           ),
                         ],
                       ),
-                      onTap: () {
+                      onTap: () async {
                         chatProvider.openChat(character: char);
-                        Navigator.push(
+                        await Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (ctx) => ChatScreen(
@@ -184,6 +184,7 @@ class ChatsTab extends StatelessWidget {
                             ),
                           ),
                         );
+                        chatProvider.refreshConversations();
                       },
                     );
                   },

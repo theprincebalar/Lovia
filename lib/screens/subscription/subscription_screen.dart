@@ -387,22 +387,6 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> with SingleTick
                           color: Colors.white,
                         ),
                       ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFFF2D78).withOpacity(0.15),
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: const Color(0xFFFF2D78).withOpacity(0.35)),
-                        ),
-                        child: const Text(
-                          "Auto-Renewable",
-                          style: TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xFFFF69B4),
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                 ),
@@ -413,12 +397,6 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> with SingleTick
                   final isSelected = plan.id == _selectedPlanId;
                   final isCurrentActive =
                       coinProvider.isSubscribed && activePlan?.id == plan.id;
-
-                  final String dailyCost = plan.period == SubscriptionPeriod.weekly
-                      ? "Just \$0.71/day"
-                      : (plan.period == SubscriptionPeriod.monthly
-                          ? "Just \$0.43/day"
-                          : "Just \$0.22/day");
 
                   final String saveTag = plan.period == SubscriptionPeriod.yearly
                       ? "SAVE 65% 👑"
@@ -589,42 +567,83 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> with SingleTick
                             ],
                           ),
 
-                          // Benefits & Daily Breakdown (Using Wrap to guarantee zero overflow on small screen widths)
+                          // Benefits & Call Time Highlights (Clean, prominent, zero overflow)
                           Padding(
-                            padding: const EdgeInsets.only(left: 34, top: 5),
+                            padding: const EdgeInsets.only(left: 34, top: 6),
                             child: Wrap(
-                              spacing: 6,
-                              runSpacing: 3,
+                              spacing: 8,
+                              runSpacing: 5,
                               crossAxisAlignment: WrapCrossAlignment.center,
                               children: [
-                                Text(
-                                  dailyCost,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w700,
-                                    color: isSelected
-                                        ? (plan.isBestValue ? AppColors.goldLight : const Color(0xFFFF8EA3))
-                                        : AppColors.textSecondary,
+                                // Dedicated Prominent Voice Call Time Pill
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3.5),
+                                  decoration: BoxDecoration(
+                                    color: (plan.isBestValue
+                                            ? AppColors.gold
+                                            : const Color(0xFFFF2D78))
+                                        .withOpacity(0.16),
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(
+                                      color: (plan.isBestValue
+                                              ? AppColors.gold
+                                              : const Color(0xFFFF2D78))
+                                          .withOpacity(0.4),
+                                      width: 0.9,
+                                    ),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(
+                                        Icons.mic_rounded,
+                                        size: 13,
+                                        color: plan.isBestValue
+                                            ? AppColors.goldLight
+                                            : const Color(0xFFFF69B4),
+                                      ),
+                                      const SizedBox(width: 4),
+                                      Text(
+                                        plan.period == SubscriptionPeriod.yearly
+                                            ? "12 Hours (720m) Voice Calls"
+                                            : "${plan.voiceMinutes} Minutes Voice Calls",
+                                        style: TextStyle(
+                                          fontSize: 11.5,
+                                          fontWeight: FontWeight.w800,
+                                          color: plan.isBestValue
+                                              ? AppColors.goldLight
+                                              : const Color(0xFFFF8EA3),
+                                          letterSpacing: 0.2,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                const Text("•", style: TextStyle(color: AppColors.textTertiary, fontSize: 11)),
-                                Text(
-                                  plan.period == SubscriptionPeriod.yearly
-                                      ? "12h Voice"
-                                      : "${plan.voiceMinutes}m Voice",
-                                  style: const TextStyle(
-                                    fontSize: 11.5,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xFFFF69B4),
+                                // Unlimited Chat Highlight
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3.5),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF20BF6B).withOpacity(0.14),
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(
+                                      color: const Color(0xFF20BF6B).withOpacity(0.35),
+                                      width: 0.9,
+                                    ),
                                   ),
-                                ),
-                                const Text("•", style: TextStyle(color: AppColors.textTertiary, fontSize: 11)),
-                                const Text(
-                                  "Unlimited Chat",
-                                  style: TextStyle(
-                                    fontSize: 11.5,
-                                    fontWeight: FontWeight.w700,
-                                    color: Color(0xFF20BF6B),
+                                  child: const Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(Icons.all_inclusive_rounded, size: 12.5, color: Color(0xFF20BF6B)),
+                                      SizedBox(width: 4),
+                                      Text(
+                                        "Unlimited Chat",
+                                        style: TextStyle(
+                                          fontSize: 11.5,
+                                          fontWeight: FontWeight.w700,
+                                          color: Color(0xFF20BF6B),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],

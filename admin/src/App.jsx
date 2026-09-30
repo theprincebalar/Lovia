@@ -66,7 +66,13 @@ export default function App() {
   const [editingChar, setEditingChar] = useState(null);
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const [settings, setSettings] = useState({ aiApiKey: '', voiceApiKey: '' });
+  const [settings, setSettings] = useState({
+    aiApiKey: '',
+    voiceApiKey: '',
+    safetyThreshold: 'high',
+    playStoreUrl: 'https://play.google.com/store/apps/details?id=com.lovia.ai.friend.app.lovia',
+    appStoreUrl: 'https://apps.apple.com/app/id6742517865'
+  });
   const [toastMessage, setToastMessage] = useState(null);
 
   const showToast = (msg) => {
@@ -923,6 +929,52 @@ export default function App() {
                   {(settings.safetyThreshold === 'high' || !settings.safetyThreshold) && '🔥 Recommended for live operations. Allows deep flirtatious banter, romantic intimacy, and adult teasing without false positive blocks.'}
                   {settings.safetyThreshold === 'none' && '⚡ Uninhibited adult roleplay. Disables all optional Gemini harm thresholds for maximum flirtatious freedom.'}
                 </p>
+              </div>
+
+              {/* Mobile App Store & Sharing URLs */}
+              <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '16px', marginTop: '6px' }}>
+                <h3 style={{ fontSize: '13px', fontWeight: 700, marginBottom: '4px' }}>📱 Mobile Store & Sharing URLs</h3>
+                <p style={{ fontSize: '11px', color: 'var(--text-muted)', marginBottom: '12px' }}>
+                  URLs shared with mobile users via the in-app "Share Lovia App" button and store redirects.
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, marginBottom: '4px' }}>Google Play Store URL</label>
+                    <input
+                      type="text"
+                      value={settings.playStoreUrl || ''}
+                      onChange={(e) => setSettings({ ...settings, playStoreUrl: e.target.value })}
+                      placeholder="https://play.google.com/store/apps/details?id=com.lovia.ai.friend.app.lovia"
+                      style={{
+                        width: '100%',
+                        padding: '9px 12px',
+                        backgroundColor: 'rgba(255,255,255,0.05)',
+                        border: '1px solid var(--border-subtle)',
+                        borderRadius: '8px',
+                        color: '#FFF',
+                        fontSize: '12px'
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, marginBottom: '4px' }}>Apple App Store URL</label>
+                    <input
+                      type="text"
+                      value={settings.appStoreUrl || ''}
+                      onChange={(e) => setSettings({ ...settings, appStoreUrl: e.target.value })}
+                      placeholder="https://apps.apple.com/app/id6742517865"
+                      style={{
+                        width: '100%',
+                        padding: '9px 12px',
+                        backgroundColor: 'rgba(255,255,255,0.05)',
+                        border: '1px solid var(--border-subtle)',
+                        borderRadius: '8px',
+                        color: '#FFF',
+                        fontSize: '12px'
+                      }}
+                    />
+                  </div>
+                </div>
               </div>
 
               {/* Security: Change Admin Password */}

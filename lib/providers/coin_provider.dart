@@ -81,19 +81,38 @@ class CoinProvider extends ChangeNotifier {
     _voiceMinutesRemaining = _storage.getSubscriptionVoiceMinutes();
 
     if (planId != null) {
-      try {
-        _activeSubscription = _subscriptionPlans.firstWhere(
-          (p) => p.id == planId,
-          orElse: () => SubscriptionPlan.plans.firstWhere((p) => p.id == planId),
-        );
-      } catch (_) {
-        _activeSubscription = null;
+      final pId = planId.toLowerCase();
+      SubscriptionPlan? matched;
+      for (final p in _subscriptionPlans) {
+        if (p.id == planId || pId.contains(p.id.toLowerCase())) {
+          matched = p;
+          break;
+        }
       }
+      if (matched == null) {
+        for (final p in SubscriptionPlan.plans) {
+          if (p.id == planId || pId.contains(p.id.toLowerCase())) {
+            matched = p;
+            break;
+          }
+        }
+      }
+      if (matched == null) {
+        if (pId.contains('weekly') || pId.contains('week')) {
+          matched = SubscriptionPlan.plans.firstWhere((p) => p.period == SubscriptionPeriod.weekly);
+        } else if (pId.contains('yearly') || pId.contains('annual') || pId.contains('year')) {
+          matched = SubscriptionPlan.plans.firstWhere((p) => p.period == SubscriptionPeriod.yearly);
+        } else {
+          matched = SubscriptionPlan.plans.firstWhere((p) => p.period == SubscriptionPeriod.monthly);
+        }
+      }
+      _activeSubscription = matched;
     }
 
     // Auto-expire subscription if past expiry
     if (_subscriptionExpiry != null && DateTime.now().isAfter(_subscriptionExpiry!)) {
       _activeSubscription = null;
+      _voiceMinutesRemaining = 0;
     }
 
     notifyListeners();
@@ -214,10 +233,11 @@ class CoinProvider extends ChangeNotifier {
     await _storage.setSubscriptionPlanId(plan.id);
     await _storage.setSubscriptionExpiry(_subscriptionExpiry);
     await _storage.setSubscriptionVoiceMinutes(_voiceMinutesRemaining);
+    await _storage.setSubscriptionLastRefillExpiry(_subscriptionExpiry);
 
     final tx = CoinTransaction(
       id: 'tx_sub_${DateTime.now().millisecondsSinceEpoch}',
-      description: 'Subscribed to ${plan.title} (\$${plan.priceUsd}) • +${plan.voiceMinutes}m Voice',
+      description: 'Subscribed to ${plan.title} • +${plan.voiceMinutes}m Voice',
       amount: 0,
       timestamp: now,
     );
@@ -255,9 +275,17 @@ class CoinProvider extends ChangeNotifier {
       await _storage.setSubscriptionPlanId(plan.id);
       await _storage.setSubscriptionExpiry(_subscriptionExpiry);
 
-      if (_voiceMinutesRemaining < plan.voiceMinutes) {
+      final lastRefill = _storage.getSubscriptionLastRefillExpiry();
+      // Only refill full minutes if this is a newly started cycle or renewal!
+      final isNewCycle = lastRefill == null || expiry.isAfter(lastRefill.add(const Duration(minutes: 5)));
+
+      if (isNewCycle) {
         _voiceMinutesRemaining = plan.voiceMinutes;
         await _storage.setSubscriptionVoiceMinutes(_voiceMinutesRemaining);
+        await _storage.setSubscriptionLastRefillExpiry(expiry);
+      } else {
+        // Same billing cycle: preserve remaining minutes saved in local storage
+        _voiceMinutesRemaining = _storage.getSubscriptionVoiceMinutes();
       }
 
       NotificationCampaignService().onPaidStatusChanged(
@@ -283,7 +311,7 @@ class CoinProvider extends ChangeNotifier {
 
     final tx = CoinTransaction(
       id: 'tx_pkg_${DateTime.now().millisecondsSinceEpoch}',
-      description: 'Purchased ${package.title} (\$${package.priceUsd})',
+      description: 'Purchased ${package.title}',
       amount: package.totalCoins,
       timestamp: DateTime.now(),
     );

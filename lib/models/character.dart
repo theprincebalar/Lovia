@@ -67,6 +67,7 @@ class Character {
   final bool isCustom;
   final String? customSystemPrompt;
   final String? customAvatarPath;
+  final String? avatarUrl;
 
   const Character({
     required this.id,
@@ -91,20 +92,15 @@ class Character {
     this.isCustom = false,
     this.customSystemPrompt,
     this.customAvatarPath,
+    this.avatarUrl,
   });
 
   String get coverImagePath {
     if (customAvatarPath != null && customAvatarPath!.isNotEmpty) {
-      if (customAvatarPath!.startsWith('assets/')) {
-        return customAvatarPath!;
-      }
-      if (customAvatarPath!.contains('/assets/characters/')) {
-        return customAvatarPath!;
-      }
-      if (customAvatarPath!.startsWith('http://') || customAvatarPath!.startsWith('https://')) {
-        return customAvatarPath!;
-      }
       return customAvatarPath!;
+    }
+    if (avatarUrl != null && avatarUrl!.isNotEmpty) {
+      return avatarUrl!;
     }
     return 'assets/characters/${assetFolder ?? id}/cover.jpg';
   }
@@ -120,11 +116,14 @@ class Character {
     if (customAvatarPath != null && customAvatarPath!.isNotEmpty) {
       return customAvatarPath!;
     }
-    return '${ApiService().baseUrl}/assets/characters/${assetFolder ?? id}/cover.jpg';
+    if (avatarUrl != null && avatarUrl!.isNotEmpty) {
+      return avatarUrl!;
+    }
+    return '${ApiService().baseUrl}/assets/characters/${assetFolder ?? id}/cover.jpg?v=20260930_clean';
   }
 
   String getServerSpriteUrl(EmotionState emotion) {
-    return '${ApiService().baseUrl}/assets/characters/${assetFolder ?? id}/${emotion.name}.png';
+    return '${ApiService().baseUrl}/assets/characters/${assetFolder ?? id}/${emotion.name}.png?v=20260930_clean';
   }
 
   String get voicePreviewUrl {
@@ -784,6 +783,7 @@ class Character {
     'isCustom': isCustom,
     'customSystemPrompt': customSystemPrompt,
     'customAvatarPath': customAvatarPath,
+    'avatarUrl': avatarUrl,
   };
 
   factory Character.fromJson(Map<String, dynamic> json) {
@@ -808,6 +808,9 @@ class Character {
     String? folder = json['assetFolder'] as String?;
     if (folder == null && avatarUrl != null && avatarUrl.contains('/assets/characters/')) {
       folder = avatarUrl.split('/assets/characters/').last.split('/cover.jpg').first;
+      if (folder.contains('?')) {
+        folder = folder.split('?').first;
+      }
     }
 
     final customAvatar = json['customAvatarPath'] as String? ??
@@ -845,6 +848,7 @@ class Character {
       isCustom: isUserCustom,
       customSystemPrompt: json['customSystemPrompt'] as String?,
       customAvatarPath: customAvatar,
+      avatarUrl: avatarUrl,
     );
   }
 
@@ -1064,6 +1068,7 @@ class Character {
       baseVoiceRate: 0.44,
       voicePreviewQuote: "You never have to go through a romantic moment alone; I'm right by your side.",
       defaultGreeting: "*looks up with a tender, welcoming smile* Welcome! I was hoping you would come by today. Come sit and talk with me.",
+      avatarUrl: "https://lovia-api.genxappstudio.cloud/assets/characters/chloe_bennett_romantic/cover.jpg?v=20260930_clean",
     ),
     Character(
       id: "maya_thorne_romantic",

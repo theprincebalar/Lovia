@@ -72,7 +72,7 @@ class _HomeTabState extends State<HomeTab> {
   }) {
     String resolved = path;
     if (path.startsWith('assets/characters/')) {
-      resolved = '${ApiService().baseUrl}/$path';
+      resolved = '${ApiService().baseUrl}/$path?v=20260930_clean';
     }
     return AppCachedImage(
       key: key,

@@ -737,7 +737,7 @@ class _PaywallScreenState extends State<PaywallScreen> with SingleTickerProvider
                     ),
                   ),
                   Text(
-                    "Lovia VIP Pass includes 0-coin chat & calls from \$4.99/wk",
+                    "Lovia VIP Pass includes unlimited chat & voice calls",
                     style: TextStyle(
                       color: Colors.white.withOpacity(0.7),
                       fontSize: 11,

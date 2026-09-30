@@ -56,6 +56,7 @@ class StorageService {
   static const String _keySubscriptionPlan = 'lovia_sub_plan';
   static const String _keySubscriptionExpiry = 'lovia_sub_expiry';
   static const String _keySubscriptionVoiceMinutes = 'lovia_sub_voice_minutes';
+  static const String _keySubscriptionLastRefillExpiry = 'lovia_sub_last_refill_expiry';
 
   // Subscription
   String? getSubscriptionPlanId() => _prefs.getString(_keySubscriptionPlan);
@@ -88,10 +89,25 @@ class StorageService {
     await _prefs.setInt(_keySubscriptionVoiceMinutes, minutes < 0 ? 0 : minutes);
   }
 
+  DateTime? getSubscriptionLastRefillExpiry() {
+    final str = _prefs.getString(_keySubscriptionLastRefillExpiry);
+    if (str == null) return null;
+    return DateTime.tryParse(str);
+  }
+
+  Future<void> setSubscriptionLastRefillExpiry(DateTime? expiry) async {
+    if (expiry == null) {
+      await _prefs.remove(_keySubscriptionLastRefillExpiry);
+    } else {
+      await _prefs.setString(_keySubscriptionLastRefillExpiry, expiry.toIso8601String());
+    }
+  }
+
   Future<void> clearSubscription() async {
     await _prefs.remove(_keySubscriptionPlan);
     await _prefs.remove(_keySubscriptionExpiry);
     await _prefs.remove(_keySubscriptionVoiceMinutes);
+    await _prefs.remove(_keySubscriptionLastRefillExpiry);
   }
 
   // Legacy Daily Rewards stubs
@@ -536,6 +552,24 @@ class StorageService {
 
   Future<void> setTermsConditionsUrl(String url) async =>
       await _prefs.setString(_keyTermsConditionsUrl, url);
+
+  // App Store & Play Store URLs for Sharing
+  static const String _keyPlayStoreUrl = 'lovia_play_store_url';
+  static const String _keyAppStoreUrl = 'lovia_app_store_url';
+
+  String getPlayStoreUrl() =>
+      _prefs.getString(_keyPlayStoreUrl) ??
+      'https://play.google.com/store/apps/details?id=com.lovia.ai.friend.app.lovia';
+
+  Future<void> setPlayStoreUrl(String url) async =>
+      await _prefs.setString(_keyPlayStoreUrl, url);
+
+  String getAppStoreUrl() =>
+      _prefs.getString(_keyAppStoreUrl) ??
+      'https://apps.apple.com/app/id6742517865';
+
+  Future<void> setAppStoreUrl(String url) async =>
+      await _prefs.setString(_keyAppStoreUrl, url);
 
   // Dynamic AI Safety & Content Threshold ('medium' | 'high' | 'none')
   static const String _keySafetyThreshold = 'lovia_safety_threshold';

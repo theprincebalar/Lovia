@@ -93,24 +93,40 @@ class RevenueCatService {
   void _syncEntitlements(CustomerInfo info) {
     try {
       final activeEntitlements = info.entitlements.active;
-      final hasActiveVip = activeEntitlements.containsKey(entitlementVip) ||
+      final activeSubs = info.activeSubscriptions;
+
+      final hasActiveEntitlement = activeEntitlements.containsKey(entitlementVip) ||
           activeEntitlements.containsKey(entitlementLoviaVip) ||
           activeEntitlements.containsKey(entitlementUnlimited) ||
           activeEntitlements.containsKey(entitlementHubPro) ||
           activeEntitlements.containsKey(entitlementPremium) ||
           activeEntitlements.isNotEmpty;
 
-      if (hasActiveVip && activeEntitlements.isNotEmpty && _coinProvider != null) {
-        final activeEntitlement = activeEntitlements.values.first;
-        final expStr = activeEntitlement.expirationDate;
+      final hasActiveSubscription = activeSubs.isNotEmpty;
+      final hasActiveVip = hasActiveEntitlement || hasActiveSubscription;
+
+      if (hasActiveVip && _coinProvider != null) {
         DateTime expiryDate = DateTime.now().add(const Duration(days: 30));
-        if (expStr != null) {
-          final parsed = DateTime.tryParse(expStr);
-          if (parsed != null) expiryDate = parsed;
+        String prodId = '';
+
+        if (activeEntitlements.isNotEmpty) {
+          final activeEntitlement = activeEntitlements.values.first;
+          final expStr = activeEntitlement.expirationDate;
+          if (expStr != null) {
+            final parsed = DateTime.tryParse(expStr);
+            if (parsed != null) expiryDate = parsed;
+          }
+          prodId = activeEntitlement.productIdentifier.toLowerCase();
+        } else if (activeSubs.isNotEmpty) {
+          prodId = activeSubs.first.toLowerCase();
+          final expStr = info.allExpirationDates[activeSubs.first];
+          if (expStr != null) {
+            final parsed = DateTime.tryParse(expStr);
+            if (parsed != null) expiryDate = parsed;
+          }
         }
 
         // Determine plan period from productIdentifier
-        final prodId = activeEntitlement.productIdentifier.toLowerCase();
         SubscriptionPlan matchedPlan;
         if (prodId.contains('weekly') || prodId.contains('week')) {
           matchedPlan = SubscriptionPlan.plans.firstWhere(
@@ -134,10 +150,14 @@ class RevenueCatService {
           expiry: expiryDate,
         );
       } else if (!hasActiveVip && _coinProvider != null) {
-        // Automatically de-activate VIP if entitlement is no longer active, expired, or cancelled
-        if (_coinProvider!.isSubscribed || _coinProvider!.activeSubscription != null) {
-          debugPrint('🚫 RevenueCat: VIP entitlement is no longer active. Deactivating VIP plan.');
-          _coinProvider!.cancelOrExpireSubscription(reason: "Store subscription expired or cancelled");
+        // Only de-activate VIP if local plan has actually reached its stored expiration date!
+        // Never wipe a user's subscription during cold start or temporary RevenueCat sync lags.
+        final localExpiry = _coinProvider?.subscriptionExpiry;
+        if (localExpiry != null && DateTime.now().isAfter(localExpiry)) {
+          if (_coinProvider!.isSubscribed || _coinProvider!.activeSubscription != null) {
+            debugPrint('🚫 RevenueCat: VIP plan has reached expiration date. Deactivating.');
+            _coinProvider!.cancelOrExpireSubscription(reason: "Store subscription expired");
+          }
         }
       }
     } catch (e) {
@@ -188,13 +208,36 @@ class RevenueCatService {
         }
 
         for (final pkg in currentOffering.availablePackages) {
-          if (pkg.packageType == PackageType.weekly && !localizedSubscriptionPrices.containsKey(SubscriptionPeriod.weekly)) {
+          final pId = pkg.storeProduct.identifier.toLowerCase();
+          final pkgId = pkg.identifier.toLowerCase();
+
+          final isWeekly = pkg.packageType == PackageType.weekly ||
+              pId == 'lovia_vip_weekly' ||
+              pkgId == 'lovia_vip_weekly' ||
+              pId.contains('weekly') ||
+              pkgId.contains('weekly');
+
+          final isMonthly = pkg.packageType == PackageType.monthly ||
+              pId == 'lovia_vip_monthly' ||
+              pkgId == 'lovia_vip_monthly' ||
+              pId.contains('monthly') ||
+              pkgId.contains('monthly');
+
+          final isYearly = pkg.packageType == PackageType.annual ||
+              pId == 'lovia_vip_yearly' ||
+              pkgId == 'lovia_vip_yearly' ||
+              pId.contains('yearly') ||
+              pId.contains('annual') ||
+              pkgId.contains('yearly') ||
+              pkgId.contains('annual');
+
+          if (isWeekly && !localizedSubscriptionPrices.containsKey(SubscriptionPeriod.weekly)) {
             localizedSubscriptionPrices[SubscriptionPeriod.weekly] = pkg.storeProduct.priceString;
             subscriptionPackagesMap[SubscriptionPeriod.weekly] = pkg;
-          } else if (pkg.packageType == PackageType.monthly && !localizedSubscriptionPrices.containsKey(SubscriptionPeriod.monthly)) {
+          } else if (isMonthly && !localizedSubscriptionPrices.containsKey(SubscriptionPeriod.monthly)) {
             localizedSubscriptionPrices[SubscriptionPeriod.monthly] = pkg.storeProduct.priceString;
             subscriptionPackagesMap[SubscriptionPeriod.monthly] = pkg;
-          } else if (pkg.packageType == PackageType.annual && !localizedSubscriptionPrices.containsKey(SubscriptionPeriod.yearly)) {
+          } else if (isYearly && !localizedSubscriptionPrices.containsKey(SubscriptionPeriod.yearly)) {
             localizedSubscriptionPrices[SubscriptionPeriod.yearly] = pkg.storeProduct.priceString;
             subscriptionPackagesMap[SubscriptionPeriod.yearly] = pkg;
           }
@@ -204,13 +247,36 @@ class RevenueCatService {
       // Also index all packages across all offerings
       for (final offEntry in off.all.values) {
         for (final pkg in offEntry.availablePackages) {
-          if (pkg.packageType == PackageType.weekly && !subscriptionPackagesMap.containsKey(SubscriptionPeriod.weekly)) {
+          final pId = pkg.storeProduct.identifier.toLowerCase();
+          final pkgId = pkg.identifier.toLowerCase();
+
+          final isWeekly = pkg.packageType == PackageType.weekly ||
+              pId == 'lovia_vip_weekly' ||
+              pkgId == 'lovia_vip_weekly' ||
+              pId.contains('weekly') ||
+              pkgId.contains('weekly');
+
+          final isMonthly = pkg.packageType == PackageType.monthly ||
+              pId == 'lovia_vip_monthly' ||
+              pkgId == 'lovia_vip_monthly' ||
+              pId.contains('monthly') ||
+              pkgId.contains('monthly');
+
+          final isYearly = pkg.packageType == PackageType.annual ||
+              pId == 'lovia_vip_yearly' ||
+              pkgId == 'lovia_vip_yearly' ||
+              pId.contains('yearly') ||
+              pId.contains('annual') ||
+              pkgId.contains('yearly') ||
+              pkgId.contains('annual');
+
+          if (isWeekly && !subscriptionPackagesMap.containsKey(SubscriptionPeriod.weekly)) {
             subscriptionPackagesMap[SubscriptionPeriod.weekly] = pkg;
             localizedSubscriptionPrices[SubscriptionPeriod.weekly] = pkg.storeProduct.priceString;
-          } else if (pkg.packageType == PackageType.monthly && !subscriptionPackagesMap.containsKey(SubscriptionPeriod.monthly)) {
+          } else if (isMonthly && !subscriptionPackagesMap.containsKey(SubscriptionPeriod.monthly)) {
             subscriptionPackagesMap[SubscriptionPeriod.monthly] = pkg;
             localizedSubscriptionPrices[SubscriptionPeriod.monthly] = pkg.storeProduct.priceString;
-          } else if (pkg.packageType == PackageType.annual && !subscriptionPackagesMap.containsKey(SubscriptionPeriod.yearly)) {
+          } else if (isYearly && !subscriptionPackagesMap.containsKey(SubscriptionPeriod.yearly)) {
             subscriptionPackagesMap[SubscriptionPeriod.yearly] = pkg;
             localizedSubscriptionPrices[SubscriptionPeriod.yearly] = pkg.storeProduct.priceString;
           }
@@ -302,6 +368,19 @@ class RevenueCatService {
             targetPackage = currentOffering.monthly;
           } else if (plan.period == SubscriptionPeriod.yearly) {
             targetPackage = currentOffering.annual;
+          }
+        }
+
+        if (targetPackage == null && offerings != null) {
+          for (final offEntry in offerings!.all.values) {
+            for (final pkg in offEntry.availablePackages) {
+              if (pkg.storeProduct.identifier.toLowerCase() == plan.productId.toLowerCase() ||
+                  pkg.identifier.toLowerCase() == plan.productId.toLowerCase()) {
+                targetPackage = pkg;
+                break;
+              }
+            }
+            if (targetPackage != null) break;
           }
         }
 

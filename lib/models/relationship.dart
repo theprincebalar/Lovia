@@ -106,20 +106,29 @@ class MemoryItem {
 
 class CharacterRelationship {
   final String characterId;
-  int affectionPoints;
+  int _affectionPoints;
   RelationshipLevel level;
   List<MemoryItem> memories;
 
   CharacterRelationship({
     required this.characterId,
-    this.affectionPoints = 0,
+    int affectionPoints = 0,
     this.level = RelationshipLevel.stranger,
     List<MemoryItem>? memories,
-  }) : memories = memories ?? [];
+  })  : _affectionPoints = affectionPoints,
+        memories = memories ?? [] {
+    _updateLevel();
+  }
+
+  int get affectionPoints => _affectionPoints;
+  set affectionPoints(int val) {
+    _affectionPoints = val;
+    _updateLevel();
+  }
 
   bool addAffection(int points) {
     final oldLevel = level;
-    affectionPoints += points;
+    _affectionPoints += points;
     _updateLevel();
     return level.index > oldLevel.index;
   }
@@ -131,13 +140,13 @@ class CharacterRelationship {
   }
 
   void _updateLevel() {
-    if (affectionPoints >= RelationshipLevel.crush.maxAffectionPoints) {
+    if (_affectionPoints >= RelationshipLevel.crush.maxAffectionPoints) {
       level = RelationshipLevel.partner;
-    } else if (affectionPoints >= RelationshipLevel.closeFriend.maxAffectionPoints) {
+    } else if (_affectionPoints >= RelationshipLevel.closeFriend.maxAffectionPoints) {
       level = RelationshipLevel.crush;
-    } else if (affectionPoints >= RelationshipLevel.friend.maxAffectionPoints) {
+    } else if (_affectionPoints >= RelationshipLevel.friend.maxAffectionPoints) {
       level = RelationshipLevel.closeFriend;
-    } else if (affectionPoints >= RelationshipLevel.stranger.maxAffectionPoints) {
+    } else if (_affectionPoints >= RelationshipLevel.stranger.maxAffectionPoints) {
       level = RelationshipLevel.friend;
     } else {
       level = RelationshipLevel.stranger;

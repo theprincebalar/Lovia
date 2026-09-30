@@ -69,6 +69,8 @@ class ApiService {
           'privacyPolicyUrl': data['privacyPolicyUrl'] as String? ?? '$_baseUrl/privacy',
           'termsConditionsUrl': data['termsConditionsUrl'] as String? ?? '$_baseUrl/terms',
           'safetyThreshold': data['safetyThreshold'] as String? ?? 'high',
+          'playStoreUrl': data['playStoreUrl'] as String? ?? '',
+          'appStoreUrl': data['appStoreUrl'] as String? ?? '',
         };
       }
     } catch (e) {

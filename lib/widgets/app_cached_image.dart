@@ -106,6 +106,7 @@ class AppCachedImage extends StatelessWidget {
     String resolved = path.trim();
     if (resolved.startsWith('assets/characters/')) {
       resolved = '${ApiService().baseUrl}/$resolved';
+      if (!resolved.contains('?')) resolved += '?v=20260930_clean';
     }
     if (resolved.startsWith('http://') || resolved.startsWith('https://')) {
       return NetworkImage(resolved);
@@ -124,6 +125,7 @@ class AppCachedImage extends StatelessWidget {
     // Auto-redirect any legacy asset references to remote CDN
     if (path.startsWith('assets/characters/')) {
       path = '${ApiService().baseUrl}/$path';
+      if (!path.contains('?')) path += '?v=20260930_clean';
     }
 
     if (path.isEmpty) {

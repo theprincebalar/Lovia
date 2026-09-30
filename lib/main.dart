@@ -152,19 +152,23 @@ class _LoviaAppState extends State<LoviaApp> with WidgetsBindingObserver {
                 userProvider: userProv,
               ),
         ),
-        ChangeNotifierProxyProvider<CoinProvider, VoiceProvider>(
+        ChangeNotifierProxyProvider2<CoinProvider, ChatProvider, VoiceProvider>(
           create: (ctx) => VoiceProvider(
             voiceService: widget.voiceService,
             coinProvider: ctx.read<CoinProvider>(),
             storageService: widget.storageService,
+            chatProvider: ctx.read<ChatProvider>(),
           ),
-          update: (ctx, coinProv, previous) =>
-              previous ??
-              VoiceProvider(
-                voiceService: widget.voiceService,
-                coinProvider: coinProv,
-                storageService: widget.storageService,
-               ),
+          update: (ctx, coinProv, chatProv, previous) {
+            previous?.setChatProvider(chatProv);
+            return previous ??
+                VoiceProvider(
+                  voiceService: widget.voiceService,
+                  coinProvider: coinProv,
+                  storageService: widget.storageService,
+                  chatProvider: chatProv,
+                );
+          },
         ),
       ],
       child: MaterialApp(

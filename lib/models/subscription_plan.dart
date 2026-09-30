@@ -2,6 +2,7 @@ enum SubscriptionPeriod { weekly, monthly, yearly }
 
 class SubscriptionPlan {
   final String id;
+  final String? _productId;
   final String title;
   final SubscriptionPeriod period;
   final double priceUsd;
@@ -13,6 +14,7 @@ class SubscriptionPlan {
 
   const SubscriptionPlan({
     required this.id,
+    String? productId,
     required this.title,
     required this.period,
     required this.priceUsd,
@@ -21,9 +23,9 @@ class SubscriptionPlan {
     this.badge = '',
     this.isPopular = false,
     this.isBestValue = false,
-  });
+  }) : _productId = productId;
 
-  String get productId => id;
+  String get productId => _productId ?? id;
 
   /// Duration of the subscription cycle
   Duration get duration {
@@ -50,6 +52,7 @@ class SubscriptionPlan {
 
     return SubscriptionPlan(
       id: json['id'] as String? ?? 'sub_${DateTime.now().millisecondsSinceEpoch}',
+      productId: json['productId'] as String?,
       title: json['title'] as String? ?? 'VIP Plan',
       period: parsedPeriod,
       priceUsd: (json['priceUsd'] as num?)?.toDouble() ?? 12.99,
@@ -63,6 +66,7 @@ class SubscriptionPlan {
 
   Map<String, dynamic> toJson() => {
     'id': id,
+    'productId': productId,
     'title': title,
     'period': period.name,
     'priceUsd': priceUsd,
@@ -76,6 +80,7 @@ class SubscriptionPlan {
   static const List<SubscriptionPlan> plans = [
     SubscriptionPlan(
       id: "sub_weekly",
+      productId: "lovia_vip_weekly",
       title: "Weekly VIP",
       period: SubscriptionPeriod.weekly,
       priceUsd: 4.99,
@@ -85,6 +90,7 @@ class SubscriptionPlan {
     ),
     SubscriptionPlan(
       id: "sub_monthly",
+      productId: "lovia_vip_monthly",
       title: "Monthly VIP",
       period: SubscriptionPeriod.monthly,
       priceUsd: 12.99,
@@ -95,6 +101,7 @@ class SubscriptionPlan {
     ),
     SubscriptionPlan(
       id: "sub_yearly",
+      productId: "lovia_vip_yearly",
       title: "Yearly VIP",
       period: SubscriptionPeriod.yearly,
       priceUsd: 79.99,

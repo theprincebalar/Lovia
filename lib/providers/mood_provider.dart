@@ -49,6 +49,8 @@ class MoodProvider extends ChangeNotifier {
         final privacyUrl = config['privacyPolicyUrl']?.trim() ?? '';
         final termsUrl = config['termsConditionsUrl']?.trim() ?? '';
         final safetyThreshold = config['safetyThreshold']?.trim() ?? '';
+        final playStoreUrl = config['playStoreUrl']?.trim() ?? '';
+        final appStoreUrl = config['appStoreUrl']?.trim() ?? '';
         if (geminiKey.isNotEmpty) {
           await _storageService.setGeminiApiKey(geminiKey);
         }
@@ -63,6 +65,12 @@ class MoodProvider extends ChangeNotifier {
         }
         if (safetyThreshold.isNotEmpty) {
           await _storageService.setSafetyThreshold(safetyThreshold);
+        }
+        if (playStoreUrl.isNotEmpty) {
+          await _storageService.setPlayStoreUrl(playStoreUrl);
+        }
+        if (appStoreUrl.isNotEmpty) {
+          await _storageService.setAppStoreUrl(appStoreUrl);
         }
       }
     } catch (_) {}

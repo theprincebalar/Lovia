@@ -13,11 +13,13 @@ import '../services/roleplay_ai_engine.dart';
 import '../services/storage_service.dart';
 import '../services/voice_service.dart';
 import 'coin_provider.dart';
+import 'chat_provider.dart';
 
 class VoiceProvider extends ChangeNotifier {
   final VoiceService _voiceService;
   final CoinProvider _coinProvider;
   final StorageService? _storageService;
+  ChatProvider? _chatProvider;
 
   Character? _activeCharacter;
   Scenario? _activeScenario;
@@ -46,9 +48,11 @@ class VoiceProvider extends ChangeNotifier {
     required VoiceService voiceService,
     required CoinProvider coinProvider,
     StorageService? storageService,
+    ChatProvider? chatProvider,
   })  : _voiceService = voiceService,
         _coinProvider = coinProvider,
-        _storageService = storageService {
+        _storageService = storageService,
+        _chatProvider = chatProvider {
     _errorSubscription = _voiceService.errorMessageStream.listen((msg) {
       _errorMessage = msg;
       notifyListeners();
@@ -504,7 +508,12 @@ class VoiceProvider extends ChangeNotifier {
     }
   }
 
+  void setChatProvider(ChatProvider cp) {
+    _chatProvider = cp;
+  }
+
   void endCall() {
+    final characterId = _activeCharacter?.id;
     _isCallActive = false;
     _clearUserSpeaking();
     _speechSilenceTimer?.cancel();
@@ -519,6 +528,9 @@ class VoiceProvider extends ChangeNotifier {
     _callDurationSeconds = 0;
     _visualizerFrequencies = List.filled(24, 0.04);
     notifyListeners();
+    if (characterId != null) {
+      _chatProvider?.refreshRelationship(characterId);
+    }
   }
 
   /// Awards +25 affection XP per minute of voice call to the character's relationship
@@ -528,6 +540,7 @@ class VoiceProvider extends ChangeNotifier {
     final rel = CharacterRelationship(characterId: _activeCharacter!.id, affectionPoints: affection);
     rel.addAffection(25);
     await _storageService?.saveAffection(_activeCharacter!.id, rel.affectionPoints);
+    _chatProvider?.syncAffection(_activeCharacter!.id, rel.affectionPoints);
     debugPrint("Awarded +25 call affection XP to ${_activeCharacter!.name} (Total: ${rel.affectionPoints})");
   }
 

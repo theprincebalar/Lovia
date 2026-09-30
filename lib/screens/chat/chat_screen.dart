@@ -136,8 +136,8 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
             titleSpacing: 0,
             title: InkWell(
-              onTap: () {
-                Navigator.push(
+              onTap: () async {
+                await Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (ctx) => CharacterProfileScreen(
@@ -146,6 +146,9 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                   ),
                 );
+                if (context.mounted) {
+                  chat.refreshRelationship(widget.character.id);
+                }
               },
               borderRadius: BorderRadius.circular(12),
               child: Padding(

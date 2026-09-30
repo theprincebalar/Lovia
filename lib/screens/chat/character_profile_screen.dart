@@ -80,17 +80,12 @@ class _CharacterProfileScreenState extends State<CharacterProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-    final chatProvider = Provider.of<ChatProvider>(context, listen: false);
+    final chatProvider = Provider.of<ChatProvider>(context);
     final coinProvider = Provider.of<CoinProvider>(context, listen: false);
     final isFav = userProvider.isFavorite(widget.character.id);
 
-    // Get relationship
-    final relationship = CharacterRelationship(
-      characterId: widget.character.id,
-      affectionPoints: chatProvider.relationship.characterId == widget.character.id
-          ? chatProvider.relationship.affectionPoints
-          : 0,
-    );
+    // Get relationship with live synchronized affection from storage & provider
+    final relationship = chatProvider.getRelationshipFor(widget.character.id);
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -749,7 +744,7 @@ class _CharacterProfileScreenState extends State<CharacterProfileScreen> {
                         return;
                       }
 
-                      Navigator.push(
+                      await Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (ctx) => VoiceTalkScreen(
@@ -759,6 +754,10 @@ class _CharacterProfileScreenState extends State<CharacterProfileScreen> {
                           ),
                         ),
                       );
+                      if (mounted) {
+                        chatProvider.refreshRelationship(widget.character.id);
+                        setState(() {});
+                      }
                     },
                     icon: const Icon(Icons.call_rounded, color: AppColors.secondaryLight, size: 20),
                     label: const FittedBox(
@@ -794,12 +793,12 @@ class _CharacterProfileScreenState extends State<CharacterProfileScreen> {
                     ],
                   ),
                   child: ElevatedButton.icon(
-                    onPressed: () {
+                    onPressed: () async {
                       chatProvider.openChat(
                         character: widget.character,
                         scenario: _selectedScenario,
                       );
-                      Navigator.push(
+                      await Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (ctx) => ChatScreen(
@@ -809,6 +808,10 @@ class _CharacterProfileScreenState extends State<CharacterProfileScreen> {
                           ),
                         ),
                       );
+                      if (mounted) {
+                        chatProvider.refreshRelationship(widget.character.id);
+                        setState(() {});
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.transparent,

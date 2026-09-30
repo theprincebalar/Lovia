@@ -1,4 +1,4 @@
-﻿import java.util.Properties
+import java.util.Properties
 import java.io.FileInputStream
 
 val keystoreProperties = Properties()
@@ -44,8 +44,8 @@ android {
         applicationId = "com.lovia.ai.friend.app.lovia"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = flutter.versionCode ?: 1
+        versionName = flutter.versionName ?: "1.0.0"
         multiDexEnabled = true
     }
 

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../models/character.dart';
 import '../../providers/chat_provider.dart';
 import '../../providers/coin_provider.dart';
 import '../../providers/mood_provider.dart';
 import '../../providers/user_provider.dart';
+import '../../services/analytics_service.dart';
 import '../../theme/app_colors.dart';
 import '../../widgets/app_cached_image.dart';
 import '../../widgets/character_avatar.dart';
@@ -531,12 +534,28 @@ class ProfileTab extends StatelessWidget {
                   ),
                   child: Material(
                     color: Colors.transparent,
-                    child: SwitchListTile(
-                      value: userProvider.proactiveNotificationsEnabled,
-                      activeColor: AppColors.primary,
-                      title: const Text("Proactive Companion Check-ins", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
-                      subtitle: const Text("Receive spontaneous thoughts, affection, and greetings from characters", style: TextStyle(fontSize: 11, color: AppColors.textTertiary)),
-                      onChanged: (val) => userProvider.setProactiveNotificationsEnabled(val),
+                    child: Column(
+                      children: [
+                        SwitchListTile(
+                          value: userProvider.proactiveNotificationsEnabled,
+                          activeColor: AppColors.primary,
+                          title: const Text("Proactive Companion Check-ins", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+                          subtitle: const Text("Receive spontaneous thoughts, affection, and greetings from characters", style: TextStyle(fontSize: 11, color: AppColors.textTertiary)),
+                          onChanged: (val) => userProvider.setProactiveNotificationsEnabled(val),
+                        ),
+                        const Divider(color: AppColors.glassBorder, height: 1),
+                        Builder(
+                          builder: (tileContext) {
+                            return ListTile(
+                              leading: const Icon(Icons.share_rounded, size: 20, color: AppColors.primaryLight),
+                              title: const Text("Share Lovia App", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+                              subtitle: const Text("Invite friends to meet AI companions & voice roleplay", style: TextStyle(fontSize: 11, color: AppColors.textTertiary)),
+                              trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: AppColors.textTertiary),
+                              onTap: () => _shareApp(tileContext),
+                            );
+                          },
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -1002,5 +1021,34 @@ class ProfileTab extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  Future<void> _shareApp(BuildContext context) async {
+    HapticFeedback.lightImpact();
+    final isIos = Theme.of(context).platform == TargetPlatform.iOS;
+    final storage = StorageService();
+    final storeUrl = isIos ? storage.getAppStoreUrl() : storage.getPlayStoreUrl();
+    final storeName = isIos ? "App Store" : "Google Play";
+
+    final shareText =
+        "Experience Lovia - your AI roleplay & voice companion! 💫 Chat with authentic characters, enjoy voice calls in real time, and explore endless stories.\n\nDownload Lovia on $storeName:\n$storeUrl";
+
+    final box = context.findRenderObject() as RenderBox?;
+    final origin = box != null && box.hasSize
+        ? (box.localToGlobal(Offset.zero) & box.size)
+        : null;
+
+    try {
+      await Share.share(
+        shareText,
+        subject: "Lovia - AI Roleplay & Voice Companion",
+        sharePositionOrigin: origin,
+      );
+      AnalyticsService().logCustomEvent('share_app_clicked', {
+        'platform': isIos ? 'ios' : 'android',
+      });
+    } catch (e) {
+      debugPrint("Error sharing app: $e");
+    }
   }
 }

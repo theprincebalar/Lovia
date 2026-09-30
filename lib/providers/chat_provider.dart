@@ -59,6 +59,41 @@ class ChatProvider extends ChangeNotifier {
   StorageService get storage => _storage;
   CharacterRelationship get relationship => _relationship;
 
+  /// Direct method to get the latest up-to-date relationship for any character
+  CharacterRelationship getRelationshipFor(String characterId) {
+    final pts = _storage.getAffection(characterId);
+    if (_activeCharacter?.id == characterId && _relationship.characterId == characterId) {
+      _relationship.affectionPoints = pts;
+      return _relationship;
+    }
+    return CharacterRelationship(characterId: characterId, affectionPoints: pts);
+  }
+
+  /// Reloads affection for the character from storage and notifies listeners
+  void refreshRelationship([String? characterId]) {
+    final targetId = characterId ?? _activeCharacter?.id;
+    if (targetId != null) {
+      final pts = _storage.getAffection(targetId);
+      if (_activeCharacter?.id == targetId && _relationship.characterId == targetId) {
+        _relationship.affectionPoints = pts;
+      }
+    }
+    notifyListeners();
+  }
+
+  /// Synchronize affection points from external activities (e.g. voice calls)
+  void syncAffection(String characterId, int points) {
+    if (_activeCharacter?.id == characterId && _relationship.characterId == characterId) {
+      _relationship.affectionPoints = points;
+    }
+    notifyListeners();
+  }
+
+  /// Refresh conversation list for Chats Tab
+  void refreshConversations() {
+    notifyListeners();
+  }
+
   /// Open or resume conversation with a character
   void openChat({required Character character, Scenario? scenario}) {
     _activeCharacter = character;
@@ -171,6 +206,8 @@ class ChatProvider extends ChangeNotifier {
     _isAiTyping = false;
 
     // Increase relationship affection (+5 XP per message)
+    final currentPts = _storage.getAffection(_activeCharacter!.id);
+    _relationship.affectionPoints = currentPts;
     _relationship.addAffection(5);
     await _storage.saveAffection(_activeCharacter!.id, _relationship.affectionPoints);
 
@@ -218,6 +255,8 @@ class ChatProvider extends ChangeNotifier {
     notifyListeners();
 
     // 2. Add affection points to relationship & check level up
+    final currentPts = _storage.getAffection(_activeCharacter!.id);
+    _relationship.affectionPoints = currentPts;
     final leveledUp = _relationship.addGift(gift);
     await _storage.saveAffection(_activeCharacter!.id, _relationship.affectionPoints);
 

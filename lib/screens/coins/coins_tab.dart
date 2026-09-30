@@ -364,7 +364,7 @@ class CoinsTab extends StatelessWidget {
                                 child: Text(
                                   coinProvider.isSubscribed
                                       ? "Manage VIP Subscription & Perks"
-                                      : "View VIP Plans (from \$4.99/wk)",
+                                      : "View VIP Plans & Perks",
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(

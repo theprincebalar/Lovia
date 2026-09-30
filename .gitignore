@@ -73,3 +73,6 @@ ios_certificates/
 # Release binaries
 release_builds/
 *.aab
+*.zip
+Product App-P/
+

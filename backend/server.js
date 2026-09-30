@@ -242,6 +242,8 @@ function getSettings() {
         aiApiKey: process.env.AI_API_KEY || "",
         voiceApiKey: process.env.VOICE_API_KEY || "",
         safetyThreshold: "high", // 'medium' | 'high' | 'none'
+        playStoreUrl: "https://play.google.com/store/apps/details?id=com.lovia.ai.friend.app.lovia",
+        appStoreUrl: "https://apps.apple.com/app/id6742517865",
         activeEngine: "neural_default"
       };
       fs.writeFileSync(SETTINGS_FILE, JSON.stringify(initial, null, 2));
@@ -249,9 +251,18 @@ function getSettings() {
     }
     const parsed = JSON.parse(fs.readFileSync(SETTINGS_FILE, 'utf8'));
     if (!parsed.safetyThreshold) parsed.safetyThreshold = "high";
+    if (!parsed.playStoreUrl) parsed.playStoreUrl = "https://play.google.com/store/apps/details?id=com.lovia.ai.friend.app.lovia";
+    if (!parsed.appStoreUrl) parsed.appStoreUrl = "https://apps.apple.com/app/id6742517865";
     return parsed;
   } catch (_) {
-    return { aiApiKey: "", voiceApiKey: "", safetyThreshold: "high", activeEngine: "neural_default" };
+    return {
+      aiApiKey: "",
+      voiceApiKey: "",
+      safetyThreshold: "high",
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.lovia.ai.friend.app.lovia",
+      appStoreUrl: "https://apps.apple.com/app/id6742517865",
+      activeEngine: "neural_default"
+    };
   }
 }
 
@@ -623,7 +634,9 @@ app.post('/api/app-config', requireClientAuth, (req, res) => {
     elevenLabsApiKey: settings.voiceApiKey || process.env.VOICE_API_KEY || '',
     safetyThreshold: settings.safetyThreshold || 'high',
     privacyPolicyUrl: legal.privacyPolicyUrl || 'https://lovia-api.genxappstudio.cloud/privacy',
-    termsConditionsUrl: legal.termsConditionsUrl || 'https://lovia-api.genxappstudio.cloud/terms'
+    termsConditionsUrl: legal.termsConditionsUrl || 'https://lovia-api.genxappstudio.cloud/terms',
+    playStoreUrl: settings.playStoreUrl || 'https://play.google.com/store/apps/details?id=com.lovia.ai.friend.app.lovia',
+    appStoreUrl: settings.appStoreUrl || 'https://apps.apple.com/app/id6742517865'
   });
 });
 
