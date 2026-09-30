@@ -127,11 +127,7 @@ class Character {
   }
 
   String get voicePreviewUrl {
-    final vId = voiceProfile.elevenLabsVoiceId;
-    if (vId.isNotEmpty) {
-      return '${ApiService().baseUrl}/assets/voices/$vId.mp3';
-    }
-    return '';
+    return '${ApiService().baseUrl}/assets/voices/$id.mp3';
   }
 
   String get localAssetCoverPath => 'assets/characters/${assetFolder ?? id}/cover.jpg';

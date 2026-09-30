@@ -33,7 +33,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.909883",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/Vep3bcB7LhKa3wfjMiI6.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/liam_vance_romantic.mp3",
+    "voicePreviewQuote": "Hello! I am Liam Vance. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "damon_cross_romantic",
@@ -69,7 +74,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.912902",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/uKGPYP2uuyRQv8SeFre0.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/damon_cross_romantic.mp3",
+    "voicePreviewQuote": "Hello! I am Damon Cross. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "julian_mercer_romantic",
@@ -105,7 +115,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.912902",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/3svOJAOhuPHXwQC2H5eq.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/julian_mercer_romantic.mp3",
+    "voicePreviewQuote": "Hello! I am Julian Mercer. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "alec_sterling_romantic",
@@ -141,7 +156,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.912902",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/4NejU5DwQjevnR6mh3mb.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/alec_sterling_romantic.mp3",
+    "voicePreviewQuote": "Hello! I am Alec Sterling. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "lucas_moreau_romantic",
@@ -177,7 +197,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.912902",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/2NzqTfQARqdn4tcBKTSh.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/lucas_moreau_romantic.mp3",
+    "voicePreviewQuote": "Hello! I am Lucas Moreau. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "seraphina_lin_romantic",
@@ -213,7 +238,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.912902",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/3YXAuwCx7wB8kSkKCqsu.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/seraphina_lin_romantic.mp3",
+    "voicePreviewQuote": "Hello! I am Seraphina Lin. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "elena_rostova_romantic",
@@ -249,7 +279,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.912902",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/0zj1iWvloMkAXydIFsJR.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/elena_rostova_romantic.mp3",
+    "voicePreviewQuote": "Hello! I am Elena Rostova. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "chloe_bennett_romantic",
@@ -285,7 +320,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.912902",
     "updatedAt": "2026-09-29T15:42:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/xYa75LlayhWHCRl1yJSH.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/chloe_bennett_romantic.mp3",
+    "voicePreviewQuote": "Hello! I am Chloe Bennett. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "maya_thorne_romantic",
@@ -321,7 +361,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.912902",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/7WggD3IoWTIPT19PNyrW.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/maya_thorne_romantic.mp3",
+    "voicePreviewQuote": "Hello! I am Maya Thorne. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "isabella_rossi_romantic",
@@ -357,7 +402,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.912902",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/Myap7vX7L9ipoJVdyOVZ.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/isabella_rossi_romantic.mp3",
+    "voicePreviewQuote": "Hello! I am Isabella Rossi. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "kai_rodriguez_happy",
@@ -393,7 +443,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.912902",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/CyHwTRKhXEYuSd7CbMwI.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/kai_rodriguez_happy.mp3",
+    "voicePreviewQuote": "Hello! I am Kai Rodriguez. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "leo_vance_happy",
@@ -429,7 +484,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.912902",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/m3yAHyFEFKtbCIM5n7GF.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/leo_vance_happy.mp3",
+    "voicePreviewQuote": "Hello! I am Leo Vance. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "sammy_chen_happy",
@@ -465,7 +525,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.913900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/inGcvmoPgbvKUk9uCvHu.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/sammy_chen_happy.mp3",
+    "voicePreviewQuote": "Hello! I am Sammy Chen. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "felix_drake_happy",
@@ -501,7 +566,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.913900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/h61MhzGbN77HK91UuRr8.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/felix_drake_happy.mp3",
+    "voicePreviewQuote": "Hello! I am Felix Drake. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "ryder_scott_happy",
@@ -537,7 +607,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.913900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/Vep3bcB7LhKa3wfjMiI6.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/ryder_scott_happy.mp3",
+    "voicePreviewQuote": "Hello! I am Ryder Scott. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "aria_sterling_happy",
@@ -573,7 +648,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.913900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/EozfaQ3ZX0esAp1cW5nG.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/aria_sterling_happy.mp3",
+    "voicePreviewQuote": "Hello! I am Aria Sterling. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "mila_rose_happy",
@@ -609,7 +689,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.913900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/oaLGpwm7fYWDEFmlRuQk.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/mila_rose_happy.mp3",
+    "voicePreviewQuote": "Hello! I am Mila Rose. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "zoe_adams_happy",
@@ -645,7 +730,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.913900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/hYZHGYzFnp1GKImhQtGi.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/zoe_adams_happy.mp3",
+    "voicePreviewQuote": "Hello! I am Zoe Adams. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "piper_blake_happy",
@@ -681,7 +771,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.913900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/LyZq9ggDlPpK7b17wpjG.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/piper_blake_happy.mp3",
+    "voicePreviewQuote": "Hello! I am Piper Blake. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "lily_song_happy",
@@ -717,7 +812,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.913900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/uYXf8XasLslADfZ2MB4u.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/lily_song_happy.mp3",
+    "voicePreviewQuote": "Hello! I am Lily Song. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "noah_caldwell_sad",
@@ -753,7 +853,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.913900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/uKGPYP2uuyRQv8SeFre0.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/noah_caldwell_sad.mp3",
+    "voicePreviewQuote": "Hello! I am Noah Caldwell. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "tristan_gray_sad",
@@ -789,7 +894,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.913900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/3svOJAOhuPHXwQC2H5eq.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/tristan_gray_sad.mp3",
+    "voicePreviewQuote": "Hello! I am Tristan Gray. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "marcus_vance_sad",
@@ -825,7 +935,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.913900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/4NejU5DwQjevnR6mh3mb.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/marcus_vance_sad.mp3",
+    "voicePreviewQuote": "Hello! I am Marcus Vance. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "gabriel_hayes_sad",
@@ -861,7 +976,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.913900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/2NzqTfQARqdn4tcBKTSh.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/gabriel_hayes_sad.mp3",
+    "voicePreviewQuote": "Hello! I am Gabriel Hayes. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "rowan_woods_sad",
@@ -897,7 +1017,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.913900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/CyHwTRKhXEYuSd7CbMwI.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/rowan_woods_sad.mp3",
+    "voicePreviewQuote": "Hello! I am Rowan Woods. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "celeste_moreau_sad",
@@ -933,7 +1058,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.913900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/3YXAuwCx7wB8kSkKCqsu.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/celeste_moreau_sad.mp3",
+    "voicePreviewQuote": "Hello! I am Celeste Moreau. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "violet_evans_sad",
@@ -969,7 +1099,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.913900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/0zj1iWvloMkAXydIFsJR.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/violet_evans_sad.mp3",
+    "voicePreviewQuote": "Hello! I am Violet Evans. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "selene_brooks_sad",
@@ -1005,7 +1140,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.913900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/xYa75LlayhWHCRl1yJSH.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/selene_brooks_sad.mp3",
+    "voicePreviewQuote": "Hello! I am Selene Brooks. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "hazel_scott_sad",
@@ -1041,7 +1181,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.913900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/7WggD3IoWTIPT19PNyrW.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/hazel_scott_sad.mp3",
+    "voicePreviewQuote": "Hello! I am Hazel Scott. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "evie_harper_sad",
@@ -1077,7 +1222,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.914901",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/Myap7vX7L9ipoJVdyOVZ.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/evie_harper_sad.mp3",
+    "voicePreviewQuote": "Hello! I am Evie Harper. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "ethan_brooks_lonely",
@@ -1113,7 +1263,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.914901",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/m3yAHyFEFKtbCIM5n7GF.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/ethan_brooks_lonely.mp3",
+    "voicePreviewQuote": "Hello! I am Ethan Brooks. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "caleb_wright_lonely",
@@ -1149,7 +1304,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.914901",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/inGcvmoPgbvKUk9uCvHu.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/caleb_wright_lonely.mp3",
+    "voicePreviewQuote": "Hello! I am Caleb Wright. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "jasper_cole_lonely",
@@ -1185,7 +1345,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.914901",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/h61MhzGbN77HK91UuRr8.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/jasper_cole_lonely.mp3",
+    "voicePreviewQuote": "Hello! I am Jasper Cole. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "milo_sterling_lonely",
@@ -1221,7 +1386,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.914901",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/Vep3bcB7LhKa3wfjMiI6.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/milo_sterling_lonely.mp3",
+    "voicePreviewQuote": "Hello! I am Milo Sterling. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "victor_vance_lonely",
@@ -1257,7 +1427,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.914901",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/uKGPYP2uuyRQv8SeFre0.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/victor_vance_lonely.mp3",
+    "voicePreviewQuote": "Hello! I am Victor Vance. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "nora_quinn_lonely",
@@ -1293,7 +1468,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.914901",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/EozfaQ3ZX0esAp1cW5nG.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/nora_quinn_lonely.mp3",
+    "voicePreviewQuote": "Hello! I am Nora Quinn. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "clara_bell_lonely",
@@ -1329,7 +1509,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.914901",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/oaLGpwm7fYWDEFmlRuQk.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/clara_bell_lonely.mp3",
+    "voicePreviewQuote": "Hello! I am Clara Bell. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "lyra_vance_lonely",
@@ -1365,7 +1550,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.914901",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/hYZHGYzFnp1GKImhQtGi.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/lyra_vance_lonely.mp3",
+    "voicePreviewQuote": "Hello! I am Lyra Vance. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "iris_dale_lonely",
@@ -1401,7 +1591,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.914901",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/LyZq9ggDlPpK7b17wpjG.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/iris_dale_lonely.mp3",
+    "voicePreviewQuote": "Hello! I am Iris Dale. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "tessa_reed_lonely",
@@ -1437,7 +1632,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.914901",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/uYXf8XasLslADfZ2MB4u.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/tessa_reed_lonely.mp3",
+    "voicePreviewQuote": "Hello! I am Tessa Reed. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "dante_rossi_flirty",
@@ -1473,7 +1673,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.914901",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/3svOJAOhuPHXwQC2H5eq.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/dante_rossi_flirty.mp3",
+    "voicePreviewQuote": "Hello! I am Dante Rossi. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "jax_thorne_flirty",
@@ -1509,7 +1714,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.914901",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/4NejU5DwQjevnR6mh3mb.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/jax_thorne_flirty.mp3",
+    "voicePreviewQuote": "Hello! I am Jax Thorne. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "soren_lind_flirty",
@@ -1545,7 +1755,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.914901",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/2NzqTfQARqdn4tcBKTSh.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/soren_lind_flirty.mp3",
+    "voicePreviewQuote": "Hello! I am Soren Lind. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "reid_callahan_flirty",
@@ -1581,7 +1796,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.914901",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/CyHwTRKhXEYuSd7CbMwI.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/reid_callahan_flirty.mp3",
+    "voicePreviewQuote": "Hello! I am Reid Callahan. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "xavier_cross_flirty",
@@ -1617,7 +1837,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.915899",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/m3yAHyFEFKtbCIM5n7GF.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/xavier_cross_flirty.mp3",
+    "voicePreviewQuote": "Hello! I am Xavier Cross. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "valentina_cruz_flirty",
@@ -1653,7 +1878,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.915899",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/3YXAuwCx7wB8kSkKCqsu.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/valentina_cruz_flirty.mp3",
+    "voicePreviewQuote": "Hello! I am Valentina Cruz. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "camila_santos_flirty",
@@ -1689,7 +1919,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.915899",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/0zj1iWvloMkAXydIFsJR.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/camila_santos_flirty.mp3",
+    "voicePreviewQuote": "Hello! I am Camila Santos. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "roxie_wilder_flirty",
@@ -1725,7 +1960,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.915899",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/xYa75LlayhWHCRl1yJSH.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/roxie_wilder_flirty.mp3",
+    "voicePreviewQuote": "Hello! I am Roxie Wilder. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "sienna_brooks_flirty",
@@ -1761,7 +2001,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.915899",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/7WggD3IoWTIPT19PNyrW.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/sienna_brooks_flirty.mp3",
+    "voicePreviewQuote": "Hello! I am Sienna Brooks. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "delilah_hart_flirty",
@@ -1797,7 +2042,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.915899",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/Myap7vX7L9ipoJVdyOVZ.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/delilah_hart_flirty.mp3",
+    "voicePreviewQuote": "Hello! I am Delilah Hart. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "toby_miller_playful",
@@ -1833,7 +2083,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.915899",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/inGcvmoPgbvKUk9uCvHu.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/toby_miller_playful.mp3",
+    "voicePreviewQuote": "Hello! I am Toby Miller. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "benny_clark_playful",
@@ -1869,7 +2124,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.915899",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/h61MhzGbN77HK91UuRr8.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/benny_clark_playful.mp3",
+    "voicePreviewQuote": "Hello! I am Benny Clark. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "chase_murphy_playful",
@@ -1905,7 +2165,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.915899",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/Vep3bcB7LhKa3wfjMiI6.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/chase_murphy_playful.mp3",
+    "voicePreviewQuote": "Hello! I am Chase Murphy. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "oliver_queen_playful",
@@ -1941,7 +2206,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.915899",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/uKGPYP2uuyRQv8SeFre0.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/oliver_queen_playful.mp3",
+    "voicePreviewQuote": "Hello! I am Oliver Queen. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "archie_campbell_playful",
@@ -1977,7 +2247,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.915899",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/3svOJAOhuPHXwQC2H5eq.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/archie_campbell_playful.mp3",
+    "voicePreviewQuote": "Hello! I am Archie Campbell. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "kiki_tanaka_playful",
@@ -2013,7 +2288,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.915899",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/EozfaQ3ZX0esAp1cW5nG.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/kiki_tanaka_playful.mp3",
+    "voicePreviewQuote": "Hello! I am Kiki Tanaka. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "poppy_evans_playful",
@@ -2049,7 +2329,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.915899",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/oaLGpwm7fYWDEFmlRuQk.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/poppy_evans_playful.mp3",
+    "voicePreviewQuote": "Hello! I am Poppy Evans. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "daisy_chen_playful",
@@ -2085,7 +2370,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.915899",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/hYZHGYzFnp1GKImhQtGi.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/daisy_chen_playful.mp3",
+    "voicePreviewQuote": "Hello! I am Daisy Chen. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "ruby_fox_playful",
@@ -2121,7 +2411,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.916901",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/LyZq9ggDlPpK7b17wpjG.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/ruby_fox_playful.mp3",
+    "voicePreviewQuote": "Hello! I am Ruby Fox. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "gigi_dubois_playful",
@@ -2157,7 +2452,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.916901",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/uYXf8XasLslADfZ2MB4u.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/gigi_dubois_playful.mp3",
+    "voicePreviewQuote": "Hello! I am Gigi Dubois. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "brock_stone_frustrated",
@@ -2193,7 +2493,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.916901",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/4NejU5DwQjevnR6mh3mb.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/brock_stone_frustrated.mp3",
+    "voicePreviewQuote": "Hello! I am Brock Stone. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "damien_drake_frustrated",
@@ -2229,7 +2534,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.916901",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/2NzqTfQARqdn4tcBKTSh.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/damien_drake_frustrated.mp3",
+    "voicePreviewQuote": "Hello! I am Damien Drake. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "kurt_sterling_frustrated",
@@ -2265,7 +2575,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.916901",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/CyHwTRKhXEYuSd7CbMwI.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/kurt_sterling_frustrated.mp3",
+    "voicePreviewQuote": "Hello! I am Kurt Sterling. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "zane_cross_frustrated",
@@ -2301,7 +2616,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.916901",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/m3yAHyFEFKtbCIM5n7GF.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/zane_cross_frustrated.mp3",
+    "voicePreviewQuote": "Hello! I am Zane Cross. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "hunter_vance_frustrated",
@@ -2337,7 +2657,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.916901",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/inGcvmoPgbvKUk9uCvHu.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/hunter_vance_frustrated.mp3",
+    "voicePreviewQuote": "Hello! I am Hunter Vance. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "sasha_romanova_frustrated",
@@ -2373,7 +2698,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.916901",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/3YXAuwCx7wB8kSkKCqsu.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/sasha_romanova_frustrated.mp3",
+    "voicePreviewQuote": "Hello! I am Sasha Romanova. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "raven_knight_frustrated",
@@ -2409,7 +2739,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.916901",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/0zj1iWvloMkAXydIFsJR.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/raven_knight_frustrated.mp3",
+    "voicePreviewQuote": "Hello! I am Raven Knight. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "tori_vega_frustrated",
@@ -2445,7 +2780,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.916901",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/xYa75LlayhWHCRl1yJSH.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/tori_vega_frustrated.mp3",
+    "voicePreviewQuote": "Hello! I am Tori Vega. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "mona_lisa_frustrated",
@@ -2481,7 +2821,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.916901",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/7WggD3IoWTIPT19PNyrW.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/mona_lisa_frustrated.mp3",
+    "voicePreviewQuote": "Hello! I am Mona Lisa. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "kendra_scott_frustrated",
@@ -2517,7 +2862,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.916901",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/Myap7vX7L9ipoJVdyOVZ.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/kendra_scott_frustrated.mp3",
+    "voicePreviewQuote": "Hello! I am Kendra Scott. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "titus_vance_angry",
@@ -2553,7 +2903,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.916901",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/h61MhzGbN77HK91UuRr8.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/titus_vance_angry.mp3",
+    "voicePreviewQuote": "Hello! I am Titus Vance. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "malcolm_stone_angry",
@@ -2589,7 +2944,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/Vep3bcB7LhKa3wfjMiI6.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/malcolm_stone_angry.mp3",
+    "voicePreviewQuote": "Hello! I am Malcolm Stone. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "drax_mercer_angry",
@@ -2625,7 +2985,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/uKGPYP2uuyRQv8SeFre0.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/drax_mercer_angry.mp3",
+    "voicePreviewQuote": "Hello! I am Drax Mercer. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "gunner_hayes_angry",
@@ -2661,7 +3026,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/3svOJAOhuPHXwQC2H5eq.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/gunner_hayes_angry.mp3",
+    "voicePreviewQuote": "Hello! I am Gunner Hayes. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "blaze_sterling_angry",
@@ -2697,7 +3067,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/4NejU5DwQjevnR6mh3mb.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/blaze_sterling_angry.mp3",
+    "voicePreviewQuote": "Hello! I am Blaze Sterling. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "morgan_fay_angry",
@@ -2733,7 +3108,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/EozfaQ3ZX0esAp1cW5nG.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/morgan_fay_angry.mp3",
+    "voicePreviewQuote": "Hello! I am Morgan Fay. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "vixen_blake_angry",
@@ -2769,7 +3149,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/oaLGpwm7fYWDEFmlRuQk.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/vixen_blake_angry.mp3",
+    "voicePreviewQuote": "Hello! I am Vixen Blake. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "scarlett_fox_angry",
@@ -2805,7 +3190,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/hYZHGYzFnp1GKImhQtGi.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/scarlett_fox_angry.mp3",
+    "voicePreviewQuote": "Hello! I am Scarlett Fox. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "elektra_thorne_angry",
@@ -2841,7 +3231,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/LyZq9ggDlPpK7b17wpjG.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/elektra_thorne_angry.mp3",
+    "voicePreviewQuote": "Hello! I am Elektra Thorne. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "nikita_cross_angry",
@@ -2877,7 +3272,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/uYXf8XasLslADfZ2MB4u.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/nikita_cross_angry.mp3",
+    "voicePreviewQuote": "Hello! I am Nikita Cross. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "julian_park_caring",
@@ -2913,7 +3313,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/2NzqTfQARqdn4tcBKTSh.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/julian_park_caring.mp3",
+    "voicePreviewQuote": "Hello! I am Julian Park. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "ethan_wright_caring",
@@ -2949,7 +3354,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/CyHwTRKhXEYuSd7CbMwI.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/ethan_wright_caring.mp3",
+    "voicePreviewQuote": "Hello! I am Ethan Wright. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "arthur_pendelton_caring",
@@ -2985,7 +3395,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/m3yAHyFEFKtbCIM5n7GF.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/arthur_pendelton_caring.mp3",
+    "voicePreviewQuote": "Hello! I am Arthur Pendelton. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "drew_evans_caring",
@@ -3021,7 +3436,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/inGcvmoPgbvKUk9uCvHu.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/drew_evans_caring.mp3",
+    "voicePreviewQuote": "Hello! I am Drew Evans. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "silas_woods_caring",
@@ -3057,7 +3477,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/h61MhzGbN77HK91UuRr8.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/silas_woods_caring.mp3",
+    "voicePreviewQuote": "Hello! I am Silas Woods. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "charlotte_ray_caring",
@@ -3093,7 +3518,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/3YXAuwCx7wB8kSkKCqsu.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/charlotte_ray_caring.mp3",
+    "voicePreviewQuote": "Hello! I am Charlotte Ray. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "claire_bennett_caring",
@@ -3129,7 +3559,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/0zj1iWvloMkAXydIFsJR.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/claire_bennett_caring.mp3",
+    "voicePreviewQuote": "Hello! I am Claire Bennett. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "marigold_sunshine_caring",
@@ -3165,7 +3600,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/xYa75LlayhWHCRl1yJSH.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/marigold_sunshine_caring.mp3",
+    "voicePreviewQuote": "Hello! I am Marigold Sunshine. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "maeve_connor_caring",
@@ -3201,7 +3641,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/7WggD3IoWTIPT19PNyrW.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/maeve_connor_caring.mp3",
+    "voicePreviewQuote": "Hello! I am Maeve Connor. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "grace_harper_caring",
@@ -3237,7 +3682,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/Myap7vX7L9ipoJVdyOVZ.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/grace_harper_caring.mp3",
+    "voicePreviewQuote": "Hello! I am Amara Harper. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "simon_bell_shy",
@@ -3273,7 +3723,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/Vep3bcB7LhKa3wfjMiI6.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/simon_bell_shy.mp3",
+    "voicePreviewQuote": "Hello! I am Simon Bell. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "toby_lin_shy",
@@ -3309,7 +3764,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/uKGPYP2uuyRQv8SeFre0.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/toby_lin_shy.mp3",
+    "voicePreviewQuote": "Hello! I am Toby Lin. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "elliot_vance_shy",
@@ -3345,7 +3805,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/3svOJAOhuPHXwQC2H5eq.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/elliot_vance_shy.mp3",
+    "voicePreviewQuote": "Hello! I am Elliot Vance. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "hugo_miller_shy",
@@ -3381,7 +3846,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/4NejU5DwQjevnR6mh3mb.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/hugo_miller_shy.mp3",
+    "voicePreviewQuote": "Hello! I am Hugo Miller. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "casper_gray_shy",
@@ -3417,7 +3887,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/2NzqTfQARqdn4tcBKTSh.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/casper_gray_shy.mp3",
+    "voicePreviewQuote": "Hello! I am Casper Gray. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "hinata_mori_shy",
@@ -3453,7 +3928,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/EozfaQ3ZX0esAp1cW5nG.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/hinata_mori_shy.mp3",
+    "voicePreviewQuote": "Hello! I am Hinata Mori. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "faye_valentine_shy",
@@ -3489,7 +3969,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/oaLGpwm7fYWDEFmlRuQk.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/faye_valentine_shy.mp3",
+    "voicePreviewQuote": "Hello! I am Faye Valentine. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "penny_lane_shy",
@@ -3525,7 +4010,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/hYZHGYzFnp1GKImhQtGi.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/penny_lane_shy.mp3",
+    "voicePreviewQuote": "Hello! I am Penny Lane. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "winnie_cooper_shy",
@@ -3561,7 +4051,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/LyZq9ggDlPpK7b17wpjG.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/winnie_cooper_shy.mp3",
+    "voicePreviewQuote": "Hello! I am Winnie Cooper. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "lucia_diaz_shy",
@@ -3597,7 +4092,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.917900",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/uYXf8XasLslADfZ2MB4u.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/lucia_diaz_shy.mp3",
+    "voicePreviewQuote": "Hello! I am Lucia Diaz. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "connor_sterling_confident",
@@ -3633,7 +4133,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.919406",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/CyHwTRKhXEYuSd7CbMwI.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/connor_sterling_confident.mp3",
+    "voicePreviewQuote": "Hello! I am Connor Sterling. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "bruce_vance_confident",
@@ -3669,7 +4174,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.919406",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/m3yAHyFEFKtbCIM5n7GF.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/bruce_vance_confident.mp3",
+    "voicePreviewQuote": "Hello! I am Bruce Vance. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "dominic_vance_confident",
@@ -3705,7 +4215,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.919406",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/inGcvmoPgbvKUk9uCvHu.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/dominic_vance_confident.mp3",
+    "voicePreviewQuote": "Hello! I am Dominic Vance. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "zack_cross_confident",
@@ -3741,7 +4256,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.919406",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/h61MhzGbN77HK91UuRr8.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/zack_cross_confident.mp3",
+    "voicePreviewQuote": "Hello! I am Zack Cross. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "rex_hunter_confident",
@@ -3777,7 +4297,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.919406",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/Vep3bcB7LhKa3wfjMiI6.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/rex_hunter_confident.mp3",
+    "voicePreviewQuote": "Hello! I am Rex Hunter. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "victoria_sterling_confident",
@@ -3813,7 +4338,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.919406",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/3YXAuwCx7wB8kSkKCqsu.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/victoria_sterling_confident.mp3",
+    "voicePreviewQuote": "Hello! I am Victoria Sterling. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "miranda_priestly_confident",
@@ -3849,7 +4379,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.919406",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/0zj1iWvloMkAXydIFsJR.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/miranda_priestly_confident.mp3",
+    "voicePreviewQuote": "Hello! I am Miranda Priestly. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "athena_vance_confident",
@@ -3885,7 +4420,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.919406",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/xYa75LlayhWHCRl1yJSH.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/athena_vance_confident.mp3",
+    "voicePreviewQuote": "Hello! I am Athena Vance. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "sloane_peterson_confident",
@@ -3921,7 +4461,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.919406",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/7WggD3IoWTIPT19PNyrW.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/sloane_peterson_confident.mp3",
+    "voicePreviewQuote": "Hello! I am Sloane Peterson. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "roxanna_cross_confident",
@@ -3957,7 +4502,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.919406",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/Myap7vX7L9ipoJVdyOVZ.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/roxanna_cross_confident.mp3",
+    "voicePreviewQuote": "Hello! I am Roxanna Cross. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "leo_spark_excited",
@@ -3993,7 +4543,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.920415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/uKGPYP2uuyRQv8SeFre0.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/leo_spark_excited.mp3",
+    "voicePreviewQuote": "Hello! I am Leo Spark. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "max_hunter_excited",
@@ -4029,7 +4584,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.920415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/3svOJAOhuPHXwQC2H5eq.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/max_hunter_excited.mp3",
+    "voicePreviewQuote": "Hello! I am Max Hunter. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "blake_miller_excited",
@@ -4065,7 +4625,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.920415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/4NejU5DwQjevnR6mh3mb.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/blake_miller_excited.mp3",
+    "voicePreviewQuote": "Hello! I am Blake Miller. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "tanner_vance_excited",
@@ -4101,7 +4666,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.920415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/2NzqTfQARqdn4tcBKTSh.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/tanner_vance_excited.mp3",
+    "voicePreviewQuote": "Hello! I am Tanner Vance. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "cooper_fox_excited",
@@ -4137,7 +4707,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.920415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/CyHwTRKhXEYuSd7CbMwI.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/cooper_fox_excited.mp3",
+    "voicePreviewQuote": "Hello! I am Cooper Fox. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "stella_nova_excited",
@@ -4173,7 +4748,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.920415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/EozfaQ3ZX0esAp1cW5nG.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/stella_nova_excited.mp3",
+    "voicePreviewQuote": "Hello! I am Stella Nova. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "nikki_sparks_excited",
@@ -4209,7 +4789,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.920415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/oaLGpwm7fYWDEFmlRuQk.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/nikki_sparks_excited.mp3",
+    "voicePreviewQuote": "Hello! I am Nikki Sparks. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "amber_blaze_excited",
@@ -4245,7 +4830,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.920415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/hYZHGYzFnp1GKImhQtGi.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/amber_blaze_excited.mp3",
+    "voicePreviewQuote": "Hello! I am Amber Blaze. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "chloe_bright_excited",
@@ -4281,7 +4871,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.920415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/LyZq9ggDlPpK7b17wpjG.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/chloe_bright_excited.mp3",
+    "voicePreviewQuote": "Hello! I am Chloe Bright. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "skye_bennett_excited",
@@ -4317,7 +4912,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.920415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/uYXf8XasLslADfZ2MB4u.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/skye_bennett_excited.mp3",
+    "voicePreviewQuote": "Hello! I am Skye Bennett. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "damon_vance_jealous",
@@ -4353,7 +4953,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.920415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/m3yAHyFEFKtbCIM5n7GF.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/damon_vance_jealous.mp3",
+    "voicePreviewQuote": "Hello! I am Damon Vance. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "julian_cross_jealous",
@@ -4389,7 +4994,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.920415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/inGcvmoPgbvKUk9uCvHu.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/julian_cross_jealous.mp3",
+    "voicePreviewQuote": "Hello! I am Julian Cross. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "alec_vance_jealous",
@@ -4425,7 +5035,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.920415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/h61MhzGbN77HK91UuRr8.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/alec_vance_jealous.mp3",
+    "voicePreviewQuote": "Hello! I am Alec Vance. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "tristan_cole_jealous",
@@ -4461,7 +5076,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/Vep3bcB7LhKa3wfjMiI6.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/tristan_cole_jealous.mp3",
+    "voicePreviewQuote": "Hello! I am Tristan Cole. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "marcus_stone_jealous",
@@ -4497,7 +5117,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/uKGPYP2uuyRQv8SeFre0.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/marcus_stone_jealous.mp3",
+    "voicePreviewQuote": "Hello! I am Marcus Stone. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "elena_cruz_jealous",
@@ -4533,7 +5158,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/3YXAuwCx7wB8kSkKCqsu.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/elena_cruz_jealous.mp3",
+    "voicePreviewQuote": "Hello! I am Elena Cruz. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "chloe_vance_jealous",
@@ -4569,7 +5199,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/0zj1iWvloMkAXydIFsJR.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/chloe_vance_jealous.mp3",
+    "voicePreviewQuote": "Hello! I am Chloe Vance. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "piper_cross_jealous",
@@ -4605,7 +5240,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/xYa75LlayhWHCRl1yJSH.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/piper_cross_jealous.mp3",
+    "voicePreviewQuote": "Hello! I am Piper Cross. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "isabella_drake_jealous",
@@ -4641,7 +5281,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/7WggD3IoWTIPT19PNyrW.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/isabella_drake_jealous.mp3",
+    "voicePreviewQuote": "Hello! I am Isabella Drake. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "selene_night_jealous",
@@ -4677,7 +5322,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/Myap7vX7L9ipoJVdyOVZ.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/selene_night_jealous.mp3",
+    "voicePreviewQuote": "Hello! I am Selene Night. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "liam_alchemist_mysterious",
@@ -4713,7 +5363,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/3svOJAOhuPHXwQC2H5eq.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/liam_alchemist_mysterious.mp3",
+    "voicePreviewQuote": "Hello! I am Liam Alchemist. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "damon_investigator_mysterious",
@@ -4749,7 +5404,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/4NejU5DwQjevnR6mh3mb.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/damon_investigator_mysterious.mp3",
+    "voicePreviewQuote": "Hello! I am Damon Investigator. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "alec_thorne_mysterious",
@@ -4785,7 +5445,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/2NzqTfQARqdn4tcBKTSh.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/alec_thorne_mysterious.mp3",
+    "voicePreviewQuote": "Hello! I am Alec Thorne. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "tristan_night_mysterious",
@@ -4821,7 +5486,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/CyHwTRKhXEYuSd7CbMwI.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/tristan_night_mysterious.mp3",
+    "voicePreviewQuote": "Hello! I am Tristan Night. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "marcus_shadow_mysterious",
@@ -4857,7 +5527,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/m3yAHyFEFKtbCIM5n7GF.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/marcus_shadow_mysterious.mp3",
+    "voicePreviewQuote": "Hello! I am Marcus Shadow. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "seraphina_occult_mysterious",
@@ -4893,7 +5568,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/EozfaQ3ZX0esAp1cW5nG.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/seraphina_occult_mysterious.mp3",
+    "voicePreviewQuote": "Hello! I am Seraphina Occult. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "elena_sovereign_mysterious",
@@ -4929,7 +5609,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/oaLGpwm7fYWDEFmlRuQk.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/elena_sovereign_mysterious.mp3",
+    "voicePreviewQuote": "Hello! I am Elena Sovereign. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "maya_physicist_mysterious",
@@ -4965,7 +5650,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/hYZHGYzFnp1GKImhQtGi.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/maya_physicist_mysterious.mp3",
+    "voicePreviewQuote": "Hello! I am Maya Physicist. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "selene_seer_mysterious",
@@ -5001,7 +5691,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/LyZq9ggDlPpK7b17wpjG.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/selene_seer_mysterious.mp3",
+    "voicePreviewQuote": "Hello! I am Selene Seer. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "evie_archivist_mysterious",
@@ -5037,7 +5732,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/uYXf8XasLslADfZ2MB4u.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/evie_archivist_mysterious.mp3",
+    "voicePreviewQuote": "Hello! I am Evie Archivist. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "noah_counselor_needSomeoneToTalkTo",
@@ -5073,7 +5773,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/inGcvmoPgbvKUk9uCvHu.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/noah_counselor_needSomeoneToTalkTo.mp3",
+    "voicePreviewQuote": "Hello! I am Noah Counselor. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "liam_listener_needSomeoneToTalkTo",
@@ -5109,7 +5814,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/h61MhzGbN77HK91UuRr8.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/liam_listener_needSomeoneToTalkTo.mp3",
+    "voicePreviewQuote": "Hello! I am Liam Listener. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "sammy_friend_needSomeoneToTalkTo",
@@ -5145,7 +5855,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/Vep3bcB7LhKa3wfjMiI6.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/sammy_friend_needSomeoneToTalkTo.mp3",
+    "voicePreviewQuote": "Hello! I am Sammy Friend. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "tristan_anchor_needSomeoneToTalkTo",
@@ -5181,7 +5896,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/uKGPYP2uuyRQv8SeFre0.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/tristan_anchor_needSomeoneToTalkTo.mp3",
+    "voicePreviewQuote": "Hello! I am Tristan Anchor. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "gabriel_responder_needSomeoneToTalkTo",
@@ -5217,7 +5937,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:55:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/3svOJAOhuPHXwQC2H5eq.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/gabriel_responder_needSomeoneToTalkTo.mp3",
+    "voicePreviewQuote": "Hello! I am Gabriel Responder. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AndrewNeural",
+      "name": "Andrew"
+    }
   },
   {
     "id": "aria_friend_needSomeoneToTalkTo",
@@ -5253,7 +5978,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/3YXAuwCx7wB8kSkKCqsu.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/aria_friend_needSomeoneToTalkTo.mp3",
+    "voicePreviewQuote": "Hello! I am Aria Friend. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "zoe_confidante_needSomeoneToTalkTo",
@@ -5289,7 +6019,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/0zj1iWvloMkAXydIFsJR.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/zoe_confidante_needSomeoneToTalkTo.mp3",
+    "voicePreviewQuote": "Hello! I am Zoe Confidante. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "celeste_counselor_needSomeoneToTalkTo",
@@ -5325,7 +6060,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/xYa75LlayhWHCRl1yJSH.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/celeste_counselor_needSomeoneToTalkTo.mp3",
+    "voicePreviewQuote": "Hello! I am Celeste Counselor. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "hazel_therapist_needSomeoneToTalkTo",
@@ -5361,7 +6101,12 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/7WggD3IoWTIPT19PNyrW.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/hazel_therapist_needSomeoneToTalkTo.mp3",
+    "voicePreviewQuote": "Hello! I am Hazel Therapist. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   },
   {
     "id": "evie_listener_needSomeoneToTalkTo",
@@ -5397,6 +6142,11 @@
     "isHidden": false,
     "createdAt": "2026-09-28T22:00:02.921415",
     "updatedAt": "2026-09-29T00:25:00.000Z",
-    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/Myap7vX7L9ipoJVdyOVZ.mp3"
+    "voicePreviewUrl": "https://lovia-api.genxappstudio.cloud/assets/voices/evie_listener_needSomeoneToTalkTo.mp3",
+    "voicePreviewQuote": "Hello! I am Evie Listener. It's so wonderful to meet you.",
+    "voiceProfile": {
+      "edgeTtsVoice": "en-US-AvaNeural",
+      "name": "Ava"
+    }
   }
 ]

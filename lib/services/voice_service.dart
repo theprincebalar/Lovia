@@ -142,7 +142,7 @@ class VoiceService {
                 "locale": v['locale']?.toString() ?? "en-US",
               };
 
-              // Identify female voices
+              // Identify female voices with comprehensive cross-platform voice catalog
               final isFemale = name.contains('female') ||
                   name.contains('sfg') ||
                   name.contains('tpf') ||
@@ -155,7 +155,50 @@ class VoiceService {
                   name.contains('susan') ||
                   name.contains('neural2-f') ||
                   name.contains('wavenet-f') ||
-                  name.contains('smf');
+                  name.contains('smf') ||
+                  name.contains('moira') ||
+                  name.contains('tessa') ||
+                  name.contains('fiona') ||
+                  name.contains('veena') ||
+                  name.contains('allison') ||
+                  name.contains('zoe') ||
+                  name.contains('kate') ||
+                  name.contains('serena') ||
+                  name.contains('shelley') ||
+                  name.contains('sandra') ||
+                  name.contains('siri_female') ||
+                  name.contains('claire') ||
+                  name.contains('stephanie') ||
+                  name.contains('kyoko') ||
+                  name.contains('ting-ting') ||
+                  name.contains('sin-ji') ||
+                  name.contains('luciana') ||
+                  name.contains('mariska') ||
+                  name.contains('monica') ||
+                  name.contains('paulina') ||
+                  name.contains('yuri') ||
+                  name.contains('alva') ||
+                  name.contains('wavenet-a') ||
+                  name.contains('wavenet-c') ||
+                  name.contains('wavenet-e') ||
+                  name.contains('neural2-a') ||
+                  name.contains('neural2-c') ||
+                  name.contains('neural2-e') ||
+                  name.contains('cathy') ||
+                  name.contains('helena') ||
+                  name.contains('jessica') ||
+                  name.contains('sarah') ||
+                  name.contains('laura') ||
+                  name.contains('emily') ||
+                  name.contains('matilda') ||
+                  name.contains('rachel') ||
+                  name.contains('bella') ||
+                  name.contains('elli') ||
+                  name.contains('glinda') ||
+                  name.contains('grace') ||
+                  name.contains('lily') ||
+                  name.contains('nicole') ||
+                  name.contains('freya');
 
               // Identify male voices
               final isMale = name.contains('male') ||
@@ -169,16 +212,27 @@ class VoiceService {
                   name.contains('alex') ||
                   name.contains('fred') ||
                   name.contains('neural2-d') ||
-                  name.contains('wavenet-d');
+                  name.contains('wavenet-d') ||
+                  name.contains('aaron') ||
+                  name.contains('tom') ||
+                  name.contains('james') ||
+                  name.contains('lee') ||
+                  name.contains('rishi') ||
+                  name.contains('brian') ||
+                  name.contains('andrew') ||
+                  name.contains('christopher') ||
+                  name.contains('eric') ||
+                  name.contains('guy') ||
+                  name.contains('ryan');
 
               if (isFemale && !_femaleVoicePool.any((x) => x['name'] == voiceEntry['name'])) {
                 _femaleVoicePool.add(voiceEntry);
               } else if (isMale && !_maleVoicePool.any((x) => x['name'] == voiceEntry['name'])) {
                 _maleVoicePool.add(voiceEntry);
-              } else {
-                // Fallback distribution if not explicitly labeled
-                if (!_femaleVoicePool.any((x) => x['name'] == voiceEntry['name'])) {
-                  _femaleVoicePool.add(voiceEntry);
+              } else if (!isMale) {
+                // If not explicitly male and locale is standard, only add to male pool as safe fallback
+                if (!_maleVoicePool.any((x) => x['name'] == voiceEntry['name'])) {
+                  _maleVoicePool.add(voiceEntry);
                 }
               }
             }
@@ -209,7 +263,7 @@ class VoiceService {
         }
       }
 
-      // If no keyword match or already assigned, pick round-robin from pool
+      // If no keyword match or already assigned, pick round-robin from female pool
       if (matched == null && _femaleVoicePool.isNotEmpty) {
         matched = _femaleVoicePool[i % _femaleVoicePool.length];
       }
@@ -233,7 +287,7 @@ class VoiceService {
         }
       }
 
-      // If no keyword match, pick round-robin from pool
+      // If no keyword match, pick round-robin from male pool
       if (matched == null && _maleVoicePool.isNotEmpty) {
         matched = _maleVoicePool[i % _maleVoicePool.length];
       }
@@ -244,9 +298,28 @@ class VoiceService {
     }
   }
 
-  /// Get the assigned voice map for a specific character
+  /// Get the assigned voice map for a specific character with dynamic fail-safe
   Map<String, String>? getVoiceForCharacter(Character character) {
-    return _characterAssignedVoice[character.id];
+    if (_characterAssignedVoice.containsKey(character.id)) {
+      return _characterAssignedVoice[character.id];
+    }
+
+    if (character.gender == Gender.female) {
+      if (_femaleVoicePool.isNotEmpty) {
+        final hash = character.id.hashCode.abs();
+        final voice = _femaleVoicePool[hash % _femaleVoicePool.length];
+        _characterAssignedVoice[character.id] = voice;
+        return voice;
+      }
+    } else {
+      if (_maleVoicePool.isNotEmpty) {
+        final hash = character.id.hashCode.abs();
+        final voice = _maleVoicePool[hash % _maleVoicePool.length];
+        _characterAssignedVoice[character.id] = voice;
+        return voice;
+      }
+    }
+    return null;
   }
 
   /// Format text with human emotional pauses, breath marks, and hesitation contours
@@ -543,6 +616,7 @@ class VoiceService {
       if (!_isTtsInitialized) {
         await init();
       }
+      final isFemale = character.gender == Gender.female;
       final assignedVoice = getVoiceForCharacter(character);
       if (assignedVoice != null) {
         try {
@@ -551,9 +625,30 @@ class VoiceService {
             "locale": assignedVoice['locale']!,
           });
         } catch (_) {}
+      } else if (isFemale && _femaleVoicePool.isNotEmpty) {
+        try {
+          await _tts.setVoice({
+            "name": _femaleVoicePool.first['name']!,
+            "locale": _femaleVoicePool.first['locale']!,
+          });
+        } catch (_) {}
       }
 
-      final pitch = (customPitch ?? character.voiceProfile.defaultPitch).clamp(0.5, 1.8);
+      // Enforce pitch distinction: feminine pitch (1.35 - 1.45) guarantees a distinctly sweet, feminine voice
+      final double effectivePitch;
+      if (customPitch != null) {
+        effectivePitch = customPitch;
+      } else if (isFemale) {
+        effectivePitch = (character.voiceProfile.defaultPitch < 1.25)
+            ? 1.38
+            : character.voiceProfile.defaultPitch;
+      } else {
+        effectivePitch = (character.voiceProfile.defaultPitch > 0.95)
+            ? 0.88
+            : character.voiceProfile.defaultPitch;
+      }
+
+      final pitch = effectivePitch.clamp(0.5, 1.8);
       final rate = ((customRate ?? character.voiceProfile.defaultRate) * userSpeedMultiplier).clamp(0.2, 1.0);
 
       try {
