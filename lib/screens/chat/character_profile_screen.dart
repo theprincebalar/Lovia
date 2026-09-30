@@ -61,16 +61,25 @@ class _CharacterProfileScreenState extends State<CharacterProfileScreen> {
 
     setState(() => _isPlayingVoicePreview = true);
 
-    final quote = widget.character.voicePreviewQuote.isNotEmpty
-        ? widget.character.voicePreviewQuote
-        : widget.character.initialGreeting;
+    bool played = false;
+    if (widget.character.voicePreviewUrl.isNotEmpty) {
+      played = await _voiceService.playVoicePreview(
+        voiceIdOrUrl: widget.character.voicePreviewUrl,
+      );
+    }
 
-    await _voiceService.speakAndWait(
-      character: widget.character,
-      emotion: EmotionState.happy,
-      text: quote,
-      storageService: _storageService,
-    );
+    if (!played) {
+      final quote = widget.character.voicePreviewQuote.isNotEmpty
+          ? widget.character.voicePreviewQuote
+          : widget.character.initialGreeting;
+
+      await _voiceService.speakAndWait(
+        character: widget.character,
+        emotion: EmotionState.happy,
+        text: quote,
+        storageService: _storageService,
+      );
+    }
 
     if (mounted) {
       setState(() => _isPlayingVoicePreview = false);
