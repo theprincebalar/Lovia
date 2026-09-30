@@ -69,3 +69,7 @@ ios_certificates/
 *.key
 *.mobileprovision
 *.certSigningRequest
+
+# Release binaries
+release_builds/
+*.aab
