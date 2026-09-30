@@ -322,7 +322,7 @@ class StorageService {
   static const String _defaultGeminiApiKey = '';
   static const String _keyOpenAiApiKey = 'lovia_openai_api_key';
   static const String _keyElevenLabsApiKey = 'lovia_elevenlabs_api_key';
-  static const String _defaultElevenLabsApiKey = '';
+  static const String _defaultElevenLabsApiKey = 'sk_d7e6649f4f8002aab7ef2ed35748c37b12db4403b5d363e4';
   static const String _keyVoiceEngineMode = 'lovia_voice_engine_mode';
   static const String _keyEmotionIntensityPrefix = 'lovia_emotion_intensity_';
   static const String _keyElevenVoicePrefix = 'lovia_eleven_voice_';

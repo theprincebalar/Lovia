@@ -13,6 +13,7 @@ import 'services/voice_service.dart';
 import 'services/firebase_notification_service.dart';
 import 'services/notification_campaign_service.dart';
 import 'services/revenue_cat_service.dart';
+import 'services/api_service.dart';
 import 'services/analytics_service.dart';
 import 'theme/app_theme.dart';
 import 'widgets/responsive_frame.dart';
@@ -46,6 +47,20 @@ void main() async {
 
   // Initialize RevenueCat In-App Purchases & Subscriptions
   await RevenueCatService().init(storageService: storageService);
+
+  // Sync dynamic app config (ElevenLabs keys, Gemini keys, store URLs) in background
+  ApiService().fetchAppConfig().then((config) {
+    if (config != null) {
+      final geminiKey = config['geminiApiKey']?.trim() ?? '';
+      final elevenLabsKey = config['elevenLabsApiKey']?.trim() ?? '';
+      if (geminiKey.isNotEmpty) storageService.setGeminiApiKey(geminiKey);
+      if (elevenLabsKey.isNotEmpty) storageService.setElevenLabsApiKey(elevenLabsKey);
+      final playUrl = config['playStoreUrl']?.trim() ?? '';
+      final appUrl = config['appStoreUrl']?.trim() ?? '';
+      if (playUrl.isNotEmpty) storageService.setPlayStoreUrl(playUrl);
+      if (appUrl.isNotEmpty) storageService.setAppStoreUrl(appUrl);
+    }
+  }).catchError((_) {});
 
   // Pre-warm Gemini HTTP/TLS socket in background for sub-second first response
   GeminiAiService().warmUp(storageService);

@@ -252,17 +252,48 @@ class VoiceProvider extends ChangeNotifier {
         }
       }
     } else {
-      // First time interaction: use unique personalized character greeting
-      final rawQuote = character.voicePreviewQuote.isNotEmpty && !character.voicePreviewQuote.contains("moment alone")
-          ? character.voicePreviewQuote
-          : character.initialGreeting;
-      openingSpokenText = RoleplayAiEngine.personalizeWithUserName(rawQuote, userName);
-      // Clean quotes/asterisks if any
-      final quoteMatch = RegExp(r'"([^"]+)"').firstMatch(openingSpokenText);
-      if (quoteMatch != null && quoteMatch.group(1) != null) {
-        openingSpokenText = quoteMatch.group(1)!.trim();
-      } else {
-        openingSpokenText = openingSpokenText.replaceAll(RegExp(r'\*[^*]*\*'), '').replaceAll('"', '').trim();
+      // First time interaction: Generate dynamic, authentic voice call greeting via Gemini AI
+      try {
+        final affection = _storageService?.getAffection(character.id) ?? 60;
+        final rel = CharacterRelationship(characterId: character.id)..addAffection(affection);
+        final reply = await GeminiAiService().generateRoleplayReply(
+          character: character,
+          userInput: "*calls you on the phone*",
+          scenario: scenario,
+          currentMood: currentMood,
+          relationshipLevel: rel.level,
+          history: [],
+          userName: userName,
+          isVoiceCall: true,
+          storageService: _storageService,
+        );
+        _currentEmotion = reply.emotion;
+        openingSpokenText = reply.spokenText.isNotEmpty
+            ? reply.spokenText
+            : reply.text.replaceAll(RegExp(r'\*[^*]*\*'), '').replaceAll('"', '').trim();
+
+        // Save AI call opening to history
+        final aiMsg = ChatMessage(
+          id: const Uuid().v4(),
+          characterId: character.id,
+          isUser: false,
+          content: reply.text,
+          emotion: reply.emotion,
+        );
+        existingHistory.add(aiMsg);
+        await _storageService?.saveChatHistory(character.id, existingHistory);
+      } catch (e) {
+        debugPrint("Call initial greeting generation note: $e");
+        final rawQuote = character.voicePreviewQuote.isNotEmpty
+            ? character.voicePreviewQuote
+            : character.initialGreeting;
+        openingSpokenText = RoleplayAiEngine.personalizeWithUserName(rawQuote, userName);
+        final quoteMatch = RegExp(r'"([^"]+)"').firstMatch(openingSpokenText);
+        if (quoteMatch != null && quoteMatch.group(1) != null) {
+          openingSpokenText = quoteMatch.group(1)!.trim();
+        } else {
+          openingSpokenText = openingSpokenText.replaceAll(RegExp(r'\*[^*]*\*'), '').replaceAll('"', '').trim();
+        }
       }
     }
 
