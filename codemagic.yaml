@@ -4,34 +4,25 @@
     instance_type: mac_mini_m2
     max_build_duration: 60
     environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.lovia.ai.friend.app.lovia
       flutter: stable
       xcode: latest
       cocoapods: default
-      vars:
-        APP_ID: "com.lovia.ai.friend.app.lovia"
     scripts:
-      - name: Set up code signing
-        script: |
-          keychain initialize
-          if [ -n "$CM_CERTIFICATE" ]; then
-            echo "Using manual uploaded certificates from Codemagic UI..."
-            keychain add-certificates
-            xcode-project use-profiles
-          else
-            echo "Using App Store Connect API integration..."
-            app-store-connect fetch-signing-files "$APP_ID" --type IOS_APP_STORE --create
-            keychain add-certificates
-            xcode-project use-profiles
-          fi
       - name: Get Flutter packages
         script: |
           flutter packages pub get
       - name: Install CocoaPods dependencies
         script: |
-          cd ios && pod install --repo-update
+          find . -name "Podfile" -execdir pod install \;
       - name: Flutter build iOS
         script: |
           flutter build ios --release --no-codesign
+      - name: Apply Provisioning Profiles
+        script: |
+          xcode-project use-profiles
       - name: Build and Sign IPA
         script: |
           xcode-project build-ipa \
