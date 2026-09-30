@@ -40,7 +40,7 @@ void main() async {
   await FirebaseNotificationService().init();
   await NotificationCampaignService().init();
 
-  // Initialize Dual-Analytics (Firebase Analytics & Facebook App Events SDK)
+  // Initialize Firebase Analytics (Google Analytics 4)
   await AnalyticsService().init();
   AnalyticsService().setUserId(storageService.getOrCreateDeviceId());
 

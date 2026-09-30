@@ -157,7 +157,7 @@ class CoinProvider extends ChangeNotifier {
     _balance -= amount;
     await _storage.setCoins(_balance);
 
-    // Track virtual currency spent in Firebase & Facebook Analytics
+    // Track virtual currency spent in Firebase Analytics
     AnalyticsService().logSpendVirtualCurrency(
       itemName: description,
       diamondsSpent: amount,
@@ -232,7 +232,7 @@ class CoinProvider extends ChangeNotifier {
       coinBalance: _balance,
     );
 
-    // Dual-Analytics: Log subscription conversion for Facebook Ad Network & Firebase
+    // Log subscription conversion in Firebase Analytics
     AnalyticsService().logSubscription(
       planId: plan.id,
       priceUsd: plan.priceUsd,
@@ -298,7 +298,7 @@ class CoinProvider extends ChangeNotifier {
       coinBalance: _balance,
     );
 
-    // Dual-Analytics: Log purchase conversion for Facebook Ad Network ROAS & Firebase
+    // Log purchase conversion in Firebase Analytics
     AnalyticsService().logPurchase(
       productId: package.productId,
       priceUsd: package.priceUsd,
