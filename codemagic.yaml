@@ -3,6 +3,8 @@
     name: Lovia iOS Release Build
     instance_type: mac_mini_m2
     max_build_duration: 60
+    integrations:
+      app_store_connect: Drama API Key
     environment:
       ios_signing:
         distribution_type: app_store
@@ -32,6 +34,10 @@
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
     publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: false
+        submit_to_app_store: false
       email:
         recipients:
           - theprincebalar@gmail.com
