@@ -412,6 +412,7 @@ class VoiceService {
   }
 
   /// Synthesize ultra-realistic human voice with emotional nuance via ElevenLabs API
+  /// Synthesize ultra-realistic human voice with emotional nuance via ElevenLabs API
   Future<bool> _speakWithElevenLabs({
     required String text,
     required String voiceId,
@@ -420,14 +421,16 @@ class VoiceService {
     double speed = 1.0,
     double emotionIntensity = 1.0,
   }) async {
+    if (apiKey.trim().isEmpty || voiceId.trim().isEmpty) {
+      debugPrint("ℹ️ ElevenLabs API key or voiceId is empty; using local device voice engine.");
+      return false;
+    }
+
     try {
       final cacheKey = 'eleven-$voiceId-$speed-$emotionIntensity-${emotion.name}-$text';
       Uint8List? audioBytes = _neuralAudioCache[cacheKey];
 
       if (audioBytes == null) {
-        // Dynamic stability and style based on emotional expressiveness:
-        // Lower stability (0.22 - 0.40) unleashes intense human nuance, breath, and emotional passion.
-        // Higher style (0.45 - 0.85) produces rich emotional inflection instead of flat TTS.
         double baseStability;
         double baseStyle;
 
@@ -470,13 +473,12 @@ class VoiceService {
         final style = (baseStyle + (emotionIntensity - 1.0) * 0.12).clamp(0.15, 0.90);
 
         http.Response? response;
-        // Attempt synthesis with automatic retry on transient error or concurrency limit (429)
         for (int attempt = 0; attempt < 2; attempt++) {
           try {
             response = await http.post(
               Uri.parse('https://api.elevenlabs.io/v1/text-to-speech/$voiceId?output_format=mp3_44100_128'),
               headers: {
-                'xi-api-key': apiKey,
+                'xi-api-key': apiKey.trim(),
                 'Content-Type': 'application/json',
               },
               body: jsonEncode({
@@ -489,53 +491,31 @@ class VoiceService {
                   'use_speaker_boost': true,
                 },
               }),
-            ).timeout(const Duration(seconds: 25));
+            ).timeout(const Duration(seconds: 15));
 
             if (response.statusCode == 200) {
               break;
             } else if (response.statusCode == 429 && attempt == 0) {
-              // Concurrency limit reached: back off briefly and retry
-              await Future.delayed(const Duration(milliseconds: 800));
+              await Future.delayed(const Duration(milliseconds: 600));
               continue;
             } else {
               break;
             }
-          } on TimeoutException {
-            if (attempt == 0) {
-              await Future.delayed(const Duration(milliseconds: 500));
-              continue;
-            }
-            rethrow;
           } catch (e) {
             if (attempt == 0) {
-              await Future.delayed(const Duration(milliseconds: 500));
+              await Future.delayed(const Duration(milliseconds: 400));
               continue;
             }
-            rethrow;
+            debugPrint("ElevenLabs request attempt failed: $e");
+            return false;
           }
         }
 
-        if (response != null && response.statusCode == 200) {
+        if (response != null && response.statusCode == 200 && response.bodyBytes.isNotEmpty) {
           audioBytes = response.bodyBytes;
           _neuralAudioCache[cacheKey] = audioBytes;
-        } else if (response != null) {
-          if (response.statusCode == 429) {
-            _notifyError("Voice server is busy processing another voice. Please try again in a moment.");
-          } else if (response.statusCode == 401) {
-            _notifyError("Voice authorization failed. Please check your credentials in Voice Studio.");
-          } else {
-            try {
-              final errorJson = jsonDecode(response.body);
-              final msg = errorJson['detail']?['message']?.toString() ?? 'Voice service error: ${response.statusCode}';
-              final cleanMsg = msg.replaceAll(RegExp(r'ElevenLabs', caseSensitive: false), 'Neural Voice');
-              _notifyError(cleanMsg);
-            } catch (_) {
-              _notifyError("Voice service notice: ${response.statusCode}");
-            }
-          }
-          return false;
         } else {
-          _notifyError("Voice connection error. Please check your internet connection.");
+          debugPrint("ElevenLabs response: ${response?.statusCode}");
           return false;
         }
       }
@@ -544,19 +524,10 @@ class VoiceService {
       _speakingStateController.add(true);
       await _audioPlayer.play(BytesSource(audioBytes));
       return true;
-    } on TimeoutException {
-      debugPrint("Voice TTS timeout");
-      _notifyError("Voice connection timed out. Please check your internet connection.");
     } catch (e) {
-      debugPrint("Voice TTS exception: $e");
-      final errStr = e.toString();
-      if (errStr.contains("SocketException") || errStr.contains("Failed host lookup") || errStr.contains("ClientException")) {
-        _notifyError("Network error: Unable to reach voice engine. Please check your internet connection.");
-      } else {
-        _notifyError("Voice engine error. Please try again.");
-      }
+      debugPrint("ElevenLabs audio player exception: $e");
+      return false;
     }
-    return false;
   }
 
   /// Synthesize voice using local device TTS engine as reliable zero-latency fallback
@@ -585,8 +556,10 @@ class VoiceService {
       final pitch = (customPitch ?? character.voiceProfile.defaultPitch).clamp(0.5, 1.8);
       final rate = ((customRate ?? character.voiceProfile.defaultRate) * userSpeedMultiplier).clamp(0.2, 1.0);
 
-      await _tts.setPitch(pitch);
-      await _tts.setSpeechRate(rate);
+      try {
+        await _tts.setPitch(pitch);
+        await _tts.setSpeechRate(rate);
+      } catch (_) {}
 
       if (Platform.environment.containsKey('FLUTTER_TEST')) {
         _isSpeaking = true;
@@ -637,25 +610,27 @@ class VoiceService {
                 ? '3YXAuwCx7wB8kSkKCqsu' // Intimate Romantic Female
                 : '3svOJAOhuPHXwQC2H5eq')); // Friendly / Warm Natural Male
 
-    // 1. Try ElevenLabs neural audio first
+    // 1. Try ElevenLabs neural audio first if API key is provided
     bool played = false;
-    try {
-      played = await _speakWithElevenLabs(
-        text: spokenContent,
-        voiceId: voiceId,
-        apiKey: elevenLabsKey,
-        emotion: emotion,
-        speed: userSpeedMultiplier,
-        emotionIntensity: emotionIntensity,
-      );
-    } catch (e) {
-      debugPrint("ElevenLabs playback error: $e");
-      played = false;
+    if (elevenLabsKey.trim().isNotEmpty) {
+      try {
+        played = await _speakWithElevenLabs(
+          text: spokenContent,
+          voiceId: voiceId,
+          apiKey: elevenLabsKey,
+          emotion: emotion,
+          speed: userSpeedMultiplier,
+          emotionIntensity: emotionIntensity,
+        );
+      } catch (e) {
+        debugPrint("ElevenLabs playback error: $e");
+        played = false;
+      }
     }
 
-    // 2. If ElevenLabs failed, timed out, or quota exceeded, fall back to local TTS engine
+    // 2. If ElevenLabs is not configured, failed, or timed out, fall back to local device TTS
     if (!played) {
-      debugPrint("ElevenLabs failed or unavailable; falling back to local TTS for ${character.name}");
+      debugPrint("🔊 Playing voice via local TTS engine for ${character.name}");
       played = await _speakWithLocalTts(
         character: character,
         emotion: emotion,
