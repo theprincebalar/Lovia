@@ -705,9 +705,27 @@ class VoiceService {
                 ? '3YXAuwCx7wB8kSkKCqsu' // Intimate Romantic Female
                 : '3svOJAOhuPHXwQC2H5eq')); // Friendly / Warm Natural Male
 
-    // 1. Try ElevenLabs neural audio first if API key is provided
+    // 1. Try High-Fidelity Server Neural Voice Stream (Identical to Studio Previews)
     bool played = false;
-    if (elevenLabsKey.trim().isNotEmpty) {
+    try {
+      final audioUrl = await ApiService().generateVoiceAudio(
+        text: spokenContent,
+        character: character,
+        archetype: emotion.name,
+      );
+      if (audioUrl != null && audioUrl.isNotEmpty) {
+        _isSpeaking = true;
+        _speakingStateController.add(true);
+        await _audioPlayer.play(UrlSource(audioUrl));
+        played = true;
+      }
+    } catch (e) {
+      debugPrint("Server Neural Voice call playback error: $e");
+      played = false;
+    }
+
+    // 2. Try ElevenLabs neural audio if server stream is unavailable and key is present
+    if (!played && elevenLabsKey.trim().isNotEmpty) {
       try {
         played = await _speakWithElevenLabs(
           text: spokenContent,
@@ -723,7 +741,7 @@ class VoiceService {
       }
     }
 
-    // 2. If ElevenLabs is not configured, failed, or timed out, fall back to local device TTS
+    // 3. Fall back to local device TTS with enforced gender pitch
     if (!played) {
       debugPrint("🔊 Playing voice via local TTS engine for ${character.name}");
       played = await _speakWithLocalTts(

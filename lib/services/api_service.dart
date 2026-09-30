@@ -211,5 +211,36 @@ class ApiService {
       return false;
     }
   }
+
+  /// Synthesizes real-time high-fidelity studio neural voice audio for live AI voice calls
+  Future<String?> generateVoiceAudio({
+    required String text,
+    required Character character,
+    String? archetype,
+  }) async {
+    try {
+      final res = await http.post(
+        Uri.parse('$_baseUrl/api/voice/speak'),
+        headers: _getSecurityHeaders(),
+        body: jsonEncode({
+          'text': text,
+          'gender': character.gender.name,
+          'archetype': archetype ?? character.primaryMood.name,
+          'characterId': character.id,
+        }),
+      ).timeout(const Duration(seconds: 8));
+
+      if (res.statusCode == 200) {
+        final data = jsonDecode(res.body) as Map<String, dynamic>;
+        final audioUrl = data['audioUrl'] as String?;
+        if (audioUrl != null && audioUrl.isNotEmpty) {
+          return audioUrl;
+        }
+      }
+    } catch (e) {
+      debugPrint("Server neural voice generation error: $e");
+    }
+    return null;
+  }
 }
 

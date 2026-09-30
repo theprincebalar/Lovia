@@ -17,12 +17,16 @@ const LEGAL_FILE = path.join(__dirname, 'data', 'legal.json');
 const REFUNDS_FILE = path.join(__dirname, 'data', 'refunds.json');
 const UPLOADS_DIR = path.join(__dirname, 'uploads');
 const ASSETS_DIR = path.join(__dirname, 'public', 'assets');
+const CALL_CACHE_DIR = path.join(ASSETS_DIR, 'call_cache');
 
 if (!fs.existsSync(UPLOADS_DIR)) {
   fs.mkdirSync(UPLOADS_DIR, { recursive: true });
 }
 if (!fs.existsSync(ASSETS_DIR)) {
   fs.mkdirSync(ASSETS_DIR, { recursive: true });
+}
+if (!fs.existsSync(CALL_CACHE_DIR)) {
+  fs.mkdirSync(CALL_CACHE_DIR, { recursive: true });
 }
 
 app.use(cors());
@@ -527,6 +531,61 @@ app.post('/api/voices', requireClientAuth, (req, res) => {
     console.error('Error reading voice manifest:', e);
   }
   res.json([]);
+});
+
+// Real-Time Studio Neural TTS Endpoint for Live Voice Calls
+const { exec: execCmd } = require('child_process');
+app.post('/api/voice/speak', requireClientAuth, async (req, res) => {
+  try {
+    const { text, gender, archetype, characterId } = req.body || {};
+    if (!text || !text.trim()) {
+      return res.status(400).json({ error: 'Text is required' });
+    }
+
+    // Clean dialogue text for speech synthesis
+    let clean = text.replace(/\[EMOTION[^\]\n]*\]?/gi, '').replace(/\*[^*]*\*/g, '').replace(/"/g, '').trim();
+    if (!clean) clean = text.replace(/\*/g, '').replace(/"/g, '').trim();
+
+    // Map character/gender to natural Edge Neural Voice
+    const isFemale = (gender || '').toLowerCase() !== 'male';
+    let voice = isFemale ? 'en-US-AvaNeural' : 'en-US-AndrewNeural';
+
+    if (isFemale) {
+      if (archetype === 'shy' || archetype === 'playful') voice = 'en-US-AnaNeural';
+      else if (archetype === 'caring') voice = 'en-US-EmmaNeural';
+      else if (archetype === 'confident' || archetype === 'frustrated') voice = 'en-US-AriaNeural';
+      else if (archetype === 'mysterious') voice = 'en-GB-SoniaNeural';
+    } else {
+      if (archetype === 'caring' || archetype === 'shy') voice = 'en-US-BrianNeural';
+      else if (archetype === 'confident' || archetype === 'frustrated') voice = 'en-US-ChristopherNeural';
+      else if (archetype === 'playful' || archetype === 'excited') voice = 'en-US-EricNeural';
+      else if (archetype === 'mysterious') voice = 'en-GB-RyanNeural';
+    }
+
+    // Cache file by voice + text hash
+    const hash = crypto.createHash('md5').update(`${voice}_${clean}`).digest('hex');
+    const cacheFile = path.join(CALL_CACHE_DIR, `${hash}.mp3`);
+    const publicUrl = `https://lovia-api.genxappstudio.cloud/assets/call_cache/${hash}.mp3`;
+
+    if (fs.existsSync(cacheFile) && fs.statSync(cacheFile).size > 200) {
+      return res.json({ audioUrl: publicUrl, cached: true });
+    }
+
+    // Run edge-tts to generate audio
+    const escapedText = clean.replace(/"/g, '\\"').replace(/\$/g, '\\$').replace(/`/g, '\\`');
+    const cmd = `edge-tts --text "${escapedText}" --voice "${voice}" --rate="-2%" --write-media "${cacheFile}"`;
+
+    execCmd(cmd, { timeout: 12000 }, (err) => {
+      if (err || !fs.existsSync(cacheFile) || fs.statSync(cacheFile).size < 100) {
+        console.error('Edge TTS execution error:', err);
+        return res.status(500).json({ error: 'TTS audio synthesis failed' });
+      }
+      res.json({ audioUrl: publicUrl, cached: false });
+    });
+  } catch (err) {
+    console.error('Voice speak endpoint exception:', err);
+    res.status(500).json({ error: 'Server error generating voice' });
+  }
 });
 
 // Secure AI Proxy Endpoint (Hides API Keys from mobile client)
