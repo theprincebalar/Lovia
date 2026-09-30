@@ -48,18 +48,20 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> with SingleTick
     );
 
     // Refresh and listen to localized store prices from Google Play / App Store
-    RevenueCatService().onPricesUpdated = () {
-      if (mounted) setState(() {});
-    };
+    RevenueCatService().addPriceListener(_onPricesUpdated);
     RevenueCatService().refreshOfferingsAndLocalPrices();
 
     AnalyticsService().logViewPaywall(source: 'subscription_screen');
   }
 
+  void _onPricesUpdated() {
+    if (mounted) setState(() {});
+  }
+
   @override
   void dispose() {
     _pulseController.dispose();
-    RevenueCatService().onPricesUpdated = null;
+    RevenueCatService().removePriceListener(_onPricesUpdated);
     super.dispose();
   }
 

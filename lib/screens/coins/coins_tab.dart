@@ -11,7 +11,7 @@ import '../webview/web_view_screen.dart';
 import '../../services/storage_service.dart';
 import '../../services/analytics_service.dart';
 
-class CoinsTab extends StatelessWidget {
+class CoinsTab extends StatefulWidget {
   final bool fromSubscriptionScreen;
 
   const CoinsTab({
@@ -20,7 +20,30 @@ class CoinsTab extends StatelessWidget {
   });
 
   @override
+  State<CoinsTab> createState() => _CoinsTabState();
+}
+
+class _CoinsTabState extends State<CoinsTab> {
+  @override
+  void initState() {
+    super.initState();
+    RevenueCatService().addPriceListener(_onPricesUpdated);
+    RevenueCatService().refreshOfferingsAndLocalPrices();
+  }
+
+  @override
+  void dispose() {
+    RevenueCatService().removePriceListener(_onPricesUpdated);
+    super.dispose();
+  }
+
+  void _onPricesUpdated() {
+    if (mounted) setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final fromSubscriptionScreen = widget.fromSubscriptionScreen;
     return Consumer<CoinProvider>(
       builder: (context, coinProvider, child) {
         return Scaffold(

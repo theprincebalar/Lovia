@@ -60,18 +60,21 @@ class _PaywallScreenState extends State<PaywallScreen> with SingleTickerProvider
       CurvedAnimation(parent: _pulseController, curve: Curves.easeInOut),
     );
 
-    RevenueCatService().onPricesUpdated = () {
-      if (mounted) setState(() {});
-    };
+    // Refresh and listen to localized store prices from Google Play / App Store
+    RevenueCatService().addPriceListener(_onPricesUpdated);
     RevenueCatService().refreshOfferingsAndLocalPrices();
 
     AnalyticsService().logViewPaywall(source: widget.sourceAction ?? 'paywall_screen');
   }
 
+  void _onPricesUpdated() {
+    if (mounted) setState(() {});
+  }
+
   @override
   void dispose() {
     _pulseController.dispose();
-    RevenueCatService().onPricesUpdated = null;
+    RevenueCatService().removePriceListener(_onPricesUpdated);
     super.dispose();
   }
 

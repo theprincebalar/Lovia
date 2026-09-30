@@ -1,5 +1,6 @@
 class CoinPackage {
   final String id;
+  final String? _productId;
   final String title;
   final int coins;
   final int bonusCoins;
@@ -10,6 +11,7 @@ class CoinPackage {
 
   const CoinPackage({
     required this.id,
+    String? productId,
     required this.title,
     required this.coins,
     required this.bonusCoins,
@@ -17,18 +19,19 @@ class CoinPackage {
     this.isPopular = false,
     this.isBestValue = false,
     this.badge = '',
-  });
+  }) : _productId = productId;
 
   int get totalCoins => coins + bonusCoins;
   int get diamonds => coins;
   int get bonusDiamonds => bonusCoins;
   int get totalDiamonds => totalCoins;
   String get diamondTitle => title.replaceAll("Coins", "Diamonds");
-  String get productId => id;
+  String get productId => _productId ?? 'lovia_diamonds_$totalCoins';
 
   factory CoinPackage.fromJson(Map<String, dynamic> json) {
     return CoinPackage(
       id: json['id'] as String? ?? 'pkg_${DateTime.now().millisecondsSinceEpoch}',
+      productId: json['productId'] as String?,
       title: json['title'] as String? ?? 'Diamonds',
       coins: (json['coins'] as num?)?.toInt() ?? 20,
       bonusCoins: (json['bonusCoins'] as num?)?.toInt() ?? 0,
@@ -41,6 +44,7 @@ class CoinPackage {
 
   Map<String, dynamic> toJson() => {
     'id': id,
+    'productId': productId,
     'title': title,
     'coins': coins,
     'bonusCoins': bonusCoins,
@@ -53,6 +57,7 @@ class CoinPackage {
   static const List<CoinPackage> standardPackages = [
     CoinPackage(
       id: "pkg_20",
+      productId: "lovia_diamonds_20",
       title: "Handful of Coins",
       coins: 20,
       bonusCoins: 0,
@@ -61,6 +66,7 @@ class CoinPackage {
     ),
     CoinPackage(
       id: "pkg_50",
+      productId: "lovia_diamonds_50",
       title: "Pouch of Coins",
       coins: 50,
       bonusCoins: 0,
@@ -69,6 +75,7 @@ class CoinPackage {
     ),
     CoinPackage(
       id: "pkg_130",
+      productId: "lovia_diamonds_130",
       title: "Chest of Coins",
       coins: 130,
       bonusCoins: 0,
@@ -78,6 +85,7 @@ class CoinPackage {
     ),
     CoinPackage(
       id: "pkg_300",
+      productId: "lovia_diamonds_300",
       title: "Vault of Coins",
       coins: 300,
       bonusCoins: 0,
@@ -86,6 +94,7 @@ class CoinPackage {
     ),
     CoinPackage(
       id: "pkg_650",
+      productId: "lovia_diamonds_650",
       title: "Treasury of Coins",
       coins: 650,
       bonusCoins: 0,
@@ -94,6 +103,7 @@ class CoinPackage {
     ),
     CoinPackage(
       id: "pkg_1700",
+      productId: "lovia_diamonds_1700",
       title: "Royal Emperor Treasury",
       coins: 1700,
       bonusCoins: 0,

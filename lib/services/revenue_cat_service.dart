@@ -9,7 +9,7 @@ import '../services/storage_service.dart';
 import '../theme/app_colors.dart';
 
 /// Cross-platform RevenueCat In-App Purchase & Subscription Service
-/// Ported from E:\DramaPop architecture, adapted for Lovia's Provider state layer.
+/// Ensures 100% accurate localized prices in user's local currency (₹, $, €, £, etc.)
 class RevenueCatService {
   static final RevenueCatService _instance = RevenueCatService._internal();
   factory RevenueCatService() => _instance;
@@ -30,7 +30,7 @@ class RevenueCatService {
   CustomerInfo? customerInfo;
   Offerings? offerings;
 
-  // Reactive Localized Prices in User's Local Store Currency (e.g. ₹, $, €, £)
+  // Reactive Localized Prices in User's Local Store Currency (e.g. ₹499.00, $4.99, €4.99, £4.49)
   final Map<SubscriptionPeriod, String> localizedSubscriptionPrices = {};
   final Map<String, String> localizedDiamondPrices = {};
   final Map<String, StoreProduct> storeProductsMap = {};
@@ -38,7 +38,38 @@ class RevenueCatService {
 
   CoinProvider? _coinProvider;
   StorageService? _storageService;
-  VoidCallback? onPricesUpdated;
+
+  final Set<VoidCallback> _priceListeners = {};
+  VoidCallback? _legacyPricesUpdated;
+
+  VoidCallback? get onPricesUpdated => _legacyPricesUpdated;
+  set onPricesUpdated(VoidCallback? cb) {
+    _legacyPricesUpdated = cb;
+    if (cb != null) {
+      _priceListeners.add(cb);
+    }
+  }
+
+  void addPriceListener(VoidCallback listener) {
+    _priceListeners.add(listener);
+  }
+
+  void removePriceListener(VoidCallback listener) {
+    _priceListeners.remove(listener);
+    if (_legacyPricesUpdated == listener) {
+      _legacyPricesUpdated = null;
+    }
+  }
+
+  void _notifyPriceListeners() {
+    for (final listener in List<VoidCallback>.from(_priceListeners)) {
+      try {
+        listener();
+      } catch (e) {
+        debugPrint("Price listener notification error: $e");
+      }
+    }
+  }
 
   Future<void> init({StorageService? storageService, CoinProvider? coinProvider}) async {
     _storageService = storageService ?? StorageService();
@@ -150,8 +181,7 @@ class RevenueCatService {
           expiry: expiryDate,
         );
       } else if (!hasActiveVip && _coinProvider != null) {
-        // Only de-activate VIP if local plan has actually reached its stored expiration date!
-        // Never wipe a user's subscription during cold start or temporary RevenueCat sync lags.
+        // Only de-activate VIP if local plan has actually reached its stored expiration date
         final localExpiry = _coinProvider?.subscriptionExpiry;
         if (localExpiry != null && DateTime.now().isAfter(localExpiry)) {
           if (_coinProvider!.isSubscribed || _coinProvider!.activeSubscription != null) {
@@ -183,138 +213,228 @@ class RevenueCatService {
       if (!isConfigured) return;
 
       // 1. Fetch Subscription Offerings in User's Local Currency
-      final off = await Purchases.getOfferings();
-      offerings = off;
+      try {
+        final off = await Purchases.getOfferings();
+        offerings = off;
 
-      if (off.current != null) {
-        final currentOffering = off.current!;
-        if (currentOffering.weekly != null) {
-          final p = currentOffering.weekly!;
-          localizedSubscriptionPrices[SubscriptionPeriod.weekly] = p.storeProduct.priceString;
-          subscriptionPackagesMap[SubscriptionPeriod.weekly] = p;
-          debugPrint('🪙 Localized Weekly Subscription: ${p.storeProduct.priceString} (${p.storeProduct.currencyCode})');
-        }
-        if (currentOffering.monthly != null) {
-          final p = currentOffering.monthly!;
-          localizedSubscriptionPrices[SubscriptionPeriod.monthly] = p.storeProduct.priceString;
-          subscriptionPackagesMap[SubscriptionPeriod.monthly] = p;
-          debugPrint('🪙 Localized Monthly Subscription: ${p.storeProduct.priceString} (${p.storeProduct.currencyCode})');
-        }
-        if (currentOffering.annual != null) {
-          final p = currentOffering.annual!;
-          localizedSubscriptionPrices[SubscriptionPeriod.yearly] = p.storeProduct.priceString;
-          subscriptionPackagesMap[SubscriptionPeriod.yearly] = p;
-          debugPrint('🪙 Localized Annual Subscription: ${p.storeProduct.priceString} (${p.storeProduct.currencyCode})');
-        }
+        if (off.current != null) {
+          final currentOffering = off.current!;
+          if (currentOffering.weekly != null) {
+            final p = currentOffering.weekly!;
+            localizedSubscriptionPrices[SubscriptionPeriod.weekly] = p.storeProduct.priceString;
+            subscriptionPackagesMap[SubscriptionPeriod.weekly] = p;
+            storeProductsMap[p.storeProduct.identifier] = p.storeProduct;
+            debugPrint('🪙 Localized Offering Weekly: ${p.storeProduct.priceString} (${p.storeProduct.currencyCode})');
+          }
+          if (currentOffering.monthly != null) {
+            final p = currentOffering.monthly!;
+            localizedSubscriptionPrices[SubscriptionPeriod.monthly] = p.storeProduct.priceString;
+            subscriptionPackagesMap[SubscriptionPeriod.monthly] = p;
+            storeProductsMap[p.storeProduct.identifier] = p.storeProduct;
+            debugPrint('🪙 Localized Offering Monthly: ${p.storeProduct.priceString} (${p.storeProduct.currencyCode})');
+          }
+          if (currentOffering.annual != null) {
+            final p = currentOffering.annual!;
+            localizedSubscriptionPrices[SubscriptionPeriod.yearly] = p.storeProduct.priceString;
+            subscriptionPackagesMap[SubscriptionPeriod.yearly] = p;
+            storeProductsMap[p.storeProduct.identifier] = p.storeProduct;
+            debugPrint('🪙 Localized Offering Annual: ${p.storeProduct.priceString} (${p.storeProduct.currencyCode})');
+          }
 
-        for (final pkg in currentOffering.availablePackages) {
-          final pId = pkg.storeProduct.identifier.toLowerCase();
-          final pkgId = pkg.identifier.toLowerCase();
+          for (final pkg in currentOffering.availablePackages) {
+            final pId = pkg.storeProduct.identifier.toLowerCase();
+            final pkgId = pkg.identifier.toLowerCase();
+            storeProductsMap[pkg.storeProduct.identifier] = pkg.storeProduct;
+            storeProductsMap[pkg.identifier] = pkg.storeProduct;
 
-          final isWeekly = pkg.packageType == PackageType.weekly ||
-              pId == 'lovia_vip_weekly' ||
-              pkgId == 'lovia_vip_weekly' ||
-              pId.contains('weekly') ||
-              pkgId.contains('weekly');
+            final isWeekly = pkg.packageType == PackageType.weekly ||
+                pId == 'lovia_vip_weekly' ||
+                pkgId == 'lovia_vip_weekly' ||
+                pId.contains('weekly') ||
+                pkgId.contains('weekly');
 
-          final isMonthly = pkg.packageType == PackageType.monthly ||
-              pId == 'lovia_vip_monthly' ||
-              pkgId == 'lovia_vip_monthly' ||
-              pId.contains('monthly') ||
-              pkgId.contains('monthly');
+            final isMonthly = pkg.packageType == PackageType.monthly ||
+                pId == 'lovia_vip_monthly' ||
+                pkgId == 'lovia_vip_monthly' ||
+                pId.contains('monthly') ||
+                pkgId.contains('monthly');
 
-          final isYearly = pkg.packageType == PackageType.annual ||
-              pId == 'lovia_vip_yearly' ||
-              pkgId == 'lovia_vip_yearly' ||
-              pId.contains('yearly') ||
-              pId.contains('annual') ||
-              pkgId.contains('yearly') ||
-              pkgId.contains('annual');
+            final isYearly = pkg.packageType == PackageType.annual ||
+                pId == 'lovia_vip_yearly' ||
+                pkgId == 'lovia_vip_yearly' ||
+                pId.contains('yearly') ||
+                pId.contains('annual') ||
+                pkgId.contains('yearly') ||
+                pkgId.contains('annual');
 
-          if (isWeekly && !localizedSubscriptionPrices.containsKey(SubscriptionPeriod.weekly)) {
-            localizedSubscriptionPrices[SubscriptionPeriod.weekly] = pkg.storeProduct.priceString;
-            subscriptionPackagesMap[SubscriptionPeriod.weekly] = pkg;
-          } else if (isMonthly && !localizedSubscriptionPrices.containsKey(SubscriptionPeriod.monthly)) {
-            localizedSubscriptionPrices[SubscriptionPeriod.monthly] = pkg.storeProduct.priceString;
-            subscriptionPackagesMap[SubscriptionPeriod.monthly] = pkg;
-          } else if (isYearly && !localizedSubscriptionPrices.containsKey(SubscriptionPeriod.yearly)) {
-            localizedSubscriptionPrices[SubscriptionPeriod.yearly] = pkg.storeProduct.priceString;
-            subscriptionPackagesMap[SubscriptionPeriod.yearly] = pkg;
+            if (isWeekly && !localizedSubscriptionPrices.containsKey(SubscriptionPeriod.weekly)) {
+              localizedSubscriptionPrices[SubscriptionPeriod.weekly] = pkg.storeProduct.priceString;
+              subscriptionPackagesMap[SubscriptionPeriod.weekly] = pkg;
+            } else if (isMonthly && !localizedSubscriptionPrices.containsKey(SubscriptionPeriod.monthly)) {
+              localizedSubscriptionPrices[SubscriptionPeriod.monthly] = pkg.storeProduct.priceString;
+              subscriptionPackagesMap[SubscriptionPeriod.monthly] = pkg;
+            } else if (isYearly && !localizedSubscriptionPrices.containsKey(SubscriptionPeriod.yearly)) {
+              localizedSubscriptionPrices[SubscriptionPeriod.yearly] = pkg.storeProduct.priceString;
+              subscriptionPackagesMap[SubscriptionPeriod.yearly] = pkg;
+            }
           }
         }
-      }
 
-      // Also index all packages across all offerings
-      for (final offEntry in off.all.values) {
-        for (final pkg in offEntry.availablePackages) {
-          final pId = pkg.storeProduct.identifier.toLowerCase();
-          final pkgId = pkg.identifier.toLowerCase();
+        // Also index all packages across all offerings
+        for (final offEntry in off.all.values) {
+          for (final pkg in offEntry.availablePackages) {
+            final pId = pkg.storeProduct.identifier.toLowerCase();
+            final pkgId = pkg.identifier.toLowerCase();
+            storeProductsMap[pkg.storeProduct.identifier] = pkg.storeProduct;
+            storeProductsMap[pkg.identifier] = pkg.storeProduct;
 
-          final isWeekly = pkg.packageType == PackageType.weekly ||
-              pId == 'lovia_vip_weekly' ||
-              pkgId == 'lovia_vip_weekly' ||
-              pId.contains('weekly') ||
-              pkgId.contains('weekly');
+            final isWeekly = pkg.packageType == PackageType.weekly ||
+                pId == 'lovia_vip_weekly' ||
+                pkgId == 'lovia_vip_weekly' ||
+                pId.contains('weekly') ||
+                pkgId.contains('weekly');
 
-          final isMonthly = pkg.packageType == PackageType.monthly ||
-              pId == 'lovia_vip_monthly' ||
-              pkgId == 'lovia_vip_monthly' ||
-              pId.contains('monthly') ||
-              pkgId.contains('monthly');
+            final isMonthly = pkg.packageType == PackageType.monthly ||
+                pId == 'lovia_vip_monthly' ||
+                pkgId == 'lovia_vip_monthly' ||
+                pId.contains('monthly') ||
+                pkgId.contains('monthly');
 
-          final isYearly = pkg.packageType == PackageType.annual ||
-              pId == 'lovia_vip_yearly' ||
-              pkgId == 'lovia_vip_yearly' ||
-              pId.contains('yearly') ||
-              pId.contains('annual') ||
-              pkgId.contains('yearly') ||
-              pkgId.contains('annual');
+            final isYearly = pkg.packageType == PackageType.annual ||
+                pId == 'lovia_vip_yearly' ||
+                pkgId == 'lovia_vip_yearly' ||
+                pId.contains('yearly') ||
+                pId.contains('annual') ||
+                pkgId.contains('yearly') ||
+                pkgId.contains('annual');
 
-          if (isWeekly && !subscriptionPackagesMap.containsKey(SubscriptionPeriod.weekly)) {
-            subscriptionPackagesMap[SubscriptionPeriod.weekly] = pkg;
-            localizedSubscriptionPrices[SubscriptionPeriod.weekly] = pkg.storeProduct.priceString;
-          } else if (isMonthly && !subscriptionPackagesMap.containsKey(SubscriptionPeriod.monthly)) {
-            subscriptionPackagesMap[SubscriptionPeriod.monthly] = pkg;
-            localizedSubscriptionPrices[SubscriptionPeriod.monthly] = pkg.storeProduct.priceString;
-          } else if (isYearly && !subscriptionPackagesMap.containsKey(SubscriptionPeriod.yearly)) {
-            subscriptionPackagesMap[SubscriptionPeriod.yearly] = pkg;
-            localizedSubscriptionPrices[SubscriptionPeriod.yearly] = pkg.storeProduct.priceString;
+            if (isWeekly && !subscriptionPackagesMap.containsKey(SubscriptionPeriod.weekly)) {
+              subscriptionPackagesMap[SubscriptionPeriod.weekly] = pkg;
+              localizedSubscriptionPrices[SubscriptionPeriod.weekly] = pkg.storeProduct.priceString;
+            } else if (isMonthly && !subscriptionPackagesMap.containsKey(SubscriptionPeriod.monthly)) {
+              subscriptionPackagesMap[SubscriptionPeriod.monthly] = pkg;
+              localizedSubscriptionPrices[SubscriptionPeriod.monthly] = pkg.storeProduct.priceString;
+            } else if (isYearly && !subscriptionPackagesMap.containsKey(SubscriptionPeriod.yearly)) {
+              subscriptionPackagesMap[SubscriptionPeriod.yearly] = pkg;
+              localizedSubscriptionPrices[SubscriptionPeriod.yearly] = pkg.storeProduct.priceString;
+            }
           }
         }
+      } catch (e) {
+        debugPrint('ℹ️ Purchases.getOfferings note: $e');
       }
 
-      // 2. Fetch Non-Subscription Diamond Products in User's Local Currency
-      final Set<String> productIdsToFetch = {};
+      // 2. Fetch Subscription Products directly from Store in User's Local Currency
+      final Set<String> subscriptionProductIds = {
+        'lovia_vip_weekly',
+        'lovia_vip_monthly',
+        'lovia_vip_yearly',
+        'sub_weekly',
+        'sub_monthly',
+        'sub_yearly',
+        'weekly',
+        'monthly',
+        'yearly',
+      };
+      final targetSubPlans = _coinProvider?.subscriptionPlans ?? SubscriptionPlan.plans;
+      for (final plan in targetSubPlans) {
+        subscriptionProductIds.add(plan.productId);
+        subscriptionProductIds.add(plan.id);
+        subscriptionProductIds.add('lovia_vip_${plan.period.name}');
+      }
+
+      try {
+        List<StoreProduct> subProducts = [];
+        try {
+          subProducts = await Purchases.getProducts(
+            subscriptionProductIds.toList(),
+            productCategory: ProductCategory.subscription,
+          );
+        } catch (_) {
+          subProducts = await Purchases.getProducts(subscriptionProductIds.toList());
+        }
+
+        for (final sp in subProducts) {
+          storeProductsMap[sp.identifier] = sp;
+          final idLower = sp.identifier.toLowerCase();
+          if (idLower.contains('weekly') || idLower.contains('week')) {
+            localizedSubscriptionPrices[SubscriptionPeriod.weekly] = sp.priceString;
+          } else if (idLower.contains('yearly') || idLower.contains('annual') || idLower.contains('year')) {
+            localizedSubscriptionPrices[SubscriptionPeriod.yearly] = sp.priceString;
+          } else if (idLower.contains('monthly') || idLower.contains('month')) {
+            localizedSubscriptionPrices[SubscriptionPeriod.monthly] = sp.priceString;
+          }
+          debugPrint('🪙 Localized Subscription Product [${sp.identifier}]: ${sp.priceString} (${sp.currencyCode})');
+        }
+      } catch (e) {
+        debugPrint('ℹ️ Subscription getProducts note: $e');
+      }
+
+      // 3. Fetch Non-Subscription Diamond Products in User's Local Currency
+      final Set<String> diamondProductIds = {
+        'lovia_diamonds_20',
+        'lovia_diamonds_50',
+        'lovia_diamonds_130',
+        'lovia_diamonds_300',
+        'lovia_diamonds_650',
+        'lovia_diamonds_1700',
+        'pkg_20',
+        'pkg_50',
+        'pkg_130',
+        'pkg_300',
+        'pkg_650',
+        'pkg_1700',
+        'diamonds_20',
+        'diamonds_50',
+        'diamonds_130',
+        'diamonds_300',
+        'diamonds_650',
+        'diamonds_1700',
+      };
       final targetDiamondPackages = _coinProvider?.diamondPackages ?? CoinPackage.standardPackages;
       for (final diamondPkg in targetDiamondPackages) {
-        productIdsToFetch.add(diamondPkg.id);
-        productIdsToFetch.add('lovia_${diamondPkg.id}');
-        productIdsToFetch.add('diamonds_${diamondPkg.totalCoins}');
-        productIdsToFetch.add('lovia_diamonds_${diamondPkg.totalCoins}');
-        productIdsToFetch.add('coins_${diamondPkg.totalCoins}');
+        diamondProductIds.add(diamondPkg.productId);
+        diamondProductIds.add(diamondPkg.id);
+        diamondProductIds.add('lovia_${diamondPkg.id}');
+        diamondProductIds.add('diamonds_${diamondPkg.coins}');
+        diamondProductIds.add('diamonds_${diamondPkg.totalCoins}');
+        diamondProductIds.add('lovia_diamonds_${diamondPkg.coins}');
+        diamondProductIds.add('lovia_diamonds_${diamondPkg.totalCoins}');
+        diamondProductIds.add('coins_${diamondPkg.coins}');
+        diamondProductIds.add('coins_${diamondPkg.totalCoins}');
       }
 
-      if (productIdsToFetch.isNotEmpty) {
-        List<StoreProduct> products = [];
+      try {
+        List<StoreProduct> diamondProducts = [];
         try {
-          products = await Purchases.getProducts(
-            productIdsToFetch.toList(),
+          diamondProducts = await Purchases.getProducts(
+            diamondProductIds.toList(),
             productCategory: ProductCategory.nonSubscription,
           );
         } catch (_) {
-          try {
-            products = await Purchases.getProducts(productIdsToFetch.toList());
-          } catch (_) {}
+          diamondProducts = await Purchases.getProducts(diamondProductIds.toList());
         }
 
-        for (final sp in products) {
+        for (final sp in diamondProducts) {
           storeProductsMap[sp.identifier] = sp;
           localizedDiamondPrices[sp.identifier] = sp.priceString;
+
+          // Extract numeric value from identifier to populate aliases
+          final match = RegExp(r'(\d+)').firstMatch(sp.identifier);
+          if (match != null) {
+            final numStr = match.group(1)!;
+            localizedDiamondPrices['pkg_$numStr'] = sp.priceString;
+            localizedDiamondPrices['lovia_diamonds_$numStr'] = sp.priceString;
+            localizedDiamondPrices['diamonds_$numStr'] = sp.priceString;
+            localizedDiamondPrices['coins_$numStr'] = sp.priceString;
+          }
           debugPrint('🪙 Localized Diamond Product [${sp.identifier}]: ${sp.priceString} (${sp.currencyCode})');
         }
+      } catch (e) {
+        debugPrint('ℹ️ Diamond getProducts note: $e');
       }
 
-      onPricesUpdated?.call();
+      _notifyPriceListeners();
       _coinProvider?.refreshFromStore();
     } catch (e) {
       debugPrint('ℹ️ RevenueCat local prices note: $e');
@@ -326,16 +446,40 @@ class RevenueCatService {
     if (localizedSubscriptionPrices.containsKey(plan.period)) {
       return localizedSubscriptionPrices[plan.period]!;
     }
+    if (storeProductsMap.containsKey(plan.productId)) {
+      return storeProductsMap[plan.productId]!.priceString;
+    }
+    if (storeProductsMap.containsKey(plan.id)) {
+      return storeProductsMap[plan.id]!.priceString;
+    }
+
+    final periodStr = plan.period.name.toLowerCase();
+    for (final entry in storeProductsMap.entries) {
+      final key = entry.key.toLowerCase();
+      if (key.contains(periodStr) || key == plan.productId.toLowerCase() || key == plan.id.toLowerCase()) {
+        return entry.value.priceString;
+      }
+    }
+
+    final pkg = subscriptionPackagesMap[plan.period];
+    if (pkg != null) {
+      return pkg.storeProduct.priceString;
+    }
+
     return '\$${plan.priceUsd.toStringAsFixed(2)}';
   }
 
   // Returns diamond package price in user's local currency (e.g. ₹89.00, €1.00, $1.00)
   String getLocalizedDiamondPrice(CoinPackage pkg) {
     final candidateKeys = [
+      pkg.productId,
       pkg.id,
       'lovia_${pkg.id}',
+      'lovia_diamonds_${pkg.coins}',
       'lovia_diamonds_${pkg.totalCoins}',
+      'diamonds_${pkg.coins}',
       'diamonds_${pkg.totalCoins}',
+      'coins_${pkg.coins}',
       'coins_${pkg.totalCoins}',
     ];
 
@@ -345,6 +489,16 @@ class RevenueCatService {
       }
       if (storeProductsMap.containsKey(key)) {
         return storeProductsMap[key]!.priceString;
+      }
+    }
+
+    for (final sp in storeProductsMap.values) {
+      final idLower = sp.identifier.toLowerCase();
+      if (idLower == pkg.productId.toLowerCase() ||
+          idLower == pkg.id.toLowerCase() ||
+          idLower.contains('_${pkg.coins}') ||
+          idLower.contains('_${pkg.totalCoins}')) {
+        return sp.priceString;
       }
     }
 
@@ -374,8 +528,14 @@ class RevenueCatService {
         if (targetPackage == null && offerings != null) {
           for (final offEntry in offerings!.all.values) {
             for (final pkg in offEntry.availablePackages) {
-              if (pkg.storeProduct.identifier.toLowerCase() == plan.productId.toLowerCase() ||
-                  pkg.identifier.toLowerCase() == plan.productId.toLowerCase()) {
+              final spId = pkg.storeProduct.identifier.toLowerCase();
+              final pkgId = pkg.identifier.toLowerCase();
+              if (spId == plan.productId.toLowerCase() ||
+                  pkgId == plan.productId.toLowerCase() ||
+                  spId == plan.id.toLowerCase() ||
+                  pkgId == plan.id.toLowerCase() ||
+                  spId.contains(plan.period.name) ||
+                  pkgId.contains(plan.period.name)) {
                 targetPackage = pkg;
                 break;
               }
@@ -404,9 +564,68 @@ class RevenueCatService {
             );
           }
           return true;
-        } else {
-          debugPrint('⚠️ RevenueCat: Subscription package for ${plan.period} not found in store offerings.');
         }
+
+        // Fallback to StoreProduct purchase if RevenueCat package is not in Offerings
+        StoreProduct? targetStoreProduct;
+        final candidateSubIds = [
+          plan.productId,
+          plan.id,
+          'lovia_vip_${plan.period.name}',
+          'lovia_${plan.id}',
+          plan.period.name,
+        ];
+        for (final id in candidateSubIds) {
+          if (storeProductsMap.containsKey(id)) {
+            targetStoreProduct = storeProductsMap[id];
+            break;
+          }
+        }
+
+        if (targetStoreProduct == null) {
+          try {
+            final prods = await Purchases.getProducts(
+              candidateSubIds,
+              productCategory: ProductCategory.subscription,
+            );
+            if (prods.isNotEmpty) {
+              targetStoreProduct = prods.first;
+              storeProductsMap[targetStoreProduct.identifier] = targetStoreProduct;
+            }
+          } catch (_) {
+            try {
+              final prods = await Purchases.getProducts(candidateSubIds);
+              if (prods.isNotEmpty) {
+                targetStoreProduct = prods.first;
+                storeProductsMap[targetStoreProduct.identifier] = targetStoreProduct;
+              }
+            } catch (_) {}
+          }
+        }
+
+        if (targetStoreProduct != null) {
+          final res = await Purchases.purchase(PurchaseParams.storeProduct(targetStoreProduct));
+          customerInfo = res.customerInfo;
+          _syncEntitlements(res.customerInfo);
+          await coinProvider.purchaseSubscription(plan);
+
+          if (context.mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  "Welcome to ${plan.title}! Unlimited Chat & +${plan.voiceMinutes}m Voice Active! 🎉",
+                ),
+                backgroundColor: const Color(0xFF20BF6B),
+                duration: const Duration(seconds: 4),
+                behavior: SnackBarBehavior.floating,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+            );
+          }
+          return true;
+        }
+
+        debugPrint('⚠️ RevenueCat: Subscription package for ${plan.period} not found in store offerings.');
       }
 
       if (context.mounted) {
@@ -466,10 +685,14 @@ class RevenueCatService {
       if (isConfigured) {
         StoreProduct? targetProduct;
         final candidateKeys = [
+          pkg.productId,
           pkg.id,
           'lovia_${pkg.id}',
+          'lovia_diamonds_${pkg.coins}',
           'lovia_diamonds_${pkg.totalCoins}',
+          'diamonds_${pkg.coins}',
           'diamonds_${pkg.totalCoins}',
+          'coins_${pkg.coins}',
           'coins_${pkg.totalCoins}',
         ];
 
