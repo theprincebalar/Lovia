@@ -6,6 +6,7 @@ import '../models/coin_wallet.dart';
 import '../models/subscription_plan.dart';
 import '../providers/coin_provider.dart';
 import '../services/storage_service.dart';
+import '../services/review_service.dart';
 import '../theme/app_colors.dart';
 
 /// Cross-platform RevenueCat In-App Purchase & Subscription Service
@@ -550,6 +551,9 @@ class RevenueCatService {
           _syncEntitlements(res.customerInfo);
           await coinProvider.purchaseSubscription(plan);
 
+          // Request official store rating dialog (rate limited to once per 24h)
+          ReviewService().requestPostPurchaseReview();
+
           if (context.mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
@@ -608,6 +612,9 @@ class RevenueCatService {
           customerInfo = res.customerInfo;
           _syncEntitlements(res.customerInfo);
           await coinProvider.purchaseSubscription(plan);
+
+          // Request official store rating dialog (rate limited to once per 24h)
+          ReviewService().requestPostPurchaseReview();
 
           if (context.mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -728,6 +735,9 @@ class RevenueCatService {
           final res = await Purchases.purchase(PurchaseParams.storeProduct(targetProduct));
           customerInfo = res.customerInfo;
           await coinProvider.purchasePackage(pkg);
+
+          // Request official store rating dialog (rate limited to once per 24h)
+          ReviewService().requestPostPurchaseReview();
 
           if (context.mounted) {
             ScaffoldMessenger.of(context).showSnackBar(

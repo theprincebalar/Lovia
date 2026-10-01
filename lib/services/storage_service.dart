@@ -584,8 +584,16 @@ class StorageService {
 
   String? getCachedPackagesJson() => _prefs.getString(_keyCachedPackages);
 
-  Future<void> setCachedPackagesJson(String jsonStr) async =>
-      await _prefs.setString(_keyCachedPackages, jsonStr);
+  Future<void> setCachedPackagesJson(String json) async =>
+      await _prefs.setString(_keyCachedPackages, json);
+
+  // In-App Rating & Review Dialog (Official Apple / Google Prompt Tracker)
+  static const String _keyLastReviewPromptTime = 'lovia_last_review_prompt_time';
+
+  int? getLastReviewPromptTime() => _prefs.getInt(_keyLastReviewPromptTime);
+
+  Future<void> setLastReviewPromptTime(int millis) async =>
+      await _prefs.setInt(_keyLastReviewPromptTime, millis);
 
   // Reset / Delete Account
   Future<void> resetAllData() async {
