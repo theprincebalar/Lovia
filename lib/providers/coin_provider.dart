@@ -234,6 +234,7 @@ class CoinProvider extends ChangeNotifier {
     await _storage.setSubscriptionExpiry(_subscriptionExpiry);
     await _storage.setSubscriptionVoiceMinutes(_voiceMinutesRemaining);
     await _storage.setSubscriptionLastRefillExpiry(_subscriptionExpiry);
+    await _storage.setHasMadeAnyPurchase(true);
 
     final tx = CoinTransaction(
       id: 'tx_sub_${DateTime.now().millisecondsSinceEpoch}',
@@ -308,6 +309,7 @@ class CoinProvider extends ChangeNotifier {
     _balance += package.totalCoins;
     await _storage.setCoins(_balance);
     await _storage.setHasPurchasedPaidCoins(true);
+    await _storage.setHasMadeAnyPurchase(true);
 
     final tx = CoinTransaction(
       id: 'tx_pkg_${DateTime.now().millisecondsSinceEpoch}',

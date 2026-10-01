@@ -589,11 +589,21 @@ class StorageService {
 
   // In-App Rating & Review Dialog (Official Apple / Google Prompt Tracker)
   static const String _keyLastReviewPromptTime = 'lovia_last_review_prompt_time';
+  static const String _keyHasMadeAnyPurchase = 'lovia_has_made_any_purchase';
 
   int? getLastReviewPromptTime() => _prefs.getInt(_keyLastReviewPromptTime);
 
   Future<void> setLastReviewPromptTime(int millis) async =>
       await _prefs.setInt(_keyLastReviewPromptTime, millis);
+
+  bool hasMadeAnyPurchase() {
+    return (_prefs.getBool(_keyHasMadeAnyPurchase) ?? false) ||
+        hasPurchasedPaidCoins() ||
+        getSubscriptionPlanId() != null;
+  }
+
+  Future<void> setHasMadeAnyPurchase(bool val) async =>
+      await _prefs.setBool(_keyHasMadeAnyPurchase, val);
 
   // Reset / Delete Account
   Future<void> resetAllData() async {

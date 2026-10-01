@@ -5,6 +5,7 @@ import '../../models/mood.dart';
 import '../../models/scenario.dart';
 import '../../providers/voice_provider.dart';
 import '../../services/voice_service.dart';
+import '../../services/review_service.dart';
 import '../../theme/app_colors.dart';
 import '../../widgets/character_avatar.dart';
 import '../../widgets/audio_visualizer.dart';
@@ -63,6 +64,7 @@ class _VoiceTalkScreenState extends State<VoiceTalkScreen> {
     if (_voiceProvider?.isCallActive ?? false) {
       _voiceProvider?.endCall();
     }
+    ReviewService().checkAndPromptReviewIfEligible(delaySeconds: 1);
     super.dispose();
   }
 

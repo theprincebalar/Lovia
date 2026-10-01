@@ -18,6 +18,7 @@ import '../../widgets/moderation_dialogs.dart';
 import '../../widgets/typing_indicator.dart';
 import '../../widgets/gift_selection_sheet.dart';
 import '../../services/analytics_service.dart';
+import '../../services/review_service.dart';
 import '../voice/voice_talk_screen.dart';
 import '../coins/coins_tab.dart';
 import 'character_profile_screen.dart';
@@ -61,6 +62,7 @@ class _ChatScreenState extends State<ChatScreen> {
   void dispose() {
     _textController.dispose();
     _scrollController.dispose();
+    ReviewService().checkAndPromptReviewIfEligible(delaySeconds: 1);
     super.dispose();
   }
 

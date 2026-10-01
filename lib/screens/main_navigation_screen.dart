@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../services/storage_service.dart';
 import '../services/analytics_service.dart';
+import '../services/review_service.dart';
 import '../theme/app_colors.dart';
 import '../widgets/welcome_name_dialog.dart';
 import 'create/create_character_screen.dart';
@@ -29,6 +30,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> with Widget
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         WelcomeNameDialog.showIfNeeded(context);
+        // If user is a paid customer and 24h passed, prompt store review
+        ReviewService().checkAndPromptReviewIfEligible(delaySeconds: 4);
       }
     });
 
@@ -40,6 +43,9 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> with Widget
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.paused) {
       StorageService().updateLastActiveTimestamp();
+    } else if (state == AppLifecycleState.resumed) {
+      // Check 24h rating eligibility on app resume for paid users
+      ReviewService().checkAndPromptReviewIfEligible(delaySeconds: 2);
     }
   }
 
@@ -55,6 +61,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> with Widget
     if (index >= 0 && index < tabNames.length) {
       AnalyticsService().logScreenView(tabNames[index]);
     }
+    // Check 24h rating prompt eligibility across tabs for paid users
+    ReviewService().checkAndPromptReviewIfEligible(delaySeconds: 2);
   }
 
   @override
