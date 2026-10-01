@@ -66,6 +66,23 @@ class ReviewService {
     await checkAndPromptReviewIfEligible(delaySeconds: delaySeconds);
   }
 
+  /// Explicit direct rating trigger (e.g. from Rate Us button in Profile)
+  Future<void> requestDirectReview() async {
+    try {
+      final isAvailable = await _inAppReview.isAvailable();
+      if (isAvailable) {
+        debugPrint('⭐ Triggering direct Apple/Google in-app rating prompt...');
+        await _inAppReview.requestReview();
+      } else {
+        debugPrint('⭐ In-app review unavailable, opening store listing...');
+        await openStoreListing();
+      }
+    } catch (e) {
+      debugPrint('⭐ Error during direct review request: $e');
+      await openStoreListing();
+    }
+  }
+
   /// Manually opens store page if needed
   Future<void> openStoreListing({String? appStoreId}) async {
     try {

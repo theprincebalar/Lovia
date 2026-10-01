@@ -18,6 +18,7 @@ import '../chat/chat_screen.dart';
 import '../subscription/subscription_screen.dart';
 import '../webview/web_view_screen.dart';
 import '../../services/storage_service.dart';
+import '../../widgets/rate_us_sheet.dart';
 
 class ProfileTab extends StatelessWidget {
   final VoidCallback onNavigateToCoins;
@@ -542,6 +543,14 @@ class ProfileTab extends StatelessWidget {
                           title: const Text("Proactive Companion Check-ins", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
                           subtitle: const Text("Receive spontaneous thoughts, affection, and greetings from characters", style: TextStyle(fontSize: 11, color: AppColors.textTertiary)),
                           onChanged: (val) => userProvider.setProactiveNotificationsEnabled(val),
+                        ),
+                        const Divider(color: AppColors.glassBorder, height: 1),
+                        ListTile(
+                          leading: const Icon(Icons.star_rounded, size: 22, color: AppColors.gold),
+                          title: const Text("Rate Lovia", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+                          subtitle: const Text("Share your love & feedback to support continuous updates", style: TextStyle(fontSize: 11, color: AppColors.textTertiary)),
+                          trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: AppColors.textTertiary),
+                          onTap: () => RateUsSheet.show(context),
                         ),
                         const Divider(color: AppColors.glassBorder, height: 1),
                         Builder(
